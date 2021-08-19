@@ -1,0 +1,68 @@
+/************************************************************************
+                            DISCLAIMER
+
+This is just a playground package. It does not comply with best practices
+of using AWS-UI components. For production code, follow the integration
+guidelines:
+
+https://polaris.corp.amazon.com/getting_started/development/integration/
+************************************************************************/
+.intro {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-family: Amazon Ember, Helvetica Neue, Roboto, Arial, sans-serif;
+  color: #16191f;
+}
+
+.custom-mlt-xxxl {
+  padding-left: 5rem;
+  padding-top: 3rem;
+}
+
+.intro-logo {
+  height: 10rem;
+  padding-top: 1rem;
+}
+
+.intro-screenshot {
+  height: 30rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.intro-page {
+  padding-bottom: 1rem;
+  background-color: #f2f3f3;
+}
+
+.intro-code-screenshot {
+  padding-right: 2rem;
+}
+
+.intro-header {
+  background-color: #222;
+  height: 19rem;
+  padding: 2rem;
+  color: white;
+}
+
+.intro-title {
+  font-size: 1.5em;
+}
+
+.intro-intro {
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+code {
+  font-family: Monaco, Menlo, Consolas, Courier Prime, Courier, Courier New,
+    monospace;
+  background-color: #f2f3f3;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  padding: 0 0.5rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}

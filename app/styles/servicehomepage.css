@@ -1,0 +1,48 @@
+/************************************************************************
+                            DISCLAIMER
+
+This is just a playground package. It does not comply with best practices
+of using AWS-UI components. For production code, follow the integration
+guidelines:
+
+https://polaris.corp.amazon.com/getting_started/development/integration/
+************************************************************************/
+.custom-home__header {
+  background-color: #232f3e;
+  padding-bottom: 3rem;
+}
+
+.custom-home__category,
+.custom-home__header-title,
+.custom-home__header-title p {
+  color: #ffffff;
+  font-weight: lighter;
+}
+
+.custom-home__header-title p {
+  color: #d5dbdb;
+}
+
+@media (min-width: 992px) {
+  .custom-home__sidebar {
+    margin-top: -6rem;
+  }
+}
+
+.custom-awsui-util-pt-xxxl {
+  padding-top: 4rem;
+}
+
+.custom-home__header-title > * {
+  max-width: 70rem;
+}
+
+.custom-home-image__placeholder:before {
+  content: "X";
+  display: block;
+  background-color: #f2f3f3;
+  color: #ffffff;
+  text-align: center;
+  font-size: 40rem;
+  line-height: 40rem;
+}
