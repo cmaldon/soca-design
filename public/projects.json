@@ -1,0 +1,59 @@
+[
+  {
+    "id": "Genomics",
+    "storageLimit": "10/50 GB",
+    "instanceLimit": "2 used/4 limit",
+    "status": "Deployed",
+    "state": "Running",
+    "priceClass": "$2.00/hr"
+
+  },
+  {
+    "id": "Climate",
+    "storageLimit": "8/25 GB",
+    "instanceLimit": "0 used/4 limit",
+    "status": "Deployed",
+    "state": "Running",
+    "priceClass": "$2.50/hr"
+  },
+  {
+    "id": "Agriculture",
+    "storageLimit": "20/40 GB",
+    "instanceLimit": "2 used/2 limit",
+    "status": "Deployed",
+    "state": "Running",
+    "priceClass": "$4.00/hr"
+  },
+  {
+    "id": "Cancer cells",
+    "storageLimit": "40/100 GB",
+    "instanceLimit": "1 used/5 limit",
+    "status": "Pending",
+    "state": "Stopped",
+    "priceClass": "$2.90/hr"
+  },
+  {
+    "id": "Vaccine",
+    "storageLimit": "100/205 GB",
+    "instanceLimit": "3 used/4 limit",
+    "status": "Pending",
+    "state": "Stopped",
+    "priceClass": "$5.30/hr"
+  },
+  {
+    "id": "Flood rates",
+    "storageLimit": "50/100 GB",
+    "instanceLimit": "2 used/3 limit",
+    "status": "Deployed",
+    "state": "Running",
+    "priceClass": "$4.80/hr"
+  },
+  {
+    "id": "Fire damage",
+    "storageLimit": "150/200 GB",
+    "instanceLimit": "2 used/4limit",
+    "status": "Deployed",
+    "state": "Running",
+    "priceClass": "$5.10/hr"
+  }
+]

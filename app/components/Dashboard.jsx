@@ -2,147 +2,159 @@ import React from 'react';
 import ServiceNavigation from './ServiceNavigation.jsx';
 
 const {
-    // import the components that you use in the file here
-    AppLayout,
-    BreadcrumbGroup,
-    Button,
-    Icon,
-    ColumnLayout,
-    Box,
-    BarChart,
-    LineChart,
-    PieChart
+  // import the components that you use in the file here
+  AppLayout,
+  BreadcrumbGroup,
+  Button,
+  Icon,
+  ColumnLayout
 } = window['AWS-UI-Components-React'];
-
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
 export default class Dashboard extends React.Component {
-    render() {
-        return (
-            <AppLayout
-                navigation={<ServiceNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
-                breadcrumbs={<Breadcrumbs />} // Breadcrumbs element defined below
-                content={<Content />} // Main content on the page, defined below
-                contentType="default" // Sets default app layout settings for widths
-                tools={Tools} // Tools panel content defined below
-            />
-        );
-    }
+  render() {
+    return (
+      <AppLayout
+        navigation={<ServiceNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
+        breadcrumbs={<Breadcrumbs />} // Breadcrumbs element defined below
+        content={<Content />} // Main content on the page, defined below
+        contentType="default" // Sets default app layout settings for widths
+        tools={Tools} // Tools panel content defined below
+      />
+    );
+  }
 }
 
 // Breadcrumb content
 const Breadcrumbs = () => (
-    <BreadcrumbGroup
-        items={[
-            {
-                text: 'Scale Out Computing',
-                href: '#/service-home'
-            },
-            {
-                text: 'Dashboard',
-                href: '#/dashboard'
-            }
-        ]}
-    />
+  <BreadcrumbGroup
+    items={[
+      {
+        text: 'Scale Out Computing',
+        href: '#/service-home'
+      },
+      {
+        text: 'Dashboard',
+        href: '#/dashboard'
+      }
+    ]}
+  />
 );
 
-// Main content area (fill it in with components!)
-const Content = () =>
-    <div>
-        <div className="awsui-util-pt-xxl awsui-row">
-            <div className="col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6">
-                <div className="awsui-util-action-stripe">
-                    <div className="awsui-util-action-stripe-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                    <div className="awsui-util-action-stripe-group">
-                        <Button href="#/table" variant="primary" text="Go to projects" />
-                    </div>
-                </div>
+// Main content area
+const Content = () => (
+  <div>
+    <div className="awsui-util-pt-xxl awsui-row">
+      <div className="col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6">
+        <div className="awsui-util-action-stripe">
+          <div className="awsui-util-action-stripe-title">
+            <h1>
+              Dashboard
+              <a
+                className="awsui-util-help-info-link"
+                href="javascript:void(0);"
+                onClick={() => props.replaceToolsContent(1)}
+              >
+                Info
+              </a>
+            </h1>
+          </div>
+          <div className="awsui-util-action-stripe-group">
+            <Button href="#/table" variant="primary" text="Go to projects" />
+          </div>
+        </div>
+      </div>
+
+      <div className="awsui-util-container awsui-util-no-gutters">
+        <div className="awsui-util-container-header">
+          <h2>Project overview</h2>
+          <p>Viewing all project data</p>
+        </div>
+        <div>
+          <ColumnLayout columns={4} borders="vertical" className="awsui-util-no-gutters">
+            <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Projects</h3>
+                <a className="dashboard-xlarge-link" href="#/table">
+                  7
+                </a>
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Instances (running)</h3>
+                <a className="dashboard-xlarge-link" href="#/project-details">
+                  34
+                </a>{' '}
+                /102
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Storage used</h3>
+                <a className="dashboard-xlarge-link" href="#/storage">
+                  50
+                </a>{' '}
+                /150 GB
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Backups</h3>
+                <a className="dashboard-xlarge-link" href="#/storage">
+                  520
+                </a>{' '}
+                GB
+              </div>
             </div>
+          </ColumnLayout>
+        </div>
+      </div>
 
-
-            <div className="awsui-util-container awsui-util-no-gutters">
-                <div className="awsui-util-container-header">
-                    <h2>Project overview</h2>
-                    <p>Viewing all project data</p>
-                </div>
-                <div>
-                    <ColumnLayout columns={4} borders="vertical" className="awsui-util-no-gutters">
-                        <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Projects</h3>
-                                <a className="dashboard-xlarge-link" href="#/table">7</a>
-
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Instances (running)</h3>
-                                <a className="dashboard-xlarge-link" href="#/instances">14</a> /26
-
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Key pairs</h3>
-                                <a className="dashboard-xlarge-link" href="#/instances">3</a>
-
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Backups</h3>
-                                <a className="dashboard-xlarge-link" href="#/instance-wizard">520</a> GB
-
-                            </div>
-                        </div>
-                    </ColumnLayout>
-                </div>
+      <div className="awsui-util-container awsui-util-no-gutters">
+        <div className="awsui-util-container-header">
+          <h2>Budget</h2>
+          <p>Viewing budget data for all projects</p>
+        </div>
+        <div>
+          <ColumnLayout columns={4} borders="vertical" className="awsui-util-no-gutters">
+            <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Total spent</h3>
+                <a className="dashboard-large-link red" href="#/budget">
+                  $1352
+                </a>
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Forecasted</h3>
+                <a className="dashboard-large-link" href="#/budget">
+                  $3420
+                </a>
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Remaining</h3>
+                <a className="dashboard-large-link green" href="#/budget">
+                  $13648
+                </a>
+              </div>
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <h3>Budget</h3>
+                <a className="dashboard-large-link black" href="#/budget">
+                  $15000
+                </a>
+              </div>
             </div>
+          </ColumnLayout>
+        </div>
+      </div>
 
-            <div className="awsui-util-container awsui-util-no-gutters">
-                <div className="awsui-util-container-header">
-                    <h2>Budget</h2>
+      <div className="awsui-util-container awsui-util-no-gutters">
+        <div className="awsui-util-container-header">
+          <h2>Instance hours</h2>
+          <p>Daily instance hours by instance type</p>
+        </div>
+        <div>
+          <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
+            <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <div className="awsui-util-container">
+                  <img src="./images/instance-hours1.png" className="intro-screenshot" alt="screenshot" />
+                  {/* <div className="custom-home-image__placeholder" /> */}
                 </div>
-                <div>
-                    <ColumnLayout columns={4} borders="vertical" className="awsui-util-no-gutters">
-                        <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Total spent</h3>
-                                <a className="dashboard-large-link red" href="#/budget">$1352</a>
 
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Forecasted</h3>
-                                <a className="dashboard-large-link" href="#/budget">$3420</a>
-
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Remaining</h3>
-                                <a className="dashboard-large-link green" href="#/budget">$13648</a>
-
-                            </div>
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <h3>Budget</h3>
-                                <a className="dashboard-large-link black" href="#/budget">$15000</a>
-
-                            </div>
-                        </div>
-                    </ColumnLayout>
-                </div>
-            </div>
-
-
-            <div className="awsui-util-container awsui-util-no-gutters">
-                <div className="awsui-util-container-header">
-                    <h2>Instance hours</h2>
-                    <p>Daily instance hours by instance type</p>
-                </div>
-                <div>
-                    <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
-                        <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-
-                                <div className="awsui-util-container">
-                                    <img src="./images/instance-hours1.png" className="intro-screenshot" alt="screenshot" />
-                                    {/* <div className="custom-home-image__placeholder" /> */}
-                                </div>
-
-                                {/* <div>
+                {/* <div>
                                 <BarChart
                                         series={[
                                             {
@@ -245,32 +257,26 @@ const Content = () =>
                                         }
                                     />
                                 </div> */}
-
-
-
-                            </div>
-                        </div>
-                    </ColumnLayout>
-                </div>
+              </div>
             </div>
+          </ColumnLayout>
+        </div>
+      </div>
 
-
-
-            <div className="awsui-util-container awsui-util-no-gutters">
-                <div className="awsui-util-container-header">
-                    <h2>Network traffic</h2>
-                    <p>Incoming and outgoing network traffic</p>
+      <div className="awsui-util-container awsui-util-no-gutters">
+        <div className="awsui-util-container-header">
+          <h2>Network traffic</h2>
+          <p>Incoming and outgoing network traffic</p>
+        </div>
+        <div>
+          <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
+            <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <div className="awsui-util-container">
+                  <img src="./images/network-traffic1.png" className="intro-screenshot" alt="screenshot" />
                 </div>
-                <div>
-                    <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
-                        <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <div className="awsui-util-container">
-                                    <img src="./images/network-traffic1.png" className="intro-screenshot" alt="screenshot" />
-                                    {/* <div className="custom-home-image__placeholder" /> */}
-                                </div>
 
-                                {/* <div>
+                {/* <div>
                                     <LineChart
                                         series={[
                                             {
@@ -419,32 +425,27 @@ const Content = () =>
                                         }
                                     />
                                 </div> */}
-
-
-                            </div>
-
-                        </div>
-                    </ColumnLayout>
-                </div>
+              </div>
             </div>
+          </ColumnLayout>
+        </div>
+      </div>
 
-
-
-            <div className="awsui-util-container awsui-util-no-gutters">
-                <div className="awsui-util-container-header">
-                    <h2>Pie chart</h2>
-                    <p>Display instance data</p>
+      <div className="awsui-util-container awsui-util-no-gutters">
+        <div className="awsui-util-container-header">
+          <h2>Usage data</h2>
+          <p>Display instance data</p>
+        </div>
+        <div>
+          <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
+            <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
+              <div className="awsui-util-ph-l awsui-util-mb-m">
+                <div className="awsui-util-container">
+                  <img src="./images/pie-chart.png" className="intro-screenshot" alt="screenshot" />
+                  {/* <div className="custom-home-image__placeholder" /> */}
                 </div>
-                <div>
-                    <ColumnLayout columns={1} borders="vertical" className="awsui-util-no-gutters">
-                        <div data-awsui-column-layout-root={true} className="awsui-util-mv-l">
-                            <div className="awsui-util-ph-l awsui-util-mb-m">
-                                <div className="awsui-util-container">
-                                    <img src="./images/pie-chart.png" className="intro-screenshot" alt="screenshot" />
-                                    {/* <div className="custom-home-image__placeholder" /> */}
-                                </div>
 
-                                {/* <div>
+                {/* <div>
                                     <PieChart
                                         data={[
                                             {
@@ -520,53 +521,58 @@ const Content = () =>
                                         }
                                     />
                                 </div> */}
-
-
-                            </div>
-
-                        </div>
-                    </ColumnLayout>
-                </div>
+              </div>
             </div>
-
-
+          </ColumnLayout>
         </div>
+      </div>
     </div>
-
+  </div>
+);
 
 // Help panel content
 const Tools = (
-    <div className="awsui-util-help-panel">
-        <div className="awsui-util-help-panel-header">
-            <h2>Scale Out Computing</h2>
-            <br />
-            <p>With Scale Out Computing on AWS, you can create a virtual
-                machine instance, an isolated compute environment in the AWS Cloud. You can access
-                your instance by using the same tools and applications you might use with a
-                standalone computer. Connect to your machine instance by using NICE DCV in Windows or
-                Linux Desktop, SSH Access or Command Line Interface.
-            </p>
-        </div>
-        <a href="javascript:void(0)">
-            Learn more <Icon name="external" />
-        </a>
-        <ul className="awsui-list-unstyled">
+  <div className="awsui-util-help-panel">
+    <div className="awsui-util-help-panel-header">Scale Out Computing</div>
+    <div className="awsui-util-help-panel-header">
+      <p>Welcome to the Scale Out Computing Dashboard.</p>
+      <br />
 
-            <li>
-                <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html">
-                    What is Scale Out Computing on AWS?
-                </a>
-            </li>
-            <li>
-                <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/">
-                    Getting started
-                </a>
-            </li>
-            <li>
-                <a href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc">
-                    Working with instances
-                </a>
-            </li>
-        </ul>
+      <p>
+        With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in
+        the AWS Cloud. You can access your instance by using the same tools and applications you might use with a
+        standalone computer.
+      </p>
+      <br />
+
+      <h4>Connect to your instance</h4>
+      <p>
+        Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line
+        Interface.
+      </p>
     </div>
+    <a href="javascript:void(0)">
+      Learn more <Icon name="external" />
+    </a>
+    <ul className="awsui-list-unstyled">
+      <li>
+        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html" target="_blank">
+          What is Scale Out Computing on AWS?
+        </a>
+      </li>
+      <li>
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
+          Getting started
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc"
+          target="_blank"
+        >
+          Working with instances
+        </a>
+      </li>
+    </ul>
+  </div>
 );

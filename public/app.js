@@ -207,6 +207,22 @@ var _InstanceWizard = require('./InstanceWizard.jsx');
 
 var _InstanceWizard2 = _interopRequireDefault(_InstanceWizard);
 
+var _Storage = require('./Storage.jsx');
+
+var _Storage2 = _interopRequireDefault(_Storage);
+
+var _CreateUser = require('./CreateUser.jsx');
+
+var _CreateUser2 = _interopRequireDefault(_CreateUser);
+
+var _UploadFile = require('./UploadFile.jsx');
+
+var _UploadFile2 = _interopRequireDefault(_UploadFile);
+
+var _ProjectDetails = require('./ProjectDetails.jsx');
+
+var _ProjectDetails2 = _interopRequireDefault(_ProjectDetails);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -224,8 +240,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ************************************************************************/
 
 
-// Class App is the "output" generated on every build,
-// it is what you will see on the webpage.
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -238,25 +252,24 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return (
-        // When you create a new file or template, add it below
-        // as a new 'Route' so you can link to it with a url.
-
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BobRossIntro2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/basic', component: _BasicLayout2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/service-home', component: _ServiceHomepage2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard', component: _Dashboard2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/create', component: _CreateForm2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/table', component: _Table2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/instances', component: _Instances2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/user-management', component: _UserManagement2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/budget', component: _Budget2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/launch-instance', component: _LaunchInstance2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/instance-wizard', component: _InstanceWizard2.default })
-        )
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _BobRossIntro2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/basic', component: _BasicLayout2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/service-home', component: _ServiceHomepage2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard', component: _Dashboard2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/create', component: _CreateForm2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/table', component: _Table2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/instances', component: _Instances2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/user-management', component: _UserManagement2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/budget', component: _Budget2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/launch-instance', component: _LaunchInstance2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/instance-wizard', component: _InstanceWizard2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/storage', component: _Storage2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/create-user', component: _CreateUser2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/upload-file', component: _UploadFile2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/project-details', component: _ProjectDetails2.default })
       );
     }
   }]);
@@ -304,8 +317,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _window$AWSUICompon = window['AWS-UI-Components-React'],
     AppLayout = _window$AWSUICompon.AppLayout,
     BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup;
-
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
 
 var Basic = function (_React$Component) {
   _inherits(Basic, _React$Component);
@@ -378,7 +389,7 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
         'What is Scale Out Computing on AWS?'
       )
     ),
@@ -387,7 +398,7 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
         'Getting started'
       )
     ),
@@ -396,7 +407,10 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
         'Working with instances'
       )
     )
@@ -439,9 +453,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _window$AWSUICompon = window['AWS-UI-Components-React'],
     AppLayout = _window$AWSUICompon.AppLayout,
     SideNavigation = _window$AWSUICompon.SideNavigation;
-
-// This is not meant to be a template, rather it is the
-// introduction page that you see upon loading the webserver.
 
 var BobRossIntro = function (_React$Component) {
   _inherits(BobRossIntro, _React$Component);
@@ -937,6 +948,12 @@ var _ServiceNavigation = require('./ServiceNavigation.jsx');
 
 var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
 
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _tableConfig = require('../resources/table/table-config.jsx');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -956,7 +973,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var _window$AWSUICompon = window['AWS-UI-Components-React'],
     AppLayout = _window$AWSUICompon.AppLayout,
-    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup;
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    ColumnLayout = _window$AWSUICompon.ColumnLayout,
+    Flash = _window$AWSUICompon.Flash,
+    Table = _window$AWSUICompon.Table,
+    TableContentSelector = _window$AWSUICompon.TableContentSelector,
+    TableFiltering = _window$AWSUICompon.TableFiltering,
+    TablePageSizeSelector = _window$AWSUICompon.TablePageSizeSelector,
+    TablePagination = _window$AWSUICompon.TablePagination,
+    TablePreferences = _window$AWSUICompon.TablePreferences,
+    TableSelection = _window$AWSUICompon.TableSelection,
+    TableSorting = _window$AWSUICompon.TableSorting,
+    TableWrapLines = _window$AWSUICompon.TableWrapLines,
+    FormField = _window$AWSUICompon.FormField,
+    RadioGroup = _window$AWSUICompon.RadioGroup,
+    Icon = _window$AWSUICompon.Icon;
 
 // Class Basic is a skeleton of the basic App layout using AWS-UI React components.
 
@@ -975,9 +1007,14 @@ var Budget = function (_React$Component) {
             return _react2.default.createElement(AppLayout, {
                 navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
                 , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
-                , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
-                , contentType: 'default' // Sets default app layout settings for widths
+                , notification: _react2.default.createElement(FlashMessage, null),
+                content: _react2.default.createElement(Content, null) // Main content on the page, defined below
+                , toolsOpen: false,
+                contentType: 'default' // Sets default app layout settings for widths
                 , tools: Tools // Tools panel content defined below
+
+                //      content={<DetailsTable />}
+
             });
         }
     }]);
@@ -1010,16 +1047,329 @@ var Content = function Content() {
         'div',
         null,
         _react2.default.createElement(
-            'h2',
-            null,
-            'Budget'
+            'div',
+            { className: 'awsui-util-container awsui-util-no-gutters' },
+            _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-container-header' },
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Budget overview',
+                    _react2.default.createElement(
+                        'a',
+                        {
+                            className: 'awsui-util-help-info-link',
+                            href: 'javascript:void(0);',
+                            onClick: function onClick() {
+                                return props.replaceToolsContent(1);
+                            } },
+                        'Info'
+                    )
+                ),
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'Viewing all budget data'
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    ColumnLayout,
+                    { columns: 2, borders: 'vertical', className: 'awsui-util-no-gutters' },
+                    _react2.default.createElement(
+                        'div',
+                        { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                            _react2.default.createElement(
+                                'h3',
+                                null,
+                                'Current month costs'
+                            ),
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'dashboard-large-link gray', href: '#/budget' },
+                                '$386.36'
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'container' },
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'right' },
+                                    '\u2191 >100%',
+                                    _react2.default.createElement('br', null),
+                                    'over last month'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                            _react2.default.createElement(
+                                'h3',
+                                null,
+                                'Forecasted month end costs'
+                            ),
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'dashboard-large-link gray', href: '#/budget' },
+                                '$450.80'
+                            )
+                        )
+                    )
+                )
+            )
         ),
         _react2.default.createElement(
-            'p',
-            null,
-            'Hello from p in div'
+            'div',
+            { className: 'awsui-util-container awsui-util-no-gutters' },
+            _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-container-header' },
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Instance hours'
+                ),
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'Daily instance hours by instance type'
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    ColumnLayout,
+                    { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
+                    _react2.default.createElement(
+                        'div',
+                        { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                            _react2.default.createElement('img', { src: './images/costs.png', className: 'intro-screenshot', alt: 'screenshot' })
+                        )
+                    )
+                )
+            )
         )
     );
+};
+
+var DetailsTable = function (_React$Component2) {
+    _inherits(DetailsTable, _React$Component2);
+
+    function DetailsTable(props) {
+        _classCallCheck(this, DetailsTable);
+
+        var _this2 = _possibleConstructorReturn(this, (DetailsTable.__proto__ || Object.getPrototypeOf(DetailsTable)).call(this, props));
+
+        _this2.state = {
+            selectedDistributions: [],
+            distributions: [],
+            pageSize: 30,
+            filteringText: ''
+        };
+        return _this2;
+    }
+
+    _createClass(DetailsTable, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this3 = this;
+
+            new _dataProvider2.default().getData('distributions', function (distributions) {
+                return _this3.setState({ distributions: distributions });
+            });
+        }
+
+        // Keeps track of how many distributions are selected
+
+    }, {
+        key: 'headerCounter',
+        value: function headerCounter(selectedDistributions, distributions) {
+            return selectedDistributions.length ? '(' + selectedDistributions.length + ' of ' + distributions.length + ')' : '(' + distributions.length + ')';
+        }
+
+        // Updates the page size in preferences
+
+    }, {
+        key: 'onPaginationChange',
+        value: function onPaginationChange(_ref) {
+            var pageSize = _ref.detail.pageSize;
+
+            this.setState({
+                pageSize: pageSize
+            });
+        }
+
+        // Updates the filtering text
+
+    }, {
+        key: 'onFilteringChange',
+        value: function onFilteringChange(_ref2) {
+            var filteringText = _ref2.detail.filteringText;
+
+            this.setState({
+                filteringText: filteringText
+            });
+        }
+
+        // Resets the filtering text
+
+    }, {
+        key: 'clearFilter',
+        value: function clearFilter() {
+            this.setState({
+                filteringText: ''
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this4 = this;
+
+            return (
+                //     <Container
+                //     header={
+                //       <Header
+                //         variant="h2"
+                //         description="Container description"
+                //       >
+                //         Container title
+                //       </Header>
+                //     }
+                //   >
+                //     Container content
+                //   </Container>
+
+                _react2.default.createElement(
+                    Table,
+                    {
+                        columnDefinitions: _tableConfig.COLUMN_DEFINITIONS,
+                        items: this.state.distributions,
+                        header: _react2.default.createElement(Header, {
+                            selectedDistributions: this.state.selectedDistributions,
+                            counter: this.headerCounter(this.state.selectedDistributions, this.state.distributions)
+                        }),
+                        noMatch: _react2.default.createElement(
+                            'div',
+                            { className: 'awsui-util-t-c' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'awsui-util-pt-xs awsui-util-mb-xs' },
+                                _react2.default.createElement(
+                                    'b',
+                                    null,
+                                    'No matches'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { className: 'awsui-util-mb-s' },
+                                'No results match your query'
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'awsui-util-mb-l' },
+                                _react2.default.createElement(Button, { onClick: this.clearFilter.bind(this), text: 'Clear filter' })
+                            )
+                        )
+                    },
+                    _react2.default.createElement(TableFiltering, {
+                        filteringPlaceholder: 'Search project budgets',
+                        filteringText: this.state.filteringText,
+                        onFilteringChange: this.onFilteringChange.bind(this)
+                    }),
+                    _react2.default.createElement(TablePagination, { onPaginationChange: this.onPaginationChange.bind(this), pageSize: this.state.pageSize }),
+                    _react2.default.createElement(TableSorting, { sortableColumns: _tableConfig.SORTABLE_COLUMNS }),
+                    _react2.default.createElement(TableSelection, {
+                        selectedItems: this.state.selectedDistributions,
+                        onSelectionChange: function onSelectionChange(evt) {
+                            return _this4.setState({ selectedDistributions: evt.detail.selectedItems });
+                        }
+                    }),
+                    _react2.default.createElement(
+                        TablePreferences,
+                        { title: 'Preferences', confirmLabel: 'Confirm', cancelLabel: 'Cancel' },
+                        _react2.default.createElement(TablePageSizeSelector, { title: 'Page size', options: _tableConfig.PAGE_SELECTOR_OPTIONS }),
+                        _react2.default.createElement(TableWrapLines, { label: 'Wrap lines', description: 'Check to see all the text and wrap the lines', value: false }),
+                        _react2.default.createElement(
+                            FormField,
+                            {
+                                stretch: true,
+                                className: 'awsui-util-mb-l awsui-util-d-b awsui-table-custom-preference',
+                                label: 'View as'
+                            },
+                            _react2.default.createElement(RadioGroup, { value: 'table', items: _tableConfig.CUSTOM_PREFERENCE_OPTIONS })
+                        ),
+                        _react2.default.createElement(TableContentSelector, { title: 'Select visible columns', options: _tableConfig.CONTENT_SELECTOR_OPTIONS })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DetailsTable;
+}(_react2.default.Component);
+
+// Table header content, shows how many distributions are selected and contains the action stripe
+
+
+var Header = function Header(_ref3) {
+    var selectedDistributions = _ref3.selectedDistributions,
+        counter = _ref3.counter;
+
+    var isOnlyOneSelected = selectedDistributions.length === 1;
+
+    return _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-action-stripe' },
+        _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-action-stripe-title' },
+            _react2.default.createElement(
+                'h2',
+                null,
+                'Project budget\xA0',
+                counter ? _react2.default.createElement(
+                    'span',
+                    { className: 'awsui-util-header-counter' },
+                    counter
+                ) : '',
+                _react2.default.createElement(
+                    'a',
+                    {
+                        className: 'awsui-util-help-info-link',
+                        href: 'javascript:void(0);',
+                        onClick: function onClick() {
+                            return props.replaceToolsContent(1);
+                        } },
+                    'Info'
+                )
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-action-stripe-group' },
+            _react2.default.createElement(Button, { text: 'View details', disabled: !isOnlyOneSelected }),
+            _react2.default.createElement(Button, { text: 'Edit', disabled: !isOnlyOneSelected }),
+            _react2.default.createElement(Button, { text: 'Delete', disabled: selectedDistributions.length === 0 }),
+            _react2.default.createElement(Button, { href: '#/create', variant: 'primary', text: 'Create project budget' })
+        )
+    );
+};
+
+// Flash message content
+var FlashMessage = function FlashMessage() {
+    return _react2.default.createElement(Flash, { type: 'success', content: 'Project budget created successfully', dismissible: true });
 };
 
 // Help panel content
@@ -1029,17 +1379,17 @@ var Tools = _react2.default.createElement(
     _react2.default.createElement(
         'div',
         { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Scale Out Computing'
-        ),
-        _react2.default.createElement('br', null),
+        'Project Budget'
+    ),
+    _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-help-panel-header' },
         _react2.default.createElement(
             'p',
             null,
             'This is the help section for budget page.'
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
             'p',
             null,
@@ -1054,7 +1404,7 @@ var Tools = _react2.default.createElement(
             null,
             _react2.default.createElement(
                 'a',
-                { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
+                { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
                 'What is Scale Out Computing on AWS?'
             )
         ),
@@ -1063,7 +1413,7 @@ var Tools = _react2.default.createElement(
             null,
             _react2.default.createElement(
                 'a',
-                { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+                { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
                 'Getting started'
             )
         ),
@@ -1072,7 +1422,7 @@ var Tools = _react2.default.createElement(
             null,
             _react2.default.createElement(
                 'a',
-                { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
+                { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc', target: '_blank' },
                 'Working with instances'
             )
         )
@@ -1134,11 +1484,7 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     Input = _window$AWSUICompon.Input,
     Multiselect = _window$AWSUICompon.Multiselect,
     RadioGroup = _window$AWSUICompon.RadioGroup,
-    Select = _window$AWSUICompon.Select,
-    Textarea = _window$AWSUICompon.Textarea,
-    Tiles = _window$AWSUICompon.Tiles;
-
-// Class CreateForm is a skeleton of a Single page create form using AWS-UI React components.
+    Textarea = _window$AWSUICompon.Textarea;
 
 var CreateForm = function (_React$Component) {
   _inherits(CreateForm, _React$Component);
@@ -1201,7 +1547,18 @@ var Content = function Content(props) {
         header: _react2.default.createElement(
           'h1',
           null,
-          'Create project'
+          'Create project',
+          _react2.default.createElement(
+            'a',
+            {
+              className: 'awsui-util-help-info-link',
+              href: 'javascript:void(0);',
+              onClick: function onClick() {
+                return props.replaceToolsContent(1);
+              }
+            },
+            'Info'
+          )
         ),
         actions:
         // located at the bottom of the form
@@ -1218,7 +1575,7 @@ var Content = function Content(props) {
         { header: _react2.default.createElement(
             'h2',
             null,
-            'Distribution settings'
+            'Input data'
           ), footer: _react2.default.createElement(DistributionsFooter, null) },
         _react2.default.createElement(
           ColumnLayout,
@@ -1232,60 +1589,7 @@ var Content = function Content(props) {
                 label: _react2.default.createElement(
                   'span',
                   null,
-                  'Price class',
-                  _react2.default.createElement(
-                    'a',
-                    {
-                      className: 'awsui-util-help-info-link',
-                      href: 'javascript:void(0);',
-                      onClick: function onClick() {
-                        return props.replaceToolsContent(2);
-                      }
-                    },
-                    'Info'
-                  )
-                ),
-                stretch: true
-              },
-              _react2.default.createElement(RadioGroup, { items: _formConfig.PRICE_CLASS_OPTIONS, value: '0' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              {
-                label: _react2.default.createElement(
-                  'span',
-                  null,
-                  'Alternative domain names (CNAMEs)',
-                  _react2.default.createElement(
-                    'i',
-                    null,
-                    ' - optional'
-                  ),
-                  _react2.default.createElement(
-                    'a',
-                    {
-                      className: 'awsui-util-help-info-link',
-                      href: 'javascript:void(0);',
-                      onClick: function onClick() {
-                        return props.replaceToolsContent(3);
-                      }
-                    },
-                    'Info'
-                  )
-                ),
-                description: 'You must list any custom domain names that you use in addition to the CloudFront domain name for the URLs for your files.',
-                hintText: 'Specify up to 100 CNAMEs separated with commas or put each on a new line.',
-                stretch: true
-              },
-              _react2.default.createElement(Textarea, { placeholder: 'www.example1.com\nwww.example2.com' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              {
-                label: _react2.default.createElement(
-                  'span',
-                  null,
-                  'SSL/TLS certificate',
+                  'Content origin',
                   _react2.default.createElement(
                     'a',
                     {
@@ -1298,17 +1602,21 @@ var Content = function Content(props) {
                     'Info'
                   )
                 ),
-                stretch: true
+                description: 'The Amazon S3 bucket or web server from which you want to get your content.'
               },
-              _react2.default.createElement(RadioGroup, { items: _formConfig.SSL_CERTIFICATE_OPTIONS, value: 'default' })
+              _react2.default.createElement(Multiselect, {
+                options: props.contentOrigins,
+                placeholder: 'Select an S3 bucket or web server from which you want to get your content.',
+                filteringType: 'auto'
+              })
             ),
-            _react2.default.createElement(Button, { text: 'Request or import a certificate with AWS Certificate Manager (ACM)' })
+            _react2.default.createElement(Button, { text: 'Additional input option' })
           )
         )
       ),
       _react2.default.createElement(
         FormSection,
-        { header: 'Origin settings' },
+        { header: 'Output data' },
         _react2.default.createElement(
           ColumnLayout,
           null,
@@ -1321,7 +1629,7 @@ var Content = function Content(props) {
                 label: _react2.default.createElement(
                   'div',
                   null,
-                  'Content origin',
+                  'Choose output storage location',
                   _react2.default.createElement(
                     'a',
                     {
@@ -1334,143 +1642,17 @@ var Content = function Content(props) {
                     'Info'
                   )
                 ),
-                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
+                description: 'The Amazon S3 bucket or web server from which you want to get your content.'
               },
-              _react2.default.createElement(Select, {
-                options: props.contentOrigins,
-                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
-                filteringType: 'auto'
-              })
+              _react2.default.createElement(RadioGroup, { items: _formConfig.INPUT_OPTIONS, value: '0' })
             ),
             _react2.default.createElement(
               FormField,
               {
-                label: 'Content origin (multiselect version)',
-                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
-              },
-              _react2.default.createElement(Multiselect, {
-                options: props.contentOrigins,
-                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
-                filteringType: 'auto'
-              })
-            ),
-            _react2.default.createElement(
-              FormField,
-              {
-                label: 'Path to content',
+                label: 'Path to files',
                 description: 'The directory in your Amazon S3 bucket or your custom origin.'
               },
-              _react2.default.createElement(Input, { placeholder: '/images' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              {
-                label: 'Origin ID',
-                description: 'This value lets you distinguish multiple origins in the same distribution from one another'
-              },
-              _react2.default.createElement(Input, null)
-            ),
-            _react2.default.createElement(AttributeEditor, {
-              addButtonText: 'Add header',
-              removeButtonText: 'Remove header',
-              items: [{
-                name: '',
-                value: ''
-              }],
-              definition: [{
-                label: _react2.default.createElement(
-                  'span',
-                  null,
-                  'Custom header name',
-                  _react2.default.createElement(
-                    'a',
-                    {
-                      className: 'awsui-util-help-info-link',
-                      href: 'javascript:void(0);',
-                      onClick: function onClick() {
-                        return props.replaceToolsContent(6);
-                      }
-                    },
-                    'Info'
-                  )
-                ),
-                control: function control(item) {
-                  return _react2.default.createElement(Input, { value: item.name, placeholder: 'Location' });
-                }
-              }, {
-                label: _react2.default.createElement(
-                  'span',
-                  null,
-                  'Custom header value',
-                  _react2.default.createElement(
-                    'i',
-                    null,
-                    ' - optional'
-                  )
-                ),
-                control: function control(item) {
-                  return _react2.default.createElement(Input, { value: item.value, placeholder: 'Germany' });
-                }
-              }]
-            })
-          )
-        )
-      ),
-      _react2.default.createElement(
-        FormSection,
-        { header: 'Cache behavior settings', footer: _react2.default.createElement(BehaviorsFooter, null) },
-        _react2.default.createElement(
-          ColumnLayout,
-          null,
-          _react2.default.createElement(
-            'div',
-            { 'data-awsui-column-layout-root': true },
-            _react2.default.createElement(
-              FormField,
-              { label: 'Viewer protocol policy', stretch: true },
-              _react2.default.createElement(RadioGroup, { items: _formConfig.VIEWER_PROTOCOL_POLICY_OPTIONS, value: '0' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              { label: 'Allowed HTTP methods', stretch: true },
-              _react2.default.createElement(RadioGroup, { items: _formConfig.ALLOWED_HTTP_METHOD_OPTIONS, value: '0' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              { label: 'Forward headers', description: 'Cache your objects based on header values', stretch: true },
-              _react2.default.createElement(RadioGroup, { items: _formConfig.FORWARD_HEADER_OPTIONS, value: 'none' })
-            ),
-            _react2.default.createElement(
-              FormField,
-              { label: 'Object caching', description: 'Cache your objects based on header values' },
-              _react2.default.createElement(
-                ColumnLayout,
-                { columns: 4 },
-                _react2.default.createElement(
-                  'div',
-                  { 'data-awsui-column-layout-root': true },
-                  _react2.default.createElement(
-                    FormField,
-                    { label: 'Minimum TTL' },
-                    _react2.default.createElement(Input, { type: 'number', value: '0' })
-                  ),
-                  _react2.default.createElement(
-                    FormField,
-                    { label: 'Maximum TTL' },
-                    _react2.default.createElement(Input, { type: 'number', value: '31536000' })
-                  ),
-                  _react2.default.createElement(
-                    FormField,
-                    { label: 'Default TTL' },
-                    _react2.default.createElement(Input, { type: 'number', value: '86400' })
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'custom-header' },
-                    _react2.default.createElement(Button, { text: 'Set to default' })
-                  )
-                )
-              )
+              _react2.default.createElement(Input, { placeholder: '/files' })
             )
           )
         )
@@ -1496,40 +1678,57 @@ var ContentDeliveryPanel = function (_React$Component2) {
   _createClass(ContentDeliveryPanel, [{
     key: 'render',
     value: function render() {
-      var _this5 = this;
-
       return _react2.default.createElement(
         FormSection,
-        { header: 'Distribution content delivery' },
+        { header: 'Project settings' },
         _react2.default.createElement(
           FormField,
-          {
+          { label: 'Project ID', description: 'This value lets you distinguish multiple projects from one another' },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(AttributeEditor, {
+          addButtonText: 'Add header',
+          removeButtonText: 'Remove header',
+          items: [{
+            name: '',
+            value: ''
+          }],
+          definition: [{
             label: _react2.default.createElement(
-              'div',
+              'span',
               null,
-              'Delivery method',
+              'Name',
               _react2.default.createElement(
                 'a',
                 {
                   className: 'awsui-util-help-info-link',
                   href: 'javascript:void(0);',
                   onClick: function onClick() {
-                    return _this5.props.replaceToolsContent(1);
+                    return props.replaceToolsContent(6);
                   }
                 },
                 'Info'
               )
             ),
-            stretch: true
-          },
-          _react2.default.createElement(Tiles, {
-            items: _formConfig.DELIVERY_METHOD,
-            value: this.state.deliveryMethod,
-            onChange: function onChange(e) {
-              return _this5.setState({ deliveryMethod: e.detail.value });
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.name, placeholder: 'example-project-name' });
             }
-          })
-        )
+          }, {
+            label: _react2.default.createElement(
+              'span',
+              null,
+              'Project description',
+              _react2.default.createElement(
+                'i',
+                null,
+                ' - optional'
+              )
+            ),
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.value, placeholder: 'example-project-description' });
+            }
+          }]
+        })
       );
     }
   }]);
@@ -1554,7 +1753,7 @@ var DistributionsFooter = function DistributionsFooter() {
           FormField,
           {
             label: 'Supported HTTP versions',
-            description: 'Choose the version of the HTTP protocol that you want CloudFront to accept for viewer requests.',
+            description: 'Choose the version of the HTTP protocol that you want to accept for viewer requests.',
             stretch: true
           },
           _react2.default.createElement(RadioGroup, { items: _formConfig.SUPPORTED_HTTP_VERSIONS_OPTIONS, value: 'http2' })
@@ -1563,7 +1762,7 @@ var DistributionsFooter = function DistributionsFooter() {
           FormField,
           {
             label: 'Root object',
-            description: 'Type the name of the object that you want CloudFront to return when a viewer request points to your root URL.'
+            description: 'Type the name of the object that you want to return when a viewer request points to your root URL.'
           },
           _react2.default.createElement(Input, null)
         ),
@@ -1587,7 +1786,7 @@ var DistributionsFooter = function DistributionsFooter() {
   );
 };
 
-// Footer content (Additional configuration section) for 'Cache behavior settings' form section
+// Footer content (Additional configuration section) form section
 var BehaviorsFooter = function BehaviorsFooter() {
   return _react2.default.createElement(
     ExpandableSection,
@@ -1688,12 +1887,16 @@ var Breadcrumbs = function Breadcrumbs() {
       text: 'Scale Out Computing',
       href: '#/service-home'
     }, {
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
       text: 'Projects',
       href: '#/table'
     }, {
       text: 'Create project',
       href: '#/create'
-    }]
+    }],
+    activeHref: '#/table'
   });
 };
 
@@ -1704,16 +1907,21 @@ var Tools = [_react2.default.createElement(
   _react2.default.createElement(
     'div',
     { className: 'awsui-util-help-panel-header' },
+    'Create project'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-      'h2',
+      'p',
       null,
-      'Scale Out Computing'
+      'Keep your project research in order by naming each project and adding limits.'
     ),
     _react2.default.createElement('br', null),
     _react2.default.createElement(
       'p',
       null,
-      'Keep your project research in order by naming each project and adding limits.'
+      'You can create projects in this section by naming it, adding usage and budget details.'
     )
   ),
   _react2.default.createElement(
@@ -1724,7 +1932,7 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
+        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/', target: '_blank' },
         'What is Scale Out Computing?'
       )
     ),
@@ -1733,7 +1941,7 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
         'Getting started'
       )
     ),
@@ -1742,7 +1950,7 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
         'View implementation guide'
       )
     )
@@ -1753,7 +1961,7 @@ var Tools = [_react2.default.createElement(
   _react2.default.createElement(
     'div',
     { className: 'awsui-util-help-panel-header' },
-    'Testing'
+    'Create a project'
   ),
   _react2.default.createElement(
     'h4',
@@ -1950,11 +2158,703 @@ var Tools = [_react2.default.createElement(
 )];
 });
 
+require.register("components/CreateUser.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _ServiceNavigation = require('./ServiceNavigation.jsx');
+
+var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
+
+var _formConfig = require('../resources/form-config.jsx');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /************************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           DISCLAIMER
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               This is just a playground package. It does not comply with best practices
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               of using AWS-UI components. For production code, follow the integration
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               guidelines:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://polaris.corp.amazon.com/getting_started/development/integration/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ************************************************************************/
+
+
+var _window$AWSUICompon = window['AWS-UI-Components-React'],
+    AppLayout = _window$AWSUICompon.AppLayout,
+    AttributeEditor = _window$AWSUICompon.AttributeEditor,
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    Checkbox = _window$AWSUICompon.Checkbox,
+    ColumnLayout = _window$AWSUICompon.ColumnLayout,
+    ExpandableSection = _window$AWSUICompon.ExpandableSection,
+    Form = _window$AWSUICompon.Form,
+    FormField = _window$AWSUICompon.FormField,
+    FormSection = _window$AWSUICompon.FormSection,
+    Input = _window$AWSUICompon.Input,
+    Multiselect = _window$AWSUICompon.Multiselect,
+    RadioGroup = _window$AWSUICompon.RadioGroup,
+    Textarea = _window$AWSUICompon.Textarea;
+
+var CreateUser = function (_React$Component) {
+  _inherits(CreateUser, _React$Component);
+
+  function CreateUser(props) {
+    _classCallCheck(this, CreateUser);
+
+    var _this = _possibleConstructorReturn(this, (CreateUser.__proto__ || Object.getPrototypeOf(CreateUser)).call(this, props));
+
+    _this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
+    return _this;
+  }
+
+  _createClass(CreateUser, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var dataProvider = new _dataProvider2.default();
+      dataProvider.getData('content-origins', function (contentOrigins) {
+        return _this2.setState({ contentOrigins: contentOrigins });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null),
+        content: _react2.default.createElement(Content
+        // Changes the Help panel content when the user clicks an 'info' link
+        , { replaceToolsContent: function replaceToolsContent(index) {
+            return _this3.setState({ toolsIndex: index, toolsOpen: true });
+          },
+          contentOrigins: this.state.contentOrigins
+        }),
+        contentType: 'form',
+        tools: Tools[this.state.toolsIndex],
+        toolsOpen: this.state.toolsOpen
+      });
+    }
+  }]);
+
+  return CreateUser;
+}(_react2.default.Component);
+
+exports.default = CreateUser;
+
+
+var Content = function Content(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      Form,
+      {
+        header: _react2.default.createElement(
+          'h1',
+          null,
+          'Create user',
+          _react2.default.createElement(
+            'a',
+            {
+              className: 'awsui-util-help-info-link',
+              href: 'javascript:void(0);',
+              onClick: function onClick() {
+                return props.replaceToolsContent(1);
+              }
+            },
+            'Info'
+          )
+        ),
+        actions:
+        // located at the bottom of the form
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(Button, { variant: 'link', text: 'Cancel' }),
+          _react2.default.createElement(Button, { href: '#/user-management', variant: 'primary', text: 'Create user' })
+        )
+      },
+      _react2.default.createElement(ContentDeliveryPanel, { replaceToolsContent: props.replaceToolsContent }),
+      _react2.default.createElement(
+        FormSection,
+        { header: _react2.default.createElement(
+            'h2',
+            null,
+            'IAM Roles'
+          ), footer: _react2.default.createElement(DistributionsFooter, null) },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'User roles',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(4);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'Select which roles you want this user to have.'
+              },
+              _react2.default.createElement(Multiselect, {
+                options: props.contentOrigins,
+                placeholder: 'Select an S3 bucket or web server from which you want to get your content.',
+                filteringType: 'auto'
+              })
+            ),
+            _react2.default.createElement(Button, { text: 'Additional IAM Role options' })
+          )
+        )
+      ),
+      _react2.default.createElement(
+        FormSection,
+        { header: 'User permissions' },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'div',
+                  null,
+                  'Select which roles you want this user to have',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(5);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'The Amazon S3 bucket or web server from which you want to get your content.'
+              },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.INPUT_OPTIONS, value: '0' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: 'Path to files',
+                description: 'The directory in your Amazon S3 bucket or your custom origin.'
+              },
+              _react2.default.createElement(Input, { placeholder: '/files' })
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+// First form section
+
+var ContentDeliveryPanel = function (_React$Component2) {
+  _inherits(ContentDeliveryPanel, _React$Component2);
+
+  function ContentDeliveryPanel(props) {
+    _classCallCheck(this, ContentDeliveryPanel);
+
+    var _this4 = _possibleConstructorReturn(this, (ContentDeliveryPanel.__proto__ || Object.getPrototypeOf(ContentDeliveryPanel)).call(this, props));
+
+    _this4.state = { deliveryMethod: 'web' };
+    return _this4;
+  }
+
+  _createClass(ContentDeliveryPanel, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        FormSection,
+        { header: 'User settings' },
+        _react2.default.createElement(
+          FormField,
+          { label: 'User ID', description: 'This value lets you distinguish multiple users from one another' },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(AttributeEditor, {
+          addButtonText: 'Add header',
+          removeButtonText: 'Remove header',
+          items: [{
+            name: '',
+            value: ''
+          }],
+          definition: [{
+            label: _react2.default.createElement(
+              'span',
+              null,
+              'Name',
+              _react2.default.createElement(
+                'a',
+                {
+                  className: 'awsui-util-help-info-link',
+                  href: 'javascript:void(0);',
+                  onClick: function onClick() {
+                    return props.replaceToolsContent(6);
+                  }
+                },
+                'Info'
+              )
+            ),
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.name, placeholder: 'example-user-name' });
+            }
+          }, {
+            label: _react2.default.createElement(
+              'span',
+              null,
+              'Role description',
+              _react2.default.createElement(
+                'i',
+                null,
+                ' - optional'
+              )
+            ),
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.value, placeholder: 'example-role-description' });
+            }
+          }]
+        })
+      );
+    }
+  }]);
+
+  return ContentDeliveryPanel;
+}(_react2.default.Component);
+
+// Footer content form section
+
+
+var DistributionsFooter = function DistributionsFooter() {
+  return _react2.default.createElement(
+    ExpandableSection,
+    { header: 'Additional configuration', variant: 'borderless' },
+    _react2.default.createElement(
+      ColumnLayout,
+      null,
+      _react2.default.createElement(
+        'div',
+        { 'data-awsui-column-layout-root': true },
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Supported HTTP versions',
+            description: 'Choose the version of the HTTP protocol that you want to accept for viewer requests.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.SUPPORTED_HTTP_VERSIONS_OPTIONS, value: 'http2' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Root object',
+            description: 'Type the name of the object that you want to return when a viewer request points to your root URL.'
+          },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Logging' },
+          _react2.default.createElement(Checkbox, { label: 'Enable logging' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'IPv6' },
+          _react2.default.createElement(Checkbox, { label: 'Enabled' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Comment' },
+          _react2.default.createElement(Textarea, null)
+        )
+      )
+    )
+  );
+};
+
+// Footer content (Additional configuration section) form section
+var BehaviorsFooter = function BehaviorsFooter() {
+  return _react2.default.createElement(
+    ExpandableSection,
+    { header: 'Additional configuration', variant: 'borderless' },
+    _react2.default.createElement(
+      ColumnLayout,
+      null,
+      _react2.default.createElement(
+        'div',
+        { 'data-awsui-column-layout-root': true },
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-label' },
+            'Path pattern'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            'Default (*)'
+          )
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Cookies',
+            description: 'Include all user cookies in the request URLs that it forwards to your origin.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.COOKIE_OPTIONS, value: 'none' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Query string forwarding and caching',
+            description: 'Query string parameters you want CloudFront to forward to the origin.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.QUERY_STRING_OPTIONS, value: 'none' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Smooth streaming' },
+          _react2.default.createElement(Checkbox, { label: 'Enable Microsoft smooth streaming' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Viewer access' },
+          _react2.default.createElement(Checkbox, { label: 'Require signed URL or signed cookie' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Content compression', stretch: true },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.CURRENT_COMPRESSION_OPTIONS, value: 'manual' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Lambda function associations',
+            description: 'A Lambda trigger causes a function to execute. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer for a specific cache behavior you set up for your distribution.',
+            stretch: true
+          },
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 3 },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true },
+              _react2.default.createElement(
+                FormField,
+                { label: 'Type' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
+                FormField,
+                { label: 'ARN' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'custom-header' },
+                _react2.default.createElement(Button, { text: 'Add lambda' })
+              )
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+// Breadcrumb content
+var Breadcrumbs = function Breadcrumbs() {
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Scale Out Computing',
+      href: '#/service-home'
+    }, {
+      text: 'Projects',
+      href: '#/table'
+    }, {
+      text: 'User management',
+      href: '#/user-management'
+    }, {
+      text: 'Create user',
+      href: '#/create-user'
+    }],
+    activeHref: '#/user-management'
+  });
+};
+
+// List of Help (right) panel content, changes depending on which 'info' link the user clicks on.
+var Tools = [_react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Create user'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'Keep your project users information and permissions in order.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'You can create project users in this section by assigning roles and permissions.'
+    )
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/', target: '_blank' },
+        'What is Scale Out Computing?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
+        'View implementation guide'
+      )
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Creating users'
+  ),
+  _react2.default.createElement(
+    'h4',
+    null,
+    'Admin'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Create an admin user permission if you want to:'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Allow your users to make administrative changes to resources and content.'
+  ),
+  _react2.default.createElement(
+    'h4',
+    { className: 'awsui-util-mt-m' },
+    'User'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Create an user permission that allows the member of your team to use resources and not make administrative changes to resources or content.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Price class'
+    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Select the price class associated with the maximum price that you want to pay for CloudFront service. If you select a price class other than All, some of your users may experience higher latency.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Alternate domain names (CNAMEs)'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'You must list any custom domain names (for example, www.example.com) that you use in addition to the CloudFront domain name (for example, d1234.cloudfront.net) for the URLs for your files.'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify up to 100 CNAMEs separated with commas or put each on a new line. You also must create a CNAME record with your DNS service to route queries for www.example.com to d1234.cloudfront.net. For more information, see the ',
+      _react2.default.createElement(
+        'a',
+        { href: '' },
+        'Help'
+      ),
+      '.'
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'User roles'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'h4',
+        null,
+        'Identity and Access Management'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Choose this option if you want your users to access your content.'
+      ),
+      _react2.default.createElement(
+        'h4',
+        { className: 'awsui-util-mt-m' },
+        'Developer'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Choose this option if you want your users to access your content by using an alternate domain name, such as https://www.example.com/logo.jpg.'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'You can use a certificate stored in AWS Certificate Manager (ACM) in the US East (N. Virginia) Region, or you can use a certificate stored in IAM.'
+      )
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'User permissions'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify the permissions for your users - from which you want to get your web content. The dropdown list enumerates the AWS resources associated with the current AWS account.'
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Custom header name'
+    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Headers let you distinguish multiple origins in the same distribution from another.'
+  )
+)];
+});
+
 require.register("components/Dashboard.jsx", function(exports, require, module) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1980,37 +2880,31 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
     Button = _window$AWSUICompon.Button,
     Icon = _window$AWSUICompon.Icon,
-    ColumnLayout = _window$AWSUICompon.ColumnLayout,
-    Box = _window$AWSUICompon.Box,
-    BarChart = _window$AWSUICompon.BarChart,
-    LineChart = _window$AWSUICompon.LineChart,
-    PieChart = _window$AWSUICompon.PieChart;
-
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
+    ColumnLayout = _window$AWSUICompon.ColumnLayout;
 
 var Dashboard = function (_React$Component) {
-    _inherits(Dashboard, _React$Component);
+  _inherits(Dashboard, _React$Component);
 
-    function Dashboard() {
-        _classCallCheck(this, Dashboard);
+  function Dashboard() {
+    _classCallCheck(this, Dashboard);
 
-        return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).apply(this, arguments));
+  }
+
+  _createClass(Dashboard, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
+        , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
+        , contentType: 'default' // Sets default app layout settings for widths
+        , tools: Tools // Tools panel content defined below
+      });
     }
+  }]);
 
-    _createClass(Dashboard, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(AppLayout, {
-                navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
-                , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
-                , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
-                , contentType: 'default' // Sets default app layout settings for widths
-                , tools: Tools // Tools panel content defined below
-            });
-        }
-    }]);
-
-    return Dashboard;
+  return Dashboard;
 }(_react2.default.Component);
 
 // Breadcrumb content
@@ -2018,393 +2912,432 @@ var Dashboard = function (_React$Component) {
 
 exports.default = Dashboard;
 var Breadcrumbs = function Breadcrumbs() {
-    return _react2.default.createElement(BreadcrumbGroup, {
-        items: [{
-            text: 'Scale Out Computing',
-            href: '#/service-home'
-        }, {
-            text: 'Dashboard',
-            href: '#/dashboard'
-        }]
-    });
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Scale Out Computing',
+      href: '#/service-home'
+    }, {
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }]
+  });
 };
 
-// Main content area (fill it in with components!)
+// Main content area
 var Content = function Content() {
-    return _react2.default.createElement(
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-pt-xxl awsui-row' },
+      _react2.default.createElement(
         'div',
-        null,
+        { className: 'col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6' },
         _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-action-stripe' },
+          _react2.default.createElement(
             'div',
-            { className: 'awsui-util-pt-xxl awsui-row' },
+            { className: 'awsui-util-action-stripe-title' },
             _react2.default.createElement(
-                'div',
-                { className: 'col-xxs-10 offset-xxs-1 col-s-6 col-l-5 offset-l-2 col-xl-6' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-action-stripe' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'awsui-util-action-stripe-title' },
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            'Dashboard'
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'awsui-util-action-stripe-group' },
-                        _react2.default.createElement(Button, { href: '#/table', variant: 'primary', text: 'Go to projects' })
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'awsui-util-container awsui-util-no-gutters' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-container-header' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Project overview'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Viewing all project data'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 4, borders: 'vertical', className: 'awsui-util-no-gutters' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Projects'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-xlarge-link', href: '#/table' },
-                                    '7'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Instances (running)'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-xlarge-link', href: '#/instances' },
-                                    '14'
-                                ),
-                                ' /26'
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Key pairs'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-xlarge-link', href: '#/instances' },
-                                    '3'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Backups'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-xlarge-link', href: '#/instance-wizard' },
-                                    '520'
-                                ),
-                                ' GB'
-                            )
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'awsui-util-container awsui-util-no-gutters' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-container-header' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Budget'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 4, borders: 'vertical', className: 'awsui-util-no-gutters' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Total spent'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-large-link red', href: '#/budget' },
-                                    '$1352'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Forecasted'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-large-link', href: '#/budget' },
-                                    '$3420'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Remaining'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-large-link green', href: '#/budget' },
-                                    '$13648'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    null,
-                                    'Budget'
-                                ),
-                                _react2.default.createElement(
-                                    'a',
-                                    { className: 'dashboard-large-link black', href: '#/budget' },
-                                    '$15000'
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'awsui-util-container awsui-util-no-gutters' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-container-header' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Instance hours'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Daily instance hours by instance type'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'awsui-util-container' },
-                                    _react2.default.createElement('img', { src: './images/instance-hours1.png', className: 'intro-screenshot', alt: 'screenshot' })
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'awsui-util-container awsui-util-no-gutters' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-container-header' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Network traffic'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Incoming and outgoing network traffic'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'awsui-util-container' },
-                                    _react2.default.createElement('img', { src: './images/network-traffic1.png', className: 'intro-screenshot', alt: 'screenshot' })
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'awsui-util-container awsui-util-no-gutters' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'awsui-util-container-header' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Pie chart'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Display instance data'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'awsui-util-ph-l awsui-util-mb-m' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'awsui-util-container' },
-                                    _react2.default.createElement('img', { src: './images/pie-chart.png', className: 'intro-screenshot', alt: 'screenshot' })
-                                )
-                            )
-                        )
-                    )
-                )
+              'h1',
+              null,
+              'Dashboard',
+              _react2.default.createElement(
+                'a',
+                {
+                  className: 'awsui-util-help-info-link',
+                  href: 'javascript:void(0);',
+                  onClick: function onClick() {
+                    return props.replaceToolsContent(1);
+                  }
+                },
+                'Info'
+              )
             )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-action-stripe-group' },
+            _react2.default.createElement(Button, { href: '#/table', variant: 'primary', text: 'Go to projects' })
+          )
         )
-    );
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-container awsui-util-no-gutters' },
+        _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-container-header' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Project overview'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Viewing all project data'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 4, borders: 'vertical', className: 'awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Projects'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-xlarge-link', href: '#/table' },
+                  '7'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Instances (running)'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-xlarge-link', href: '#/project-details' },
+                  '34'
+                ),
+                ' ',
+                '/102'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Storage used'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-xlarge-link', href: '#/storage' },
+                  '50'
+                ),
+                ' ',
+                '/150 GB'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Backups'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-xlarge-link', href: '#/storage' },
+                  '520'
+                ),
+                ' ',
+                'GB'
+              )
+            )
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-container awsui-util-no-gutters' },
+        _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-container-header' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Budget'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Viewing budget data for all projects'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 4, borders: 'vertical', className: 'awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Total spent'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-large-link red', href: '#/budget' },
+                  '$1352'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Forecasted'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-large-link', href: '#/budget' },
+                  '$3420'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Remaining'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-large-link green', href: '#/budget' },
+                  '$13648'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Budget'
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { className: 'dashboard-large-link black', href: '#/budget' },
+                  '$15000'
+                )
+              )
+            )
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-container awsui-util-no-gutters' },
+        _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-container-header' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Instance hours'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Daily instance hours by instance type'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'awsui-util-container' },
+                  _react2.default.createElement('img', { src: './images/instance-hours1.png', className: 'intro-screenshot', alt: 'screenshot' })
+                )
+              )
+            )
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-container awsui-util-no-gutters' },
+        _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-container-header' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Network traffic'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Incoming and outgoing network traffic'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'awsui-util-container' },
+                  _react2.default.createElement('img', { src: './images/network-traffic1.png', className: 'intro-screenshot', alt: 'screenshot' })
+                )
+              )
+            )
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'awsui-util-container awsui-util-no-gutters' },
+        _react2.default.createElement(
+          'div',
+          { className: 'awsui-util-container-header' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Usage data'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Display instance data'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+              _react2.default.createElement(
+                'div',
+                { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'awsui-util-container' },
+                  _react2.default.createElement('img', { src: './images/pie-chart.png', className: 'intro-screenshot', alt: 'screenshot' })
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  );
 };
 
 // Help panel content
 var Tools = _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
     'div',
-    { className: 'awsui-util-help-panel' },
+    { className: 'awsui-util-help-panel-header' },
+    'Scale Out Computing'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Scale Out Computing'
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-            'p',
-            null,
-            'With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in the AWS Cloud. You can access your instance by using the same tools and applications you might use with a standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.'
-        )
+      'p',
+      null,
+      'Welcome to the Scale Out Computing Dashboard.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in the AWS Cloud. You can access your instance by using the same tools and applications you might use with a standalone computer.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Connect to your instance'
     ),
     _react2.default.createElement(
-        'a',
-        { href: 'javascript:void(0)' },
-        'Learn more ',
-        _react2.default.createElement(Icon, { name: 'external' })
-    ),
-    _react2.default.createElement(
-        'ul',
-        { className: 'awsui-list-unstyled' },
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
-                'What is Scale Out Computing on AWS?'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
-                'Getting started'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
-                'Working with instances'
-            )
-        )
+      'p',
+      null,
+      'Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.'
     )
+  ),
+  _react2.default.createElement(
+    'a',
+    { href: 'javascript:void(0)' },
+    'Learn more ',
+    _react2.default.createElement(Icon, { name: 'external' })
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
+        'What is Scale Out Computing on AWS?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
+        'Working with instances'
+      )
+    )
+  )
 );
 });
 
@@ -2412,7 +3345,7 @@ require.register("components/InstanceWizard.jsx", function(exports, require, mod
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2425,7 +3358,7 @@ var _ServiceNavigation = require('./ServiceNavigation.jsx');
 
 var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
 
-var _reactRouterDom = require('react-router-dom');
+var _formConfig = require('../resources/form-config.jsx');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2448,318 +3381,400 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     Container = _window$AWSUICompon.Container,
     Header = _window$AWSUICompon.Header,
     SpaceBetween = _window$AWSUICompon.SpaceBetween,
+    Tiles = _window$AWSUICompon.Tiles,
     Wizard = _window$AWSUICompon.Wizard;
 
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
 var InstanceWizard = function (_React$Component) {
-    _inherits(InstanceWizard, _React$Component);
+  _inherits(InstanceWizard, _React$Component);
 
-    function InstanceWizard() {
-        _classCallCheck(this, InstanceWizard);
+  function InstanceWizard() {
+    _classCallCheck(this, InstanceWizard);
 
-        return _possibleConstructorReturn(this, (InstanceWizard.__proto__ || Object.getPrototypeOf(InstanceWizard)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (InstanceWizard.__proto__ || Object.getPrototypeOf(InstanceWizard)).apply(this, arguments));
+  }
+
+  _createClass(InstanceWizard, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
+        , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
+        , contentType: 'wizard' //
+        , tools: Tools // Tools panel content defined below
+      });
     }
+  }]);
 
-    _createClass(InstanceWizard, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(AppLayout, {
-                navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
-                , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
-                , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
-                , contentType: 'default' // Sets default app layout settings for widths
-                , tools: Tools // Tools panel content defined below
-            });
-        }
-    }]);
-
-    return InstanceWizard;
+  return InstanceWizard;
 }(_react2.default.Component);
 
 exports.default = InstanceWizard;
 
 
 var Content = function Content() {
-    return (
-        // {
-        //     const [activeStepIndex, setActiveStepIndex] = useState(0);
-        // }
-
-        _react2.default.createElement(
+  return (
+    // {
+    //     const [activeStepIndex, setActiveStepIndex] = useState(0);
+    // }
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(Form, { header: _react2.default.createElement(
+          'h1',
+          null,
+          'Launch instance'
+        ) }),
+      _react2.default.createElement(Wizard, {
+        i18nStrings: {
+          stepNumberLabel: function stepNumberLabel(stepNumber) {
+            return 'Step ' + stepNumber;
+          },
+          collapsedStepsLabel: function collapsedStepsLabel(stepNumber, stepsCount) {
+            return 'Step ' + stepNumber + ' of ' + stepsCount;
+          },
+          cancelButton: 'Cancel',
+          previousButton: 'Previous',
+          nextButton: 'Next',
+          submitButton: 'Launch instance',
+          optional: 'optional'
+        },
+        steps: [{
+          title: 'Choose engine type',
+          info: _react2.default.createElement(
+            'a',
+            {
+              className: 'awsui-util-help-info-link',
+              href: 'javascript:void(0)',
+              onClick: function onClick() {
+                return props.replaceToolsContent(1);
+              }
+            },
+            'Info'
+          ),
+          description: 'Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.',
+          content: _react2.default.createElement(
             'div',
-            null,
-            _react2.default.createElement(Form, { header: _react2.default.createElement(
-                    'h1',
-                    null,
-                    'Launch instance'
-                ) }),
-            _react2.default.createElement(Wizard, {
-                i18nStrings: {
-                    stepNumberLabel: function stepNumberLabel(stepNumber) {
-                        return 'Step ' + stepNumber;
-                    },
-                    collapsedStepsLabel: function collapsedStepsLabel(stepNumber, stepsCount) {
-                        return 'Step ' + stepNumber + ' of ' + stepsCount;
-                    },
-                    cancelButton: "Cancel",
-                    previousButton: "Previous",
-                    nextButton: "Next",
-                    submitButton: "Launch instance",
-                    optional: "optional"
-                },
-                steps: [{
-                    title: "Choose engine type",
-                    info: _react2.default.createElement(
-                        'a',
-                        { className: 'awsui-util-help-info-link',
-                            href: 'javascript:void(0);' },
-                        'Info'
-                    ),
-                    description: "Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.",
-                    content: _react2.default.createElement(
+            { className: 'awsui-util-container awsui-util-no-gutters' },
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-container-header' },
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Engine options'
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                'Choose instance details'
+              )
+            ),
+            _react2.default.createElement(
+              ColumnLayout,
+              { columns: 1, borders: 'vertical', className: 'awsui-util-no-gutters' },
+              _react2.default.createElement(
+                'div',
+                { 'data-awsui-column-layout-root': true, className: 'awsui-util-mv-l' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                  _react2.default.createElement(
+                    FormField,
+                    {
+                      label: _react2.default.createElement(
                         'div',
                         null,
+                        'Engine options',
                         _react2.default.createElement(
-                            'h2',
-                            null,
-                            'Engine options'
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'First field' },
-                            _react2.default.createElement(Input, null)
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'Second field' },
-                            _react2.default.createElement(Input, null)
+                          'a',
+                          {
+                            className: 'awsui-util-help-info-link',
+                            href: 'javascript:void(0);',
+                            onClick: function onClick() {
+                              return undefined.props.replaceToolsContent(1);
+                            }
+                          },
+                          'Info'
                         )
+                      ),
+                      stretch: true
+                    },
+                    _react2.default.createElement(Tiles, {
+                      items: _formConfig.DELIVERY_METHOD
+                      //   value={this.state.deliveryMethod}
+                      // onChange={e => this.setState({ deliveryMethod: e.detail.value })}
+                    })
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'awsui-util-ph-l awsui-util-mb-m' },
+                  _react2.default.createElement(
+                    'h3',
+                    null,
+                    'Ubuntu Linux'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    'Ubuntu Linux sample user information and benefits.',
+                    _react2.default.createElement(
+                      'ul',
+                      null,
+                      _react2.default.createElement(
+                        'li',
+                        null,
+                        'Benefit 1'
+                      ),
+                      _react2.default.createElement(
+                        'li',
+                        null,
+                        'Benefit 2'
+                      )
                     )
-                    //   content: (
-                    // <Container
-                    //     header={
-                    //         <Header variant="h2">
-                    //             Form container header
-                    //         </Header>
-                    //     }
-                    // >
-                    //     <SpaceBetween direction="vertical" size="l">
-                    //         <FormField label="First field">
-                    //             <Input />
-                    //         </FormField>
-                    //         <FormField label="Second field">
-                    //             <Input />
-                    //         </FormField>
-                    //     </SpaceBetween>
-                    // </Container>
-                    //   )
-                }, {
-                    title: "Add storage",
-                    content: _react2.default.createElement(
-                        Container,
-                        {
-                            header: _react2.default.createElement(
-                                Header,
-                                { variant: 'h2' },
-                                'Form container header'
-                            )
-                        },
-                        _react2.default.createElement(
-                            SpaceBetween,
-                            { direction: 'vertical', size: 'l' },
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'First field' },
-                                _react2.default.createElement(Input, null)
-                            ),
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'Second field' },
-                                _react2.default.createElement(Input, null)
-                            )
-                        )
-                    )
-                }, {
-                    title: "Configure security group",
-                    content: _react2.default.createElement(
-                        Container,
-                        {
-                            header: _react2.default.createElement(
-                                Header,
-                                { variant: 'h2' },
-                                'Form container header'
-                            )
-                        },
-                        _react2.default.createElement(
-                            SpaceBetween,
-                            { direction: 'vertical', size: 'l' },
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'First field' },
-                                _react2.default.createElement(Input, null)
-                            ),
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'Second field' },
-                                _react2.default.createElement(Input, null)
-                            )
-                        )
-                    ),
-                    isOptional: true
-                }, {
-                    title: "Review and launch",
-                    content: _react2.default.createElement(
-                        SpaceBetween,
-                        { size: 'xs' },
-                        _react2.default.createElement(
-                            Header,
-                            {
-                                variant: 'h3',
-                                actions: _react2.default.createElement(
-                                    Button,
-                                    {
-                                        onClick: function onClick() {
-                                            return setActiveStepIndex(0);
-                                        }
-                                    },
-                                    'Edit'
-                                )
-                            },
-                            'Step 1: Choose instance type'
-                        ),
-                        _react2.default.createElement(
-                            Container,
-                            {
-                                header: _react2.default.createElement(
-                                    Header,
-                                    { variant: 'h2' },
-                                    'Container title'
-                                )
-                            },
-                            _react2.default.createElement(
-                                ColumnLayout,
-                                {
-                                    columns: 2,
-                                    variant: 'text-grid'
-                                },
-                                _react2.default.createElement(
-                                    'div',
-                                    null,
-                                    _react2.default.createElement(
-                                        Box,
-                                        {
-                                            margin: { bottom: "xxxs" },
-                                            color: 'text-label'
-                                        },
-                                        'First field'
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        'Value'
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    null,
-                                    _react2.default.createElement(
-                                        Box,
-                                        {
-                                            margin: { bottom: "xxxs" },
-                                            color: 'text-label'
-                                        },
-                                        'Second Field'
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        'Value'
-                                    )
-                                )
-                            )
-                        )
-                    )
-                }]
-            })
-        )
-    );
+                  )
+                )
+              )
+            )
+          )
+        }, {
+          title: 'Add storage',
+          content: _react2.default.createElement(
+            Container,
+            { header: _react2.default.createElement(
+                Header,
+                { variant: 'h2' },
+                'Form container header'
+              ) },
+            _react2.default.createElement(
+              SpaceBetween,
+              { direction: 'vertical', size: 'l' },
+              _react2.default.createElement(
+                FormField,
+                { label: 'First field' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
+                FormField,
+                { label: 'Second field' },
+                _react2.default.createElement(Input, null)
+              )
+            )
+          )
+        }, {
+          title: 'Configure security group',
+          content: _react2.default.createElement(
+            Container,
+            { header: _react2.default.createElement(
+                Header,
+                { variant: 'h2' },
+                'Form container header'
+              ) },
+            _react2.default.createElement(
+              SpaceBetween,
+              { direction: 'vertical', size: 'l' },
+              _react2.default.createElement(
+                FormField,
+                { label: 'First field' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
+                FormField,
+                { label: 'Second field' },
+                _react2.default.createElement(Input, null)
+              )
+            )
+          ),
+          isOptional: true
+        }, {
+          title: 'Review and launch',
+          content: _react2.default.createElement(
+            SpaceBetween,
+            { size: 'xs' },
+            _react2.default.createElement(
+              Header,
+              { variant: 'h3', actions: _react2.default.createElement(
+                  Button,
+                  { onClick: function onClick() {
+                      return setActiveStepIndex(0);
+                    } },
+                  'Edit'
+                ) },
+              'Step 1: Choose instance type'
+            ),
+            _react2.default.createElement(
+              Container,
+              { header: _react2.default.createElement(
+                  Header,
+                  { variant: 'h2' },
+                  'Container title'
+                ) },
+              _react2.default.createElement(
+                ColumnLayout,
+                { columns: 2, variant: 'text-grid' },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    Box,
+                    { margin: { bottom: 'xxxs' }, color: 'text-label' },
+                    'First field'
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    'Value'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    Box,
+                    { margin: { bottom: 'xxxs' }, color: 'text-label' },
+                    'Second Field'
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    null,
+                    'Value'
+                  )
+                )
+              )
+            )
+          )
+        }]
+      })
+    )
+  );
 };
 
 // Breadcrumb content
 var Breadcrumbs = function Breadcrumbs() {
-    return _react2.default.createElement(BreadcrumbGroup, {
-        items: [{
-            text: 'Scale Out Computing',
-            href: '#/service-home'
-        }, {
-            text: 'Projects',
-            href: '#/table'
-        }, {
-            text: 'Instances',
-            href: '#/instances'
-        }, {
-            text: 'Launch instance',
-            href: '#/instance-wizard'
-        }]
-    });
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
+      text: 'Projects',
+      href: '#/table'
+    }, {
+      text: 'Instances',
+      href: '#/instances'
+    }, {
+      text: 'Launch instance',
+      href: '#/instance-wizard'
+    }],
+    activeHref: '#/instances'
+  });
 };
 
 // Help (right) panel content
 var Tools = [_react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
     'div',
-    { className: 'awsui-util-help-panel' },
+    { className: 'awsui-util-help-panel-header' },
+    'Launch instance'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Scale Out Computing'
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-            'p',
-            null,
-            'With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in the AWS Cloud. You can access your instance by using the same tools and applications you might use with a standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.'
-        )
+      'p',
+      null,
+      'Configure your instance settings here. Follow the step by step guide to set up your instance.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Instance ID'
     ),
     _react2.default.createElement(
-        'a',
-        { href: 'javascript:void(0)' },
-        'Learn more ',
-        _react2.default.createElement(Icon, { name: 'external' })
+      'p',
+      null,
+      'The ID of your instance.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Instance state'
     ),
     _react2.default.createElement(
-        'ul',
-        { className: 'awsui-list-unstyled' },
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
-                'What is Scale Out Computing?'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
-                'Getting started'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
-                'Working with instances'
-            )
-        )
+      'p',
+      null,
+      'Your instance can be in one of the following states: pending, running, stopping, stopped, shutting-down, or terminated. If your instance is hibernated, it is in the stopped state. You can choose the refresh button to update the page in case the instance state has changed.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Instance type'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'The instance type determines your instance\u2019s CPU capacity, memory, and storage. For specifications and pricing, see the Amazon EC2 product page'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Public IP address'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'A public IP address is assigned to the instance from Amazon\'s pool of public IP addresses; it\'s not associated with your account. When you stop your instance, the public IP address is disassociated from your instance and released back into the pool, and is no longer available for you to use. You cannot manually associate or disassociate a public IP address. If you require a persistent public IP address allocated to your account that can be assigned to and removed from instances as you require, use an Elastic IP address instead.'
     )
+  ),
+  _react2.default.createElement(
+    'a',
+    { href: 'javascript:void(0)' },
+    'Learn more ',
+    _react2.default.createElement(Icon, { name: 'external' })
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'What is Scale Out Computing?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        {
+          href: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html?icmpid=docs_ec2_console',
+          target: '_blank'
+        },
+        'Amazon EC2 instance'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
+        'Working with instances'
+      )
+    )
+  )
 )];
 });
 
@@ -2819,8 +3834,6 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     TableWrapLines = _window$AWSUICompon.TableWrapLines,
     FormField = _window$AWSUICompon.FormField,
     RadioGroup = _window$AWSUICompon.RadioGroup;
-
-// Class TableView is a skeleton of a Table using AWS-UI React components.
 
 var Instances = function (_React$Component) {
   _inherits(Instances, _React$Component);
@@ -3016,7 +4029,18 @@ var Header = function Header(_ref3) {
           'span',
           { className: 'awsui-util-header-counter' },
           counter
-        ) : ''
+        ) : '',
+        _react2.default.createElement(
+          'a',
+          {
+            className: 'awsui-util-help-info-link',
+            href: 'javascript:void(0);',
+            onClick: function onClick() {
+              return props.replaceToolsContent(1);
+            }
+          },
+          'Info'
+        )
       )
     ),
     _react2.default.createElement(
@@ -3037,6 +4061,9 @@ var Breadcrumbs = function Breadcrumbs() {
       text: 'Scale Out Computing',
       href: '#/service-home'
     }, {
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
       text: 'Projects',
       href: '#/table'
     }, {
@@ -3048,7 +4075,7 @@ var Breadcrumbs = function Breadcrumbs() {
 
 // Flash message content
 var FlashMessage = function FlashMessage() {
-  return _react2.default.createElement(Flash, { type: 'success', content: 'Resource created successfully', dismissible: true });
+  return _react2.default.createElement(Flash, { type: 'success', content: 'Instance created successfully', dismissible: true });
 };
 
 // Help (right) panel content
@@ -3058,40 +4085,52 @@ var Tools = [_react2.default.createElement(
   _react2.default.createElement(
     'div',
     { className: 'awsui-util-help-panel-header' },
+    'Scale Out Computing'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-      'h2',
+      'p',
       null,
-      'Scale Out Computing'
+      'Sample Instance data for the help panel.'
     )
   ),
   _react2.default.createElement(
-    'ul',
-    { className: 'awsui-list-unstyled' },
+    'div',
+    null,
     _react2.default.createElement(
-      'li',
-      null,
+      'ul',
+      { className: 'awsui-list-unstyled' },
       _react2.default.createElement(
-        'a',
-        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
-        'What is Scale Out Computing?'
-      )
-    ),
-    _react2.default.createElement(
-      'li',
-      null,
+        'li',
+        null,
+        _react2.default.createElement(
+          'a',
+          { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+          'What is Scale Out Computing?'
+        )
+      ),
       _react2.default.createElement(
-        'a',
-        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
-        'Getting started'
-      )
-    ),
-    _react2.default.createElement(
-      'li',
-      null,
+        'li',
+        null,
+        _react2.default.createElement(
+          'a',
+          { href: 'https://awslabs.github.io/scale-out-computing-on-aws/', target: '_blank' },
+          'Getting started'
+        )
+      ),
       _react2.default.createElement(
-        'a',
-        { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
-        'Working with instances'
+        'li',
+        null,
+        _react2.default.createElement(
+          'a',
+          {
+            href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+            target: '_blank'
+          },
+          'Working with instances'
+        )
       )
     )
   )
@@ -3102,7 +4141,7 @@ require.register("components/LaunchInstance.jsx", function(exports, require, mod
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3156,53 +4195,51 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     Textarea = _window$AWSUICompon.Textarea,
     Tiles = _window$AWSUICompon.Tiles;
 
-// Class CreateForm is a skeleton of a Single page create form using AWS-UI React components.
-
 var LaunchInstance = function (_React$Component) {
-    _inherits(LaunchInstance, _React$Component);
+  _inherits(LaunchInstance, _React$Component);
 
-    function LaunchInstance(props) {
-        _classCallCheck(this, LaunchInstance);
+  function LaunchInstance(props) {
+    _classCallCheck(this, LaunchInstance);
 
-        var _this = _possibleConstructorReturn(this, (LaunchInstance.__proto__ || Object.getPrototypeOf(LaunchInstance)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (LaunchInstance.__proto__ || Object.getPrototypeOf(LaunchInstance)).call(this, props));
 
-        _this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
-        return _this;
+    _this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
+    return _this;
+  }
+
+  _createClass(LaunchInstance, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var dataProvider = new _dataProvider2.default();
+      dataProvider.getData('content-origins', function (contentOrigins) {
+        return _this2.setState({ contentOrigins: contentOrigins });
+      });
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
 
-    _createClass(LaunchInstance, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null),
+        content: _react2.default.createElement(Content
+        // Changes the Help panel content when the user clicks an 'info' link
+        , { replaceToolsContent: function replaceToolsContent(index) {
+            return _this3.setState({ toolsIndex: index, toolsOpen: true });
+          },
+          contentOrigins: this.state.contentOrigins
+        }),
+        contentType: 'wizard',
+        tools: Tools[this.state.toolsIndex],
+        toolsOpen: this.state.toolsOpen
+      });
+    }
+  }]);
 
-            var dataProvider = new _dataProvider2.default();
-            dataProvider.getData('content-origins', function (contentOrigins) {
-                return _this2.setState({ contentOrigins: contentOrigins });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this3 = this;
-
-            return _react2.default.createElement(AppLayout, {
-                navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
-                , breadcrumbs: _react2.default.createElement(Breadcrumbs, null),
-                content: _react2.default.createElement(Content
-                // Changes the Help panel content when the user clicks an 'info' link
-                , { replaceToolsContent: function replaceToolsContent(index) {
-                        return _this3.setState({ toolsIndex: index, toolsOpen: true });
-                    },
-                    contentOrigins: this.state.contentOrigins
-                }),
-                contentType: 'form',
-                tools: Tools[this.state.toolsIndex],
-                toolsOpen: this.state.toolsOpen
-            });
-        }
-    }]);
-
-    return LaunchInstance;
+  return LaunchInstance;
 }(_react2.default.Component);
 
 // The content in the main content area of the App layout
@@ -3210,762 +4247,1127 @@ var LaunchInstance = function (_React$Component) {
 
 exports.default = LaunchInstance;
 var Content = function Content(props) {
-    return _react2.default.createElement(
-        'div',
-        null,
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      Form,
+      {
+        header: _react2.default.createElement(
+          'h1',
+          null,
+          'Launch instance'
+        ),
+        actions:
+        // located at the bottom of the form
         _react2.default.createElement(
-            Form,
-            {
-                header: _react2.default.createElement(
-                    'h1',
-                    null,
-                    'Launch instance'
-                ),
-                actions:
-                // located at the bottom of the form
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(Button, { variant: 'link', text: 'Cancel' }),
-                    _react2.default.createElement(Button, { href: '#/instances', variant: 'primary', text: 'Launch instance' })
-                )
-            },
-            _react2.default.createElement(ContentDeliveryPanel, { replaceToolsContent: props.replaceToolsContent }),
-            _react2.default.createElement(
-                FormSection,
-                { header: _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Instance details'
-                    ), footer: _react2.default.createElement(DistributionsFooter, null) },
-                _react2.default.createElement(
-                    ColumnLayout,
-                    null,
-                    _react2.default.createElement(
-                        'div',
-                        { 'data-awsui-column-layout-root': true },
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: _react2.default.createElement(
-                                    'span',
-                                    null,
-                                    'Price class',
-                                    _react2.default.createElement(
-                                        'a',
-                                        {
-                                            className: 'awsui-util-help-info-link',
-                                            href: 'javascript:void(0);',
-                                            onClick: function onClick() {
-                                                return props.replaceToolsContent(2);
-                                            }
-                                        },
-                                        'Info'
-                                    )
-                                ),
-                                stretch: true
-                            },
-                            _react2.default.createElement(RadioGroup, { items: _formConfig.PRICE_CLASS_OPTIONS, value: '0' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: _react2.default.createElement(
-                                    'span',
-                                    null,
-                                    'Alternative domain names (CNAMEs)',
-                                    _react2.default.createElement(
-                                        'i',
-                                        null,
-                                        ' - optional'
-                                    ),
-                                    _react2.default.createElement(
-                                        'a',
-                                        {
-                                            className: 'awsui-util-help-info-link',
-                                            href: 'javascript:void(0);',
-                                            onClick: function onClick() {
-                                                return props.replaceToolsContent(3);
-                                            }
-                                        },
-                                        'Info'
-                                    )
-                                ),
-                                description: 'You must list any custom domain names that you use in addition to the CloudFront domain name for the URLs for your files.',
-                                hintText: 'Specify up to 100 CNAMEs separated with commas or put each on a new line.',
-                                stretch: true
-                            },
-                            _react2.default.createElement(Textarea, { placeholder: 'www.example1.com\nwww.example2.com' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: _react2.default.createElement(
-                                    'span',
-                                    null,
-                                    'SSL/TLS certificate',
-                                    _react2.default.createElement(
-                                        'a',
-                                        {
-                                            className: 'awsui-util-help-info-link',
-                                            href: 'javascript:void(0);',
-                                            onClick: function onClick() {
-                                                return props.replaceToolsContent(4);
-                                            }
-                                        },
-                                        'Info'
-                                    )
-                                ),
-                                stretch: true
-                            },
-                            _react2.default.createElement(RadioGroup, { items: _formConfig.SSL_CERTIFICATE_OPTIONS, value: 'default' })
-                        ),
-                        _react2.default.createElement(Button, { text: 'Request or import a certificate with AWS Certificate Manager (ACM)' })
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                FormSection,
-                { header: 'Storage settings' },
-                _react2.default.createElement(
-                    ColumnLayout,
-                    null,
-                    _react2.default.createElement(
-                        'div',
-                        { 'data-awsui-column-layout-root': true },
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: _react2.default.createElement(
-                                    'div',
-                                    null,
-                                    'Content origin',
-                                    _react2.default.createElement(
-                                        'a',
-                                        {
-                                            className: 'awsui-util-help-info-link',
-                                            href: 'javascript:void(0);',
-                                            onClick: function onClick() {
-                                                return props.replaceToolsContent(5);
-                                            }
-                                        },
-                                        'Info'
-                                    )
-                                ),
-                                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
-                            },
-                            _react2.default.createElement(Select, {
-                                options: props.contentOrigins,
-                                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
-                                filteringType: 'auto'
-                            })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: 'Content origin (multiselect version)',
-                                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
-                            },
-                            _react2.default.createElement(Multiselect, {
-                                options: props.contentOrigins,
-                                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
-                                filteringType: 'auto'
-                            })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: 'Path to content',
-                                description: 'The directory in your Amazon S3 bucket or your custom origin.'
-                            },
-                            _react2.default.createElement(Input, { placeholder: '/images' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            {
-                                label: 'Origin ID',
-                                description: 'This value lets you distinguish multiple origins in the same distribution from one another'
-                            },
-                            _react2.default.createElement(Input, null)
-                        ),
-                        _react2.default.createElement(AttributeEditor, {
-                            addButtonText: 'Add header',
-                            removeButtonText: 'Remove header',
-                            items: [{
-                                name: '',
-                                value: ''
-                            }],
-                            definition: [{
-                                label: _react2.default.createElement(
-                                    'span',
-                                    null,
-                                    'Custom header name',
-                                    _react2.default.createElement(
-                                        'a',
-                                        {
-                                            className: 'awsui-util-help-info-link',
-                                            href: 'javascript:void(0);',
-                                            onClick: function onClick() {
-                                                return props.replaceToolsContent(6);
-                                            }
-                                        },
-                                        'Info'
-                                    )
-                                ),
-                                control: function control(item) {
-                                    return _react2.default.createElement(Input, { value: item.name, placeholder: 'Location' });
-                                }
-                            }, {
-                                label: _react2.default.createElement(
-                                    'span',
-                                    null,
-                                    'Custom header value',
-                                    _react2.default.createElement(
-                                        'i',
-                                        null,
-                                        ' - optional'
-                                    )
-                                ),
-                                control: function control(item) {
-                                    return _react2.default.createElement(Input, { value: item.value, placeholder: 'Germany' });
-                                }
-                            }]
-                        })
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                FormSection,
-                { header: 'Network settings', footer: _react2.default.createElement(BehaviorsFooter, null) },
-                _react2.default.createElement(
-                    ColumnLayout,
-                    null,
-                    _react2.default.createElement(
-                        'div',
-                        { 'data-awsui-column-layout-root': true },
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'Viewer protocol policy', stretch: true },
-                            _react2.default.createElement(RadioGroup, { items: _formConfig.VIEWER_PROTOCOL_POLICY_OPTIONS, value: '0' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'Allowed HTTP methods', stretch: true },
-                            _react2.default.createElement(RadioGroup, { items: _formConfig.ALLOWED_HTTP_METHOD_OPTIONS, value: '0' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'Forward headers', description: 'Cache your objects based on header values', stretch: true },
-                            _react2.default.createElement(RadioGroup, { items: _formConfig.FORWARD_HEADER_OPTIONS, value: 'none' })
-                        ),
-                        _react2.default.createElement(
-                            FormField,
-                            { label: 'Object caching', description: 'Cache your objects based on header values' },
-                            _react2.default.createElement(
-                                ColumnLayout,
-                                { columns: 4 },
-                                _react2.default.createElement(
-                                    'div',
-                                    { 'data-awsui-column-layout-root': true },
-                                    _react2.default.createElement(
-                                        FormField,
-                                        { label: 'Minimum TTL' },
-                                        _react2.default.createElement(Input, { type: 'number', value: '0' })
-                                    ),
-                                    _react2.default.createElement(
-                                        FormField,
-                                        { label: 'Maximum TTL' },
-                                        _react2.default.createElement(Input, { type: 'number', value: '31536000' })
-                                    ),
-                                    _react2.default.createElement(
-                                        FormField,
-                                        { label: 'Default TTL' },
-                                        _react2.default.createElement(Input, { type: 'number', value: '86400' })
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'custom-header' },
-                                        _react2.default.createElement(Button, { text: 'Set to default' })
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            )
+          'div',
+          null,
+          _react2.default.createElement(Button, { variant: 'link', text: 'Cancel' }),
+          _react2.default.createElement(Button, { href: '#/instances', variant: 'primary', text: 'Launch instance' })
         )
-    );
+      },
+      _react2.default.createElement(ContentDeliveryPanel, { replaceToolsContent: props.replaceToolsContent }),
+      _react2.default.createElement(
+        FormSection,
+        { header: _react2.default.createElement(
+            'h2',
+            null,
+            'Instance details'
+          ), footer: _react2.default.createElement(DistributionsFooter, null) },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'Price class',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(2);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                stretch: true
+              },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.PRICE_CLASS_OPTIONS, value: '0' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'Alternative domain names (CNAMEs)',
+                  _react2.default.createElement(
+                    'i',
+                    null,
+                    ' - optional'
+                  ),
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(3);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'You must list any custom domain names that you use in addition to the CloudFront domain name for the URLs for your files.',
+                hintText: 'Specify up to 100 CNAMEs separated with commas or put each on a new line.',
+                stretch: true
+              },
+              _react2.default.createElement(Textarea, { placeholder: 'www.example1.com\nwww.example2.com' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'SSL/TLS certificate',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(4);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                stretch: true
+              },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.SSL_CERTIFICATE_OPTIONS, value: 'default' })
+            ),
+            _react2.default.createElement(Button, { text: 'Request or import a certificate with AWS Certificate Manager (ACM)' })
+          )
+        )
+      ),
+      _react2.default.createElement(
+        FormSection,
+        { header: 'Storage settings' },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'div',
+                  null,
+                  'Content origin',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(5);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
+              },
+              _react2.default.createElement(Select, {
+                options: props.contentOrigins,
+                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
+                filteringType: 'auto'
+              })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: 'Content origin (multiselect version)',
+                description: 'The Amazon S3 bucket or web server from which you want CloudFront to get your web content.'
+              },
+              _react2.default.createElement(Multiselect, {
+                options: props.contentOrigins,
+                placeholder: 'Select an S3 bucket or web server from which you want CloudFront to get your web content.',
+                filteringType: 'auto'
+              })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: 'Path to content',
+                description: 'The directory in your Amazon S3 bucket or your custom origin.'
+              },
+              _react2.default.createElement(Input, { placeholder: '/images' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: 'Origin ID',
+                description: 'This value lets you distinguish multiple origins in the same distribution from one another'
+              },
+              _react2.default.createElement(Input, null)
+            ),
+            _react2.default.createElement(AttributeEditor, {
+              addButtonText: 'Add header',
+              removeButtonText: 'Remove header',
+              items: [{
+                name: '',
+                value: ''
+              }],
+              definition: [{
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'Custom header name',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(6);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                control: function control(item) {
+                  return _react2.default.createElement(Input, { value: item.name, placeholder: 'Location' });
+                }
+              }, {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'Custom header value',
+                  _react2.default.createElement(
+                    'i',
+                    null,
+                    ' - optional'
+                  )
+                ),
+                control: function control(item) {
+                  return _react2.default.createElement(Input, { value: item.value, placeholder: 'Germany' });
+                }
+              }]
+            })
+          )
+        )
+      ),
+      _react2.default.createElement(
+        FormSection,
+        { header: 'Network settings', footer: _react2.default.createElement(BehaviorsFooter, null) },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              { label: 'Viewer protocol policy', stretch: true },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.VIEWER_PROTOCOL_POLICY_OPTIONS, value: '0' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              { label: 'Allowed HTTP methods', stretch: true },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.ALLOWED_HTTP_METHOD_OPTIONS, value: '0' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              { label: 'Forward headers', description: 'Cache your objects based on header values', stretch: true },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.FORWARD_HEADER_OPTIONS, value: 'none' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              { label: 'Object caching', description: 'Cache your objects based on header values' },
+              _react2.default.createElement(
+                ColumnLayout,
+                { columns: 4 },
+                _react2.default.createElement(
+                  'div',
+                  { 'data-awsui-column-layout-root': true },
+                  _react2.default.createElement(
+                    FormField,
+                    { label: 'Minimum TTL' },
+                    _react2.default.createElement(Input, { type: 'number', value: '0' })
+                  ),
+                  _react2.default.createElement(
+                    FormField,
+                    { label: 'Maximum TTL' },
+                    _react2.default.createElement(Input, { type: 'number', value: '31536000' })
+                  ),
+                  _react2.default.createElement(
+                    FormField,
+                    { label: 'Default TTL' },
+                    _react2.default.createElement(Input, { type: 'number', value: '86400' })
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'custom-header' },
+                    _react2.default.createElement(Button, { text: 'Set to default' })
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  );
 };
 
-// First form section titled 'Distribution content delivery'
+// First form section
 
 var ContentDeliveryPanel = function (_React$Component2) {
-    _inherits(ContentDeliveryPanel, _React$Component2);
+  _inherits(ContentDeliveryPanel, _React$Component2);
 
-    function ContentDeliveryPanel(props) {
-        _classCallCheck(this, ContentDeliveryPanel);
+  function ContentDeliveryPanel(props) {
+    _classCallCheck(this, ContentDeliveryPanel);
 
-        var _this4 = _possibleConstructorReturn(this, (ContentDeliveryPanel.__proto__ || Object.getPrototypeOf(ContentDeliveryPanel)).call(this, props));
+    var _this4 = _possibleConstructorReturn(this, (ContentDeliveryPanel.__proto__ || Object.getPrototypeOf(ContentDeliveryPanel)).call(this, props));
 
-        _this4.state = { deliveryMethod: 'web' };
-        return _this4;
+    _this4.state = { deliveryMethod: 'web' };
+    return _this4;
+  }
+
+  _createClass(ContentDeliveryPanel, [{
+    key: 'render',
+    value: function render() {
+      var _this5 = this;
+
+      return _react2.default.createElement(
+        FormSection,
+        { header: 'Select engine type' },
+        _react2.default.createElement(
+          FormField,
+          {
+            label: _react2.default.createElement(
+              'div',
+              null,
+              'Engine options',
+              _react2.default.createElement(
+                'a',
+                {
+                  className: 'awsui-util-help-info-link',
+                  href: 'javascript:void(0);',
+                  onClick: function onClick() {
+                    return _this5.props.replaceToolsContent(1);
+                  }
+                },
+                'Info'
+              )
+            ),
+            stretch: true
+          },
+          _react2.default.createElement(Tiles, {
+            items: _formConfig.DELIVERY_METHOD,
+            value: this.state.deliveryMethod,
+            onChange: function onChange(e) {
+              return _this5.setState({ deliveryMethod: e.detail.value });
+            }
+          })
+        )
+      );
     }
+  }]);
 
-    _createClass(ContentDeliveryPanel, [{
-        key: 'render',
-        value: function render() {
-            var _this5 = this;
-
-            return _react2.default.createElement(
-                FormSection,
-                { header: 'Select engine type' },
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: _react2.default.createElement(
-                            'div',
-                            null,
-                            'Engine options',
-                            _react2.default.createElement(
-                                'a',
-                                {
-                                    className: 'awsui-util-help-info-link',
-                                    href: 'javascript:void(0);',
-                                    onClick: function onClick() {
-                                        return _this5.props.replaceToolsContent(1);
-                                    }
-                                },
-                                'Info'
-                            )
-                        ),
-                        stretch: true
-                    },
-                    _react2.default.createElement(Tiles, {
-                        items: _formConfig.DELIVERY_METHOD,
-                        value: this.state.deliveryMethod,
-                        onChange: function onChange(e) {
-                            return _this5.setState({ deliveryMethod: e.detail.value });
-                        }
-                    })
-                )
-            );
-        }
-    }]);
-
-    return ContentDeliveryPanel;
+  return ContentDeliveryPanel;
 }(_react2.default.Component);
 
-// Footer content (Additional configuration section) for 'Distribution settings' form section
+// Footer content (Additional configuration section) form section
 
 
 var DistributionsFooter = function DistributionsFooter() {
-    return _react2.default.createElement(
-        ExpandableSection,
-        { header: 'Additional configuration', variant: 'borderless' },
+  return _react2.default.createElement(
+    ExpandableSection,
+    { header: 'Additional configuration', variant: 'borderless' },
+    _react2.default.createElement(
+      ColumnLayout,
+      null,
+      _react2.default.createElement(
+        'div',
+        { 'data-awsui-column-layout-root': true },
         _react2.default.createElement(
-            ColumnLayout,
-            null,
-            _react2.default.createElement(
-                'div',
-                { 'data-awsui-column-layout-root': true },
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: 'Supported HTTP versions',
-                        description: 'Choose the version of the HTTP protocol that you want CloudFront to accept for viewer requests.',
-                        stretch: true
-                    },
-                    _react2.default.createElement(RadioGroup, { items: _formConfig.SUPPORTED_HTTP_VERSIONS_OPTIONS, value: 'http2' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: 'Root object',
-                        description: 'Type the name of the object that you want CloudFront to return when a viewer request points to your root URL.'
-                    },
-                    _react2.default.createElement(Input, null)
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'Logging' },
-                    _react2.default.createElement(Checkbox, { label: 'Enable logging' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'IPv6' },
-                    _react2.default.createElement(Checkbox, { label: 'Enabled' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'Comment' },
-                    _react2.default.createElement(Textarea, null)
-                )
-            )
+          FormField,
+          {
+            label: 'Supported HTTP versions',
+            description: 'Choose the version of the HTTP protocol that you want CloudFront to accept for viewer requests.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.SUPPORTED_HTTP_VERSIONS_OPTIONS, value: 'http2' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Root object',
+            description: 'Type the name of the object that you want CloudFront to return when a viewer request points to your root URL.'
+          },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Logging' },
+          _react2.default.createElement(Checkbox, { label: 'Enable logging' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'IPv6' },
+          _react2.default.createElement(Checkbox, { label: 'Enabled' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Comment' },
+          _react2.default.createElement(Textarea, null)
         )
-    );
+      )
+    )
+  );
 };
 
-// Footer content (Additional configuration section) for 'Cache behavior settings' form section
+// Footer content (Additional configuration section) form section
 var BehaviorsFooter = function BehaviorsFooter() {
-    return _react2.default.createElement(
-        ExpandableSection,
-        { header: 'Additional configuration', variant: 'borderless' },
+  return _react2.default.createElement(
+    ExpandableSection,
+    { header: 'Additional configuration', variant: 'borderless' },
+    _react2.default.createElement(
+      ColumnLayout,
+      null,
+      _react2.default.createElement(
+        'div',
+        { 'data-awsui-column-layout-root': true },
         _react2.default.createElement(
-            ColumnLayout,
+          'div',
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-label' },
+            'Path pattern'
+          ),
+          _react2.default.createElement(
+            'div',
             null,
+            'Default (*)'
+          )
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Cookies',
+            description: 'Include all user cookies in the request URLs that it forwards to your origin.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.COOKIE_OPTIONS, value: 'none' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Query string forwarding and caching',
+            description: 'Query string parameters you want CloudFront to forward to the origin.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.QUERY_STRING_OPTIONS, value: 'none' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Smooth streaming' },
+          _react2.default.createElement(Checkbox, { label: 'Enable Microsoft smooth streaming' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Viewer access' },
+          _react2.default.createElement(Checkbox, { label: 'Require signed URL or signed cookie' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Content compression', stretch: true },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.CURRENT_COMPRESSION_OPTIONS, value: 'manual' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Lambda function associations',
+            description: 'A Lambda trigger causes a function to execute. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer for a specific cache behavior you set up for your distribution.',
+            stretch: true
+          },
+          _react2.default.createElement(
+            ColumnLayout,
+            { columns: 3 },
             _react2.default.createElement(
+              'div',
+              { 'data-awsui-column-layout-root': true },
+              _react2.default.createElement(
+                FormField,
+                { label: 'Type' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
+                FormField,
+                { label: 'ARN' },
+                _react2.default.createElement(Input, null)
+              ),
+              _react2.default.createElement(
                 'div',
-                { 'data-awsui-column-layout-root': true },
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'awsui-util-label' },
-                        'Path pattern'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        'Default (*)'
-                    )
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: 'Cookies',
-                        description: 'Include all user cookies in the request URLs that it forwards to your origin.',
-                        stretch: true
-                    },
-                    _react2.default.createElement(RadioGroup, { items: _formConfig.COOKIE_OPTIONS, value: 'none' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: 'Query string forwarding and caching',
-                        description: 'Query string parameters you want CloudFront to forward to the origin.',
-                        stretch: true
-                    },
-                    _react2.default.createElement(RadioGroup, { items: _formConfig.QUERY_STRING_OPTIONS, value: 'none' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'Smooth streaming' },
-                    _react2.default.createElement(Checkbox, { label: 'Enable Microsoft smooth streaming' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'Viewer access' },
-                    _react2.default.createElement(Checkbox, { label: 'Require signed URL or signed cookie' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    { label: 'Content compression', stretch: true },
-                    _react2.default.createElement(RadioGroup, { items: _formConfig.CURRENT_COMPRESSION_OPTIONS, value: 'manual' })
-                ),
-                _react2.default.createElement(
-                    FormField,
-                    {
-                        label: 'Lambda function associations',
-                        description: 'A Lambda trigger causes a function to execute. For example, you can create a trigger that causes the function to execute when CloudFront receives a request from a viewer for a specific cache behavior you set up for your distribution.',
-                        stretch: true
-                    },
-                    _react2.default.createElement(
-                        ColumnLayout,
-                        { columns: 3 },
-                        _react2.default.createElement(
-                            'div',
-                            { 'data-awsui-column-layout-root': true },
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'Type' },
-                                _react2.default.createElement(Input, null)
-                            ),
-                            _react2.default.createElement(
-                                FormField,
-                                { label: 'ARN' },
-                                _react2.default.createElement(Input, null)
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'custom-header' },
-                                _react2.default.createElement(Button, { text: 'Add lambda' })
-                            )
-                        )
-                    )
-                )
+                { className: 'custom-header' },
+                _react2.default.createElement(Button, { text: 'Add lambda' })
+              )
             )
+          )
         )
-    );
+      )
+    )
+  );
 };
 
 // Breadcrumb content
 var Breadcrumbs = function Breadcrumbs() {
-    return _react2.default.createElement(BreadcrumbGroup, {
-        items: [{
-            text: 'Scale Out Computing',
-            href: '#/service-home'
-        }, {
-            text: 'Projects',
-            href: '#/table'
-        }, {
-            text: 'Launch instance',
-            href: '#/launch-instance'
-        }]
-    });
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
+      text: 'Projects',
+      href: '#/table'
+    }, {
+      text: 'Instances',
+      href: '#/instances'
+    }, {
+      text: 'Launch instance',
+      href: '#/instance-wizard'
+    }],
+    activeHref: '#/instances'
+  });
 };
 
 // List of Help (right) panel content, changes depending on which 'info' link the user clicks on.
 var Tools = [_react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
     'div',
-    { className: 'awsui-util-help-panel' },
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Scale Out Computing'
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-            'p',
-            null,
-            'With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in the AWS Cloud. You can access your instance by using the same tools and applications you might use with a standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.'
-        )
+      'h2',
+      null,
+      'Scale Out Computing'
     ),
+    _react2.default.createElement('br', null),
     _react2.default.createElement(
-        'ul',
-        { className: 'awsui-list-unstyled' },
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
-                'What is Scale Out Computing?'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
-                'Getting started'
-            )
-        ),
-        _react2.default.createElement(
-            'li',
-            null,
-            _react2.default.createElement(
-                'a',
-                { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
-                'View implementation guide'
-            )
-        )
+      'p',
+      null,
+      'With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in the AWS Cloud. You can access your instance by using the same tools and applications you might use with a standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.'
     )
-), _react2.default.createElement(
-    'div',
-    { className: 'awsui-util-help-panel' },
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        'Engine options'
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
+        'What is Scale Out Computing?'
+      )
     ),
     _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
+        'View implementation guide'
+      )
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Engine options'
+  ),
+  _react2.default.createElement(
+    'h4',
+    null,
+    'Ubuntu Linux'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Create a Ubuntu Linux engine if you want to:'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Use a Linux machine image.'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Add, update or delete objects and submit data from web forms.'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Use live streaming to stream an event in real time.'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'You store your files in an origin - either an Amazon S3 bucket or a web server. After you create the distribution, you can add more origins to the distributions.'
+  ),
+  _react2.default.createElement(
+    'h4',
+    { className: 'awsui-util-mt-m' },
+    'Windows 10'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Create an RTMP distribution to speed up distribution of your streaming media files using Adobe Flash Media Server\'s RTMP protocol. An RTMP distribution allows an end user to begin playing a media file before the file has finished downloading from a CloudFront edge location. Note the following:'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'To create an RTMP distribution, you must store the media files in an Amazon S3 bucket.'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'To use CloudFront live streaming, create a web distribution.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Price class'
+    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Select the price class associated with the maximum price that you want to pay for CloudFront service. If you select a price class other than All, some of your users may experience higher latency.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Alternate domain names (CNAMEs)'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'You must list any custom domain names (for example, www.example.com) that you use in addition to the CloudFront domain name (for example, d1234.cloudfront.net) for the URLs for your files.'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify up to 100 CNAMEs separated with commas or put each on a new line. You also must create a CNAME record with your DNS service to route queries for www.example.com to d1234.cloudfront.net. For more information, see the ',
+      _react2.default.createElement(
+        'a',
+        { href: '' },
+        'Help'
+      ),
+      '.'
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'SSL certificate'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
         'h4',
         null,
-        'Ubuntu Linux'
-    ),
-    _react2.default.createElement(
+        'Default CloudFront SSL certificate'
+      ),
+      _react2.default.createElement(
         'p',
         null,
-        'Create a Ubuntu Linux engine if you want to:'
-    ),
-    _react2.default.createElement(
+        'Choose this option if you want your users to use HTTPS or HTTP to access your content with the CloudFront domain name (such as https://d111111abcdef8.cloudfront.net/logo.jpg).'
+      ),
+      _react2.default.createElement(
         'p',
         null,
-        'Use a Linux machine image.'
-    ),
-    _react2.default.createElement(
-        'p',
-        null,
-        'Add, update or delete objects and submit data from web forms.'
-    ),
-    _react2.default.createElement(
-        'p',
-        null,
-        'Use live streaming to stream an event in real time.'
-    ),
-    _react2.default.createElement(
-        'p',
-        null,
-        'You store your files in an origin - either an Amazon S3 bucket or a web server. After you create the distribution, you can add more origins to the distributions.'
-    ),
-    _react2.default.createElement(
+        'Important: If you choose this option, CloudFront requires that browsers or devices support TLSv1 or later to access your content.'
+      ),
+      _react2.default.createElement(
         'h4',
         { className: 'awsui-util-mt-m' },
-        'Windows 10'
-    ),
-    _react2.default.createElement(
+        'Custom SSL certificate'
+      ),
+      _react2.default.createElement(
         'p',
         null,
-        'Create an RTMP distribution to speed up distribution of your streaming media files using Adobe Flash Media Server\'s RTMP protocol. An RTMP distribution allows an end user to begin playing a media file before the file has finished downloading from a CloudFront edge location. Note the following:'
-    ),
-    _react2.default.createElement(
+        'Choose this option if you want your users to access your content by using an alternate domain name, such as https://www.example.com/logo.jpg.'
+      ),
+      _react2.default.createElement(
         'p',
         null,
-        'To create an RTMP distribution, you must store the media files in an Amazon S3 bucket.'
-    ),
-    _react2.default.createElement(
-        'p',
-        null,
-        'To use CloudFront live streaming, create a web distribution.'
+        'You can use a certificate stored in AWS Certificate Manager (ACM) in the US East (N. Virginia) Region, or you can use a certificate stored in IAM.'
+      )
     )
+  )
 ), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
     'div',
-    { className: 'awsui-util-help-panel' },
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Price class'
-        )
+      'h2',
+      null,
+      'Content origin'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify the domain name for your origin - the Amazon S3 bucket or web server from which you want CloudFront to get your web content. The dropdown list enumerates the AWS resources associated with the current AWS account.'
     ),
     _react2.default.createElement(
-        'p',
-        null,
-        'Select the price class associated with the maximum price that you want to pay for CloudFront service. If you select a price class other than All, some of your users may experience higher latency.'
+      'p',
+      null,
+      'To use a resource from a different AWS account, type the domain name of the resource. For example, for an Amazon S3 bucket, type the name in the format bucketname.s3.amazonaws.com. The files in your origin must be publicly readable.'
     )
+  )
 ), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
     'div',
-    { className: 'awsui-util-help-panel' },
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Alternate domain names (CNAMEs)'
-        )
-    ),
-    _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            'p',
-            null,
-            'You must list any custom domain names (for example, www.example.com) that you use in addition to the CloudFront domain name (for example, d1234.cloudfront.net) for the URLs for your files.'
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'Specify up to 100 CNAMEs separated with commas or put each on a new line. You also must create a CNAME record with your DNS service to route queries for www.example.com to d1234.cloudfront.net. For more information, see the ',
-            _react2.default.createElement(
-                'a',
-                { href: '' },
-                'Help'
-            ),
-            '.'
-        )
+      'h2',
+      null,
+      'Custom header name'
     )
-), _react2.default.createElement(
-    'div',
-    { className: 'awsui-util-help-panel' },
-    _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'SSL certificate'
-        )
-    ),
-    _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-                'h4',
-                null,
-                'Default CloudFront SSL certificate'
-            ),
-            _react2.default.createElement(
-                'p',
-                null,
-                'Choose this option if you want your users to use HTTPS or HTTP to access your content with the CloudFront domain name (such as https://d111111abcdef8.cloudfront.net/logo.jpg).'
-            ),
-            _react2.default.createElement(
-                'p',
-                null,
-                'Important: If you choose this option, CloudFront requires that browsers or devices support TLSv1 or later to access your content.'
-            ),
-            _react2.default.createElement(
-                'h4',
-                { className: 'awsui-util-mt-m' },
-                'Custom SSL certificate'
-            ),
-            _react2.default.createElement(
-                'p',
-                null,
-                'Choose this option if you want your users to access your content by using an alternate domain name, such as https://www.example.com/logo.jpg.'
-            ),
-            _react2.default.createElement(
-                'p',
-                null,
-                'You can use a certificate stored in AWS Certificate Manager (ACM) in the US East (N. Virginia) Region, or you can use a certificate stored in IAM.'
-            )
-        )
-    )
-), _react2.default.createElement(
-    'div',
-    { className: 'awsui-util-help-panel' },
-    _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Content origin'
-        )
-    ),
-    _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            'p',
-            null,
-            'Specify the domain name for your origin - the Amazon S3 bucket or web server from which you want CloudFront to get your web content. The dropdown list enumerates the AWS resources associated with the current AWS account.'
-        ),
-        _react2.default.createElement(
-            'p',
-            null,
-            'To use a resource from a different AWS account, type the domain name of the resource. For example, for an Amazon S3 bucket, type the name in the format bucketname.s3.amazonaws.com. The files in your origin must be publicly readable.'
-        )
-    )
-), _react2.default.createElement(
-    'div',
-    { className: 'awsui-util-help-panel' },
-    _react2.default.createElement(
-        'div',
-        { className: 'awsui-util-help-panel-header' },
-        _react2.default.createElement(
-            'h2',
-            null,
-            'Custom header name'
-        )
-    ),
-    _react2.default.createElement(
-        'p',
-        null,
-        'Headers let you distinguish multiple origins in the same distribution from another.'
-    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Headers let you distinguish multiple origins in the same distribution from another.'
+  )
 )];
+});
+
+require.register("components/ProjectDetails.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _ServiceNavigation = require('./ServiceNavigation.jsx');
+
+var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
+
+var _instancesConfig = require('../resources/table/instances-config.jsx');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /************************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           DISCLAIMER
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               This is just a playground package. It does not comply with best practices
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               of using AWS-UI components. For production code, follow the integration
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               guidelines:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://polaris.corp.amazon.com/getting_started/development/integration/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ************************************************************************/
+
+
+var _window$AWSUICompon = window['AWS-UI-Components-React'],
+    AppLayout = _window$AWSUICompon.AppLayout,
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    Flash = _window$AWSUICompon.Flash,
+    Table = _window$AWSUICompon.Table,
+    TableContentSelector = _window$AWSUICompon.TableContentSelector,
+    TableFiltering = _window$AWSUICompon.TableFiltering,
+    TablePageSizeSelector = _window$AWSUICompon.TablePageSizeSelector,
+    TablePagination = _window$AWSUICompon.TablePagination,
+    TablePreferences = _window$AWSUICompon.TablePreferences,
+    TableSelection = _window$AWSUICompon.TableSelection,
+    TableSorting = _window$AWSUICompon.TableSorting,
+    TableWrapLines = _window$AWSUICompon.TableWrapLines,
+    FormField = _window$AWSUICompon.FormField,
+    RadioGroup = _window$AWSUICompon.RadioGroup;
+
+var ProjectDetails = function (_React$Component) {
+  _inherits(ProjectDetails, _React$Component);
+
+  function ProjectDetails() {
+    _classCallCheck(this, ProjectDetails);
+
+    return _possibleConstructorReturn(this, (ProjectDetails.__proto__ || Object.getPrototypeOf(ProjectDetails)).apply(this, arguments));
+  }
+
+  _createClass(ProjectDetails, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , navigationOpen: false,
+        breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
+        , notifications: _react2.default.createElement(FlashMessage, null),
+        content: _react2.default.createElement(DetailsTable, null) // Main content on the page, defined below
+        , contentType: 'table',
+        tools: Tools // Tools panel content defined below
+        , toolsOpen: false
+      });
+    }
+  }]);
+
+  return ProjectDetails;
+}(_react2.default.Component);
+
+// Breadcrumb content
+
+
+exports.default = ProjectDetails;
+var Breadcrumbs = function Breadcrumbs() {
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
+      text: 'Projects',
+      href: '#/table'
+    }, {
+      text: 'Genomics',
+      href: '#/project-details'
+    }],
+    activeHref: '#/table'
+  });
+};
+
+var DetailsTable = function (_React$Component2) {
+  _inherits(DetailsTable, _React$Component2);
+
+  function DetailsTable(props) {
+    _classCallCheck(this, DetailsTable);
+
+    var _this2 = _possibleConstructorReturn(this, (DetailsTable.__proto__ || Object.getPrototypeOf(DetailsTable)).call(this, props));
+
+    _this2.state = {
+      selectedInstances: [],
+      instances: [],
+      pageSize: 30,
+      filteringText: ''
+    };
+    return _this2;
+  }
+
+  _createClass(DetailsTable, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      new _dataProvider2.default().getData('instances', function (instances) {
+        return _this3.setState({ instances: instances });
+      });
+    }
+
+    // Keeps track of how many instances are selected
+
+  }, {
+    key: 'headerCounter',
+    value: function headerCounter(selectedInstances, instances) {
+      return selectedInstances.length ? '(' + selectedInstances.length + ' of ' + instances.length + ')' : '(' + instances.length + ')';
+    }
+
+    // Updates the page size in preferences
+
+  }, {
+    key: 'onPaginationChange',
+    value: function onPaginationChange(_ref) {
+      var pageSize = _ref.detail.pageSize;
+
+      this.setState({
+        pageSize: pageSize
+      });
+    }
+
+    // Updates the filtering text
+
+  }, {
+    key: 'onFilteringChange',
+    value: function onFilteringChange(_ref2) {
+      var filteringText = _ref2.detail.filteringText;
+
+      this.setState({
+        filteringText: filteringText
+      });
+    }
+
+    // Resets the filtering text
+
+  }, {
+    key: 'clearFilter',
+    value: function clearFilter() {
+      this.setState({
+        filteringText: ''
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      return _react2.default.createElement(
+        Table,
+        {
+          columnDefinitions: _instancesConfig.COLUMN_DEFINITIONS,
+          items: this.state.instances,
+          header: _react2.default.createElement(Header, {
+            selectedInstances: this.state.selectedInstances,
+            counter: this.headerCounter(this.state.selectedInstances, this.state.instances)
+          }),
+          noMatch: _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-t-c' },
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-pt-xs awsui-util-mb-xs' },
+              _react2.default.createElement(
+                'b',
+                null,
+                'No matches'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'awsui-util-mb-s' },
+              'No results match your query'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-mb-l' },
+              _react2.default.createElement(Button, { onClick: this.clearFilter.bind(this), text: 'Clear filter' })
+            )
+          )
+        },
+        _react2.default.createElement(TableFiltering, {
+          filteringPlaceholder: 'Search instances',
+          filteringText: this.state.filteringText,
+          onFilteringChange: this.onFilteringChange.bind(this)
+        }),
+        _react2.default.createElement(TablePagination, { onPaginationChange: this.onPaginationChange.bind(this), pageSize: this.state.pageSize }),
+        _react2.default.createElement(TableSorting, { sortableColumns: _instancesConfig.SORTABLE_COLUMNS }),
+        _react2.default.createElement(TableSelection, {
+          selectedItems: this.state.selectedInstances,
+          onSelectionChange: function onSelectionChange(evt) {
+            return _this4.setState({ selectedInstances: evt.detail.selectedItems });
+          }
+        }),
+        _react2.default.createElement(
+          TablePreferences,
+          { title: 'Preferences', confirmLabel: 'Confirm', cancelLabel: 'Cancel' },
+          _react2.default.createElement(TablePageSizeSelector, { title: 'Page size', options: _instancesConfig.PAGE_SELECTOR_OPTIONS }),
+          _react2.default.createElement(TableWrapLines, { label: 'Wrap lines', description: 'Check to see all the text and wrap the lines', value: false }),
+          _react2.default.createElement(
+            FormField,
+            {
+              stretch: true,
+              className: 'awsui-util-mb-l awsui-util-d-b awsui-table-custom-preference',
+              label: 'View as'
+            },
+            _react2.default.createElement(RadioGroup, { value: 'table', items: _instancesConfig.CUSTOM_PREFERENCE_OPTIONS })
+          ),
+          _react2.default.createElement(TableContentSelector, { title: 'Select visible columns', options: _instancesConfig.CONTENT_SELECTOR_OPTIONS })
+        )
+      );
+    }
+  }]);
+
+  return DetailsTable;
+}(_react2.default.Component);
+
+// Table header content, shows how many instances are selected and contains the action stripe
+
+
+var Header = function Header(_ref3) {
+  var selectedInstances = _ref3.selectedInstances,
+      counter = _ref3.counter;
+
+  var isOnlyOneSelected = selectedInstances.length === 1;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-action-stripe' },
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-title' },
+      _react2.default.createElement(
+        'h2',
+        null,
+        'Instances\xA0',
+        counter ? _react2.default.createElement(
+          'span',
+          { className: 'awsui-util-header-counter' },
+          counter
+        ) : '',
+        _react2.default.createElement(
+          'a',
+          {
+            className: 'awsui-util-help-info-link',
+            href: 'javascript:void(0);',
+            onClick: function onClick() {
+              return props.replaceToolsContent(1);
+            }
+          },
+          'Info'
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-group' },
+      _react2.default.createElement(Button, { text: 'View details', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Edit', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Delete', disabled: selectedInstances.length === 0 }),
+      _react2.default.createElement(Button, { href: '#/instance-wizard', variant: 'primary', text: 'Launch instance' })
+    )
+  );
+};
+
+// Flash message content
+var FlashMessage = function FlashMessage() {
+  return _react2.default.createElement(Flash, { type: 'info', content: 'Viewing all instance resources in this project.', dismissible: true });
+};
+
+// Help panel content
+var Tools = _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Project instances'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'This is the help section for project details page.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Sample information for Project details section side bar help tools'
+    )
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
+        'What is Scale Out Computing on AWS?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
+        'Working with instances'
+      )
+    )
+  )
+);
 });
 
 require.register("components/ServiceHomepage.jsx", function(exports, require, module) {
@@ -4587,9 +5989,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var SideNavigation = window['AWS-UI-Components-React'].SideNavigation;
 
-// Class ServiceNavigation is the Side Navigation component that is used in BasicLayout, CreateForm, ServiceHomepage, and Table flows.
-// Implement like this: <ServiceNavigation />
-
 var ServiceNavigation = function (_React$Component) {
   _inherits(ServiceNavigation, _React$Component);
 
@@ -4626,8 +6025,8 @@ var ServiceNavigation = function (_React$Component) {
 
 var items = [{ type: 'link', text: 'Dashboard', href: '#/dashboard' }, {
   type: 'section',
-  text: 'Projects',
-  items: [{ type: 'link', text: 'Projects', href: '#/table' }, { type: 'link', text: 'Instances', href: '#/instances' }]
+  text: 'My workspace',
+  items: [{ type: 'link', text: 'Projects', href: '#/table' }, { type: 'link', text: 'Storage', href: '#/storage' }]
 }, {
   type: 'section',
   text: 'Admin',
@@ -4635,6 +6034,369 @@ var items = [{ type: 'link', text: 'Dashboard', href: '#/dashboard' }, {
 }];
 
 exports.default = (0, _reactRouterDom.withRouter)(ServiceNavigation);
+});
+
+require.register("components/Storage.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ServiceNavigation = require('./ServiceNavigation.jsx');
+
+var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
+
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _fileConfig = require('../resources/table/file-config.jsx');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /************************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           DISCLAIMER
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               This is just a playground package. It does not comply with best practices
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               of using AWS-UI components. For production code, follow the integration
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               guidelines:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://polaris.corp.amazon.com/getting_started/development/integration/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ************************************************************************/
+
+
+var _window$AWSUICompon = window['AWS-UI-Components-React'],
+    AppLayout = _window$AWSUICompon.AppLayout,
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    Flash = _window$AWSUICompon.Flash,
+    Table = _window$AWSUICompon.Table,
+    TableContentSelector = _window$AWSUICompon.TableContentSelector,
+    TableFiltering = _window$AWSUICompon.TableFiltering,
+    TablePageSizeSelector = _window$AWSUICompon.TablePageSizeSelector,
+    TablePagination = _window$AWSUICompon.TablePagination,
+    TablePreferences = _window$AWSUICompon.TablePreferences,
+    TableSelection = _window$AWSUICompon.TableSelection,
+    TableSorting = _window$AWSUICompon.TableSorting,
+    TableWrapLines = _window$AWSUICompon.TableWrapLines,
+    FormField = _window$AWSUICompon.FormField,
+    RadioGroup = _window$AWSUICompon.RadioGroup;
+
+var Storage = function (_React$Component) {
+  _inherits(Storage, _React$Component);
+
+  function Storage() {
+    _classCallCheck(this, Storage);
+
+    return _possibleConstructorReturn(this, (Storage.__proto__ || Object.getPrototypeOf(Storage)).apply(this, arguments));
+  }
+
+  _createClass(Storage, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
+        , notifications: _react2.default.createElement(FlashMessage, null),
+        content: _react2.default.createElement(DetailsTable, null) // Main content on the page, defined below
+        , toolsOpen: false,
+        contentType: 'table',
+        tools: Tools // Tools panel content defined below
+      });
+    }
+  }]);
+
+  return Storage;
+}(_react2.default.Component);
+
+// Breadcrumb content
+
+
+exports.default = Storage;
+var Breadcrumbs = function Breadcrumbs() {
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Scale Out Computing',
+      href: '#/service-home'
+    }, {
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
+      text: 'Projects',
+      href: '#/table'
+    }, {
+      text: 'Storage',
+      href: '#/storage'
+    }],
+    activeHref: '#/storage'
+  });
+};
+
+var DetailsTable = function (_React$Component2) {
+  _inherits(DetailsTable, _React$Component2);
+
+  function DetailsTable(props) {
+    _classCallCheck(this, DetailsTable);
+
+    var _this2 = _possibleConstructorReturn(this, (DetailsTable.__proto__ || Object.getPrototypeOf(DetailsTable)).call(this, props));
+
+    _this2.state = {
+      selectedFiles: [],
+      files: [],
+      pageSize: 30,
+      filteringText: ''
+    };
+    return _this2;
+  }
+
+  _createClass(DetailsTable, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      new _dataProvider2.default().getData('files', function (files) {
+        return _this3.setState({ files: files });
+      });
+    }
+
+    // Keeps track of how many files are selected
+
+  }, {
+    key: 'headerCounter',
+    value: function headerCounter(selectedFiles, files) {
+      return selectedFiles.length ? '(' + selectedFiles.length + ' of ' + files.length + ')' : '(' + files.length + ')';
+    }
+
+    // Updates the page size in preferences
+
+  }, {
+    key: 'onPaginationChange',
+    value: function onPaginationChange(_ref) {
+      var pageSize = _ref.detail.pageSize;
+
+      this.setState({
+        pageSize: pageSize
+      });
+    }
+
+    // Updates the filtering text
+
+  }, {
+    key: 'onFilteringChange',
+    value: function onFilteringChange(_ref2) {
+      var filteringText = _ref2.detail.filteringText;
+
+      this.setState({
+        filteringText: filteringText
+      });
+    }
+
+    // Resets the filtering text
+
+  }, {
+    key: 'clearFilter',
+    value: function clearFilter() {
+      this.setState({
+        filteringText: ''
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      return _react2.default.createElement(
+        Table,
+        {
+          columnDefinitions: _fileConfig.COLUMN_DEFINITIONS,
+          items: this.state.files,
+          header: _react2.default.createElement(Header, {
+            selectedFiles: this.state.selectedFiles,
+            counter: this.headerCounter(this.state.selectedFiles, this.state.files)
+          }),
+          noMatch: _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-t-c' },
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-pt-xs awsui-util-mb-xs' },
+              _react2.default.createElement(
+                'b',
+                null,
+                'No matches'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'awsui-util-mb-s' },
+              'No results match your query'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-mb-l' },
+              _react2.default.createElement(Button, { onClick: this.clearFilter.bind(this), text: 'Clear filter' })
+            )
+          )
+        },
+        _react2.default.createElement(TableFiltering, {
+          filteringPlaceholder: 'Search files',
+          filteringText: this.state.filteringText,
+          onFilteringChange: this.onFilteringChange.bind(this)
+        }),
+        _react2.default.createElement(TablePagination, { onPaginationChange: this.onPaginationChange.bind(this), pageSize: this.state.pageSize }),
+        _react2.default.createElement(TableSorting, { sortableColumns: _fileConfig.SORTABLE_COLUMNS }),
+        _react2.default.createElement(TableSelection, {
+          selectedItems: this.state.selectedFiles,
+          onSelectionChange: function onSelectionChange(evt) {
+            return _this4.setState({ selectedFiles: evt.detail.selectedItems });
+          }
+        }),
+        _react2.default.createElement(
+          TablePreferences,
+          { title: 'Preferences', confirmLabel: 'Confirm', cancelLabel: 'Cancel' },
+          _react2.default.createElement(TablePageSizeSelector, { title: 'Page size', options: _fileConfig.PAGE_SELECTOR_OPTIONS }),
+          _react2.default.createElement(TableWrapLines, { label: 'Wrap lines', description: 'Check to see all the text and wrap the lines', value: false }),
+          _react2.default.createElement(
+            FormField,
+            {
+              stretch: true,
+              className: 'awsui-util-mb-l awsui-util-d-b awsui-table-custom-preference',
+              label: 'View as'
+            },
+            _react2.default.createElement(RadioGroup, { value: 'table', items: _fileConfig.CUSTOM_PREFERENCE_OPTIONS })
+          ),
+          _react2.default.createElement(TableContentSelector, { title: 'Select visible columns', options: _fileConfig.CONTENT_SELECTOR_OPTIONS })
+        )
+      );
+    }
+  }]);
+
+  return DetailsTable;
+}(_react2.default.Component);
+
+// Table header content, shows how many files are selected and contains the action stripe
+
+
+var Header = function Header(_ref3) {
+  var selectedFiles = _ref3.selectedFiles,
+      counter = _ref3.counter;
+
+  var isOnlyOneSelected = selectedFiles.length === 1;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-action-stripe' },
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-title' },
+      _react2.default.createElement(
+        'h2',
+        null,
+        'Files\xA0',
+        counter ? _react2.default.createElement(
+          'span',
+          { className: 'awsui-util-header-counter' },
+          counter
+        ) : '',
+        _react2.default.createElement(
+          'a',
+          {
+            className: 'awsui-util-help-info-link',
+            href: 'javascript:void(0);',
+            onClick: function onClick() {
+              return props.replaceToolsContent(1);
+            }
+          },
+          'Info'
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-group' },
+      _react2.default.createElement(Button, { text: 'View details', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Edit', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Delete', disabled: selectedFiles.length === 0 }),
+      _react2.default.createElement(Button, { href: '#/upload-file', variant: 'primary', text: 'Upload file' })
+    )
+  );
+};
+
+// Flash message content
+var FlashMessage = function FlashMessage() {
+  return _react2.default.createElement(Flash, { type: 'success', content: 'File created successfully', dismissible: true });
+};
+
+// Help panel content
+var Tools = _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Storage and Backups'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'This is the help section for storage page.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Sample information for Storage section side bar help tools'
+    )
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
+        'What is Scale Out Computing on AWS?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
+        'Working with instances'
+      )
+    )
+  )
+);
 });
 
 require.register("components/Table.jsx", function(exports, require, module) {
@@ -4695,8 +6457,6 @@ var _window$AWSUICompon = window['AWS-UI-Components-React'],
     RadioGroup = _window$AWSUICompon.RadioGroup,
     Icon = _window$AWSUICompon.Icon;
 
-// Class TableView is a skeleton of a Table using AWS-UI React components.
-
 var TableView = function (_React$Component) {
   _inherits(TableView, _React$Component);
 
@@ -4735,8 +6495,8 @@ var DetailsTable = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (DetailsTable.__proto__ || Object.getPrototypeOf(DetailsTable)).call(this, props));
 
     _this2.state = {
-      selectedDistributions: [],
-      distributions: [],
+      selectedProjects: [],
+      projects: [],
       pageSize: 30,
       filteringText: ''
     };
@@ -4748,17 +6508,17 @@ var DetailsTable = function (_React$Component2) {
     value: function componentDidMount() {
       var _this3 = this;
 
-      new _dataProvider2.default().getData('distributions', function (distributions) {
-        return _this3.setState({ distributions: distributions });
+      new _dataProvider2.default().getData('projects', function (projects) {
+        return _this3.setState({ projects: projects });
       });
     }
 
-    // Keeps track of how many distributions are selected
+    // Keeps track of how many projects are selected
 
   }, {
     key: 'headerCounter',
-    value: function headerCounter(selectedDistributions, distributions) {
-      return selectedDistributions.length ? '(' + selectedDistributions.length + ' of ' + distributions.length + ')' : '(' + distributions.length + ')';
+    value: function headerCounter(selectedProjects, projects) {
+      return selectedProjects.length ? '(' + selectedProjects.length + ' of ' + projects.length + ')' : '(' + projects.length + ')';
     }
 
     // Updates the page size in preferences
@@ -4803,10 +6563,10 @@ var DetailsTable = function (_React$Component2) {
         Table,
         {
           columnDefinitions: _tableConfig.COLUMN_DEFINITIONS,
-          items: this.state.distributions,
+          items: this.state.projects,
           header: _react2.default.createElement(Header, {
-            selectedDistributions: this.state.selectedDistributions,
-            counter: this.headerCounter(this.state.selectedDistributions, this.state.distributions)
+            selectedProjects: this.state.selectedProjects,
+            counter: this.headerCounter(this.state.selectedProjects, this.state.projects)
           }),
           noMatch: _react2.default.createElement(
             'div',
@@ -4840,9 +6600,9 @@ var DetailsTable = function (_React$Component2) {
         _react2.default.createElement(TablePagination, { onPaginationChange: this.onPaginationChange.bind(this), pageSize: this.state.pageSize }),
         _react2.default.createElement(TableSorting, { sortableColumns: _tableConfig.SORTABLE_COLUMNS }),
         _react2.default.createElement(TableSelection, {
-          selectedItems: this.state.selectedDistributions,
+          selectedItems: this.state.selectedProjects,
           onSelectionChange: function onSelectionChange(evt) {
-            return _this4.setState({ selectedDistributions: evt.detail.selectedItems });
+            return _this4.setState({ selectedProjects: evt.detail.selectedItems });
           }
         }),
         _react2.default.createElement(
@@ -4868,14 +6628,14 @@ var DetailsTable = function (_React$Component2) {
   return DetailsTable;
 }(_react2.default.Component);
 
-// Table header content, shows how many distributions are selected and contains the action stripe
+// Table header content, shows how many projects are selected and contains the action stripe
 
 
 var Header = function Header(_ref3) {
-  var selectedDistributions = _ref3.selectedDistributions,
+  var selectedProjects = _ref3.selectedProjects,
       counter = _ref3.counter;
 
-  var isOnlyOneSelected = selectedDistributions.length === 1;
+  var isOnlyOneSelected = selectedProjects.length === 1;
 
   return _react2.default.createElement(
     'div',
@@ -4891,7 +6651,18 @@ var Header = function Header(_ref3) {
           'span',
           { className: 'awsui-util-header-counter' },
           counter
-        ) : ''
+        ) : '',
+        _react2.default.createElement(
+          'a',
+          {
+            className: 'awsui-util-help-info-link',
+            href: 'javascript:void(0);',
+            onClick: function onClick() {
+              return props.replaceToolsContent(1);
+            }
+          },
+          'Info'
+        )
       )
     ),
     _react2.default.createElement(
@@ -4899,7 +6670,7 @@ var Header = function Header(_ref3) {
       { className: 'awsui-util-action-stripe-group' },
       _react2.default.createElement(Button, { text: 'View details', disabled: !isOnlyOneSelected }),
       _react2.default.createElement(Button, { text: 'Edit', disabled: !isOnlyOneSelected }),
-      _react2.default.createElement(Button, { text: 'Delete', disabled: selectedDistributions.length === 0 }),
+      _react2.default.createElement(Button, { text: 'Delete', disabled: selectedProjects.length === 0 }),
       _react2.default.createElement(Button, { href: '#/create', variant: 'primary', text: 'Create project' })
     )
   );
@@ -4920,7 +6691,17 @@ var Breadcrumbs = function Breadcrumbs() {
 
 // Flash message content
 var FlashMessage = function FlashMessage() {
-  return _react2.default.createElement(Flash, { type: 'success', content: 'Resource created successfully', dismissible: true });
+  return _react2.default.createElement(Flash, {
+    type: 'success',
+    content: 'Project created successfully',
+    dismissible: true,
+    action: _react2.default.createElement(
+      Button,
+      null,
+      'View instance'
+    ),
+    dismissLabel: 'Dismiss message'
+  });
 };
 
 // Help (right) panel content
@@ -4930,12 +6711,11 @@ var Tools = [_react2.default.createElement(
   _react2.default.createElement(
     'div',
     { className: 'awsui-util-help-panel-header' },
-    _react2.default.createElement(
-      'h2',
-      null,
-      'Scale Out Computing'
-    ),
-    _react2.default.createElement('br', null),
+    'Scale Out Computing'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
       'p',
       null,
@@ -4956,7 +6736,7 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
         'What is Scale Out Computing?'
       )
     ),
@@ -4965,7 +6745,7 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/' },
+        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/', target: '_blank' },
         'Getting started'
       )
     ),
@@ -4974,10 +6754,792 @@ var Tools = [_react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
         'Working with instances'
       )
     )
+  )
+)];
+});
+
+require.register("components/Test.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _window$AWSUICompon = window['AWS-UI-Components-React'],
+    AppLayout = _window$AWSUICompon.AppLayout,
+    Button = _window$AWSUICompon.Button,
+    Box = _window$AWSUICompon.Box,
+    Cards = _window$AWSUICompon.Cards,
+    Header = _window$AWSUICompon.Header,
+    CollectionPreferences = _window$AWSUICompon.CollectionPreferences,
+    Pagination = _window$AWSUICompon.Pagination,
+    TextFilter = _window$AWSUICompon.TextFilter;
+
+var Test = function (_React$Component) {
+  _inherits(Test, _React$Component);
+
+  function Test() {
+    _classCallCheck(this, Test);
+
+    return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+  }
+
+  _createClass(Test, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(AppLayout, {
+        content: _react2.default.createElement(Content, null) // Main content on the page, defined below
+        , contentType: 'cards'
+      });
+    }
+  }]);
+
+  return Test;
+}(_react2.default.Component);
+
+exports.default = Test;
+
+var _React$useState = _react2.default.useState([{ name: 'Item 2' }]),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    selectedItems = _React$useState2[0],
+    setSelectedItems = _React$useState2[1];
+
+var Content = function Content() {
+  return _react2.default.createElement(Cards, {
+    trackBy: 'name',
+    cardDefinition: {
+      header: function header(e) {
+        return e.name;
+      },
+      sections: [{
+        id: 'description',
+        header: 'Description',
+        content: function content(e) {
+          return e.description;
+        }
+      }, {
+        id: 'type',
+        header: 'Type',
+        content: function content(e) {
+          return e.type;
+        }
+      }, {
+        id: 'size',
+        header: 'Size',
+        content: function content(e) {
+          return e.size;
+        }
+      }]
+    },
+    onSelectionChange: function onSelectionChange(_ref) {
+      var detail = _ref.detail;
+      return setSelectedItems(detail.selectedItems);
+    },
+    selectedItems: selectedItems,
+    cardsPerRow: [{ cards: 1 }, { minWidth: 500, cards: 2 }],
+    items: [{
+      name: 'Item 1',
+      alt: 'First',
+      description: 'This is the first item',
+      type: '1A',
+      size: 'Small'
+    }, {
+      name: 'Item 2',
+      alt: 'Second',
+      description: 'This is the second item',
+      type: '1B',
+      size: 'Large'
+    }, {
+      name: 'Item 3',
+      alt: 'Third',
+      description: 'This is the third item',
+      type: '1A',
+      size: 'Large'
+    }, {
+      name: 'Item 4',
+      alt: 'Fourth',
+      description: 'This is the fourth item',
+      type: '2A',
+      size: 'Small'
+    }, {
+      name: 'Item 5',
+      alt: 'Fifth',
+      description: 'This is the fifth item',
+      type: '2A',
+      size: 'Large'
+    }, {
+      name: 'Item 6',
+      alt: 'Sixth',
+      description: 'This is the sixth item',
+      type: '1A',
+      size: 'Small'
+    }],
+    loadingText: 'Loading resources',
+    selectionType: 'multi',
+    visibleSections: ['description', 'type', 'size'],
+    empty: _react2.default.createElement(
+      Box,
+      { textAlign: 'center', color: 'inherit' },
+      _react2.default.createElement(
+        'b',
+        null,
+        'No resources'
+      ),
+      _react2.default.createElement(
+        Box,
+        { padding: { bottom: 's' }, variant: 'p', color: 'inherit' },
+        'No resources to display.'
+      ),
+      _react2.default.createElement(
+        Button,
+        null,
+        'Create resource'
+      )
+    ),
+    filter: _react2.default.createElement(TextFilter, { filteringPlaceholder: 'Find resources' }),
+    header: _react2.default.createElement(
+      Header,
+      { counter: selectedItems.length ? '(' + selectedItems.length + '/10)' : '(10)' },
+      'Common cards with selection'
+    ),
+    pagination: _react2.default.createElement(Pagination, { currentPageIndex: 1, pagesCount: 2 }),
+    preferences: _react2.default.createElement(CollectionPreferences, {
+      title: 'Preferences',
+      confirmLabel: 'Confirm',
+      cancelLabel: 'Cancel',
+      preferences: {
+        pageSize: 6,
+        visibleContent: ['description', 'type', 'size']
+      },
+      pageSizePreference: {
+        title: 'Select page size',
+        options: [{ value: 6, label: '6 resources' }, { value: 12, label: '12 resources' }]
+      },
+      visibleContentPreference: {
+        title: 'Select visible content',
+        options: [{
+          label: 'Main distribution properties',
+          options: [{
+            id: 'description',
+            label: 'Description'
+          }, { id: 'type', label: 'Type' }, { id: 'size', label: 'Size' }]
+        }]
+      }
+    })
+  });
+};
+});
+
+require.register("components/UploadFile.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _ServiceNavigation = require('./ServiceNavigation.jsx');
+
+var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
+
+var _formConfig = require('../resources/form-config.jsx');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /************************************************************************
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           DISCLAIMER
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               This is just a playground package. It does not comply with best practices
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               of using AWS-UI components. For production code, follow the integration
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               guidelines:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               https://polaris.corp.amazon.com/getting_started/development/integration/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ************************************************************************/
+
+
+var _window$AWSUICompon = window['AWS-UI-Components-React'],
+    AppLayout = _window$AWSUICompon.AppLayout,
+    AttributeEditor = _window$AWSUICompon.AttributeEditor,
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    Checkbox = _window$AWSUICompon.Checkbox,
+    ColumnLayout = _window$AWSUICompon.ColumnLayout,
+    ExpandableSection = _window$AWSUICompon.ExpandableSection,
+    Form = _window$AWSUICompon.Form,
+    FormField = _window$AWSUICompon.FormField,
+    FormSection = _window$AWSUICompon.FormSection,
+    Input = _window$AWSUICompon.Input,
+    Multiselect = _window$AWSUICompon.Multiselect,
+    RadioGroup = _window$AWSUICompon.RadioGroup,
+    Textarea = _window$AWSUICompon.Textarea;
+
+var UploadFile = function (_React$Component) {
+  _inherits(UploadFile, _React$Component);
+
+  function UploadFile(props) {
+    _classCallCheck(this, UploadFile);
+
+    var _this = _possibleConstructorReturn(this, (UploadFile.__proto__ || Object.getPrototypeOf(UploadFile)).call(this, props));
+
+    _this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
+    return _this;
+  }
+
+  _createClass(UploadFile, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var dataProvider = new _dataProvider2.default();
+      dataProvider.getData('content-origins', function (contentOrigins) {
+        return _this2.setState({ contentOrigins: contentOrigins });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(AppLayout, {
+        navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
+        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null),
+        content: _react2.default.createElement(Content
+        // Changes the Help panel content when the user clicks an 'info' link
+        , { replaceToolsContent: function replaceToolsContent(index) {
+            return _this3.setState({ toolsIndex: index, toolsOpen: true });
+          },
+          contentOrigins: this.state.contentOrigins
+        }),
+        contentType: 'form',
+        tools: Tools[this.state.toolsIndex],
+        toolsOpen: this.state.toolsOpen
+      });
+    }
+  }]);
+
+  return UploadFile;
+}(_react2.default.Component);
+
+// The content in the main content area of the App layout
+
+
+exports.default = UploadFile;
+var Content = function Content(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      Form,
+      {
+        header: _react2.default.createElement(
+          'h1',
+          null,
+          'Upload File',
+          _react2.default.createElement(
+            'a',
+            {
+              className: 'awsui-util-help-info-link',
+              href: 'javascript:void(0);',
+              onClick: function onClick() {
+                return props.replaceToolsContent(1);
+              }
+            },
+            'Info'
+          )
+        ),
+        actions:
+        // located at the bottom of the form
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(Button, { variant: 'link', text: 'Cancel' }),
+          _react2.default.createElement(Button, { href: '#/storage', variant: 'primary', text: 'Upload file' })
+        )
+      },
+      _react2.default.createElement(ContentDeliveryPanel, { replaceToolsContent: props.replaceToolsContent }),
+      _react2.default.createElement(
+        FormSection,
+        { header: _react2.default.createElement(
+            'h2',
+            null,
+            'Input data'
+          ), footer: _react2.default.createElement(DistributionsFooter, null) },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'span',
+                  null,
+                  'File origin',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(4);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'Select which roles you want this user to have.'
+              },
+              _react2.default.createElement(Multiselect, {
+                options: props.contentOrigins,
+                placeholder: 'Select an S3 bucket or web server from which you want to get your content.',
+                filteringType: 'auto'
+              })
+            ),
+            _react2.default.createElement(Button, { iconName: 'upload', text: 'Additional file options' })
+          )
+        )
+      ),
+      _react2.default.createElement(
+        FormSection,
+        { header: 'File location' },
+        _react2.default.createElement(
+          ColumnLayout,
+          null,
+          _react2.default.createElement(
+            'div',
+            { 'data-awsui-column-layout-root': true },
+            _react2.default.createElement(
+              FormField,
+              {
+                label: _react2.default.createElement(
+                  'div',
+                  null,
+                  'Select which files you want to upload',
+                  _react2.default.createElement(
+                    'a',
+                    {
+                      className: 'awsui-util-help-info-link',
+                      href: 'javascript:void(0);',
+                      onClick: function onClick() {
+                        return props.replaceToolsContent(5);
+                      }
+                    },
+                    'Info'
+                  )
+                ),
+                description: 'The Amazon S3 bucket or web server from which you want to get your content.'
+              },
+              _react2.default.createElement(RadioGroup, { items: _formConfig.INPUT_OPTIONS, value: '0' })
+            ),
+            _react2.default.createElement(
+              FormField,
+              {
+                label: 'Path to files',
+                description: 'The directory in your Amazon S3 bucket or your custom origin.'
+              },
+              _react2.default.createElement(Input, { placeholder: '/files' })
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+// First form section
+
+var ContentDeliveryPanel = function (_React$Component2) {
+  _inherits(ContentDeliveryPanel, _React$Component2);
+
+  function ContentDeliveryPanel(props) {
+    _classCallCheck(this, ContentDeliveryPanel);
+
+    var _this4 = _possibleConstructorReturn(this, (ContentDeliveryPanel.__proto__ || Object.getPrototypeOf(ContentDeliveryPanel)).call(this, props));
+
+    _this4.state = { deliveryMethod: 'web' };
+    return _this4;
+  }
+
+  _createClass(ContentDeliveryPanel, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        FormSection,
+        { header: 'File settings' },
+        _react2.default.createElement(
+          FormField,
+          { label: 'File ID', description: 'This value lets you distinguish multiple files from one another' },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(AttributeEditor, {
+          addButtonText: 'Choose file',
+          removeButtonText: 'Remove file',
+          items: [{
+            name: '',
+            value: ''
+          }],
+          definition: [{
+            label: _react2.default.createElement(
+              'span',
+              null,
+              'Name',
+              _react2.default.createElement(
+                'a',
+                {
+                  className: 'awsui-util-help-info-link',
+                  href: 'javascript:void(0);',
+                  onClick: function onClick() {
+                    return props.replaceToolsContent(6);
+                  }
+                },
+                'Info'
+              )
+            ),
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.name, placeholder: 'example-file-name' });
+            }
+          }, {
+            label: _react2.default.createElement(
+              'span',
+              null,
+              'File description',
+              _react2.default.createElement(
+                'i',
+                null,
+                ' - optional'
+              )
+            ),
+            control: function control(item) {
+              return _react2.default.createElement(Input, { value: item.value, placeholder: 'example-file-description' });
+            }
+          }]
+        })
+      );
+    }
+  }]);
+
+  return ContentDeliveryPanel;
+}(_react2.default.Component);
+
+// Footer content (Additional configuration section) for form section
+
+
+var DistributionsFooter = function DistributionsFooter() {
+  return _react2.default.createElement(
+    ExpandableSection,
+    { header: 'Additional configuration', variant: 'borderless' },
+    _react2.default.createElement(
+      ColumnLayout,
+      null,
+      _react2.default.createElement(
+        'div',
+        { 'data-awsui-column-layout-root': true },
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Supported HTTP versions',
+            description: 'Choose the version of the HTTP protocol that you want to accept for viewer requests.',
+            stretch: true
+          },
+          _react2.default.createElement(RadioGroup, { items: _formConfig.SUPPORTED_HTTP_VERSIONS_OPTIONS, value: 'http2' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          {
+            label: 'Root object',
+            description: 'Type the name of the object that you want to return when a viewer request points to your root URL.'
+          },
+          _react2.default.createElement(Input, null)
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Logging' },
+          _react2.default.createElement(Checkbox, { label: 'Enable logging' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'IPv6' },
+          _react2.default.createElement(Checkbox, { label: 'Enabled' })
+        ),
+        _react2.default.createElement(
+          FormField,
+          { label: 'Comment' },
+          _react2.default.createElement(Textarea, null)
+        )
+      )
+    )
+  );
+};
+
+// Breadcrumb content
+var Breadcrumbs = function Breadcrumbs() {
+  return _react2.default.createElement(BreadcrumbGroup, {
+    items: [{
+      text: 'Dashboard',
+      href: '#/dashboard'
+    }, {
+      text: 'Storage',
+      href: '#/storage'
+    }, {
+      text: 'Upload file',
+      href: '#/upload-file'
+    }],
+    activeHref: '#/storage'
+  });
+};
+
+// List of Help (right) panel content, changes depending on which 'info' link the user clicks on.
+var Tools = [_react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Upload files'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'Keep your project file information and permissions in order.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'You can upload project files in this section.'
+    )
+  ),
+  _react2.default.createElement(
+    'ul',
+    { className: 'awsui-list-unstyled' },
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://awslabs.github.io/scale-out-computing-on-aws/', target: '_blank' },
+        'What is Scale Out Computing?'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
+        'Getting started'
+      )
+    ),
+    _react2.default.createElement(
+      'li',
+      null,
+      _react2.default.createElement(
+        'a',
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
+        'View implementation guide'
+      )
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    'Uploading files'
+  ),
+  _react2.default.createElement(
+    'h4',
+    null,
+    'SSH'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Connect using SSH access to connect remotely to another computer and upload files directly if you want to:'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Use the command line interface to make administrative changes to file content.'
+  ),
+  _react2.default.createElement(
+    'h4',
+    { className: 'awsui-util-mt-m' },
+    'Web browser'
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Upload file resources using the NICE DCV web browser interface.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Price class'
+    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Select the price class associated with the maximum price that you want to pay for CloudFront service. If you select a price class other than All, some of your users may experience higher latency.'
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Alternate domain names (CNAMEs)'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'You must list any custom domain names (for example, www.example.com) that you use in addition to the CloudFront domain name (for example, d1234.cloudfront.net) for the URLs for your files.'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify up to 100 CNAMEs separated with commas or put each on a new line. You also must create a CNAME record with your DNS service to route queries for www.example.com to d1234.cloudfront.net. For more information, see the ',
+      _react2.default.createElement(
+        'a',
+        { href: '' },
+        'Help'
+      ),
+      '.'
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Upload files'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'h4',
+        null,
+        'Uploading files'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Select which files you want to upload.'
+      ),
+      _react2.default.createElement(
+        'h4',
+        { className: 'awsui-util-mt-m' },
+        'File origin'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Choose this option if you want your users to access your content by using an alternate domain name, such as https://www.example.com/logo.jpg.'
+      )
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'File location'
+    )
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Specify the permissions for your users - from which you want to get your web content. The dropdown list enumerates the AWS resources associated with the current AWS account.'
+    )
+  )
+), _react2.default.createElement(
+  'div',
+  { className: 'awsui-util-help-panel' },
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
+    _react2.default.createElement(
+      'h2',
+      null,
+      'Custom header name'
+    )
+  ),
+  _react2.default.createElement(
+    'p',
+    null,
+    'Headers let you distinguish multiple origins in the same distribution from another.'
   )
 )];
 });
@@ -4999,6 +7561,12 @@ var _ServiceNavigation = require('./ServiceNavigation.jsx');
 
 var _ServiceNavigation2 = _interopRequireDefault(_ServiceNavigation);
 
+var _dataProvider = require('../resources/data-provider');
+
+var _dataProvider2 = _interopRequireDefault(_dataProvider);
+
+var _userConfig = require('../resources/table/user-config.jsx');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5018,9 +7586,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var _window$AWSUICompon = window['AWS-UI-Components-React'],
     AppLayout = _window$AWSUICompon.AppLayout,
-    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup;
-
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
+    BreadcrumbGroup = _window$AWSUICompon.BreadcrumbGroup,
+    Button = _window$AWSUICompon.Button,
+    Flash = _window$AWSUICompon.Flash,
+    Table = _window$AWSUICompon.Table,
+    TableContentSelector = _window$AWSUICompon.TableContentSelector,
+    TableFiltering = _window$AWSUICompon.TableFiltering,
+    TablePageSizeSelector = _window$AWSUICompon.TablePageSizeSelector,
+    TablePagination = _window$AWSUICompon.TablePagination,
+    TablePreferences = _window$AWSUICompon.TablePreferences,
+    TableSelection = _window$AWSUICompon.TableSelection,
+    TableSorting = _window$AWSUICompon.TableSorting,
+    TableWrapLines = _window$AWSUICompon.TableWrapLines,
+    FormField = _window$AWSUICompon.FormField,
+    RadioGroup = _window$AWSUICompon.RadioGroup;
 
 var UserManagement = function (_React$Component) {
   _inherits(UserManagement, _React$Component);
@@ -5036,9 +7615,12 @@ var UserManagement = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(AppLayout, {
         navigation: _react2.default.createElement(_ServiceNavigation2.default, null) // Navigation panel content imported from './ServiceNavigation.jsx'
-        , breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
-        , content: _react2.default.createElement(Content, null) // Main content on the page, defined below
-        , contentType: 'default' // Sets default app layout settings for widths
+        , navigationOpen: false,
+        breadcrumbs: _react2.default.createElement(Breadcrumbs, null) // Breadcrumbs element defined below
+        , notifications: _react2.default.createElement(FlashMessage, null),
+        content: _react2.default.createElement(DetailsTable, null) // Main content on the page, defined below
+        , toolsOpen: false,
+        contentType: 'table' // Sets default app layout settings for widths
         , tools: Tools // Tools panel content defined below
       });
     }
@@ -5066,7 +7648,6 @@ var Breadcrumbs = function Breadcrumbs() {
   });
 };
 
-// Main content area (fill it in with components!)
 var Content = function Content() {
   return _react2.default.createElement(
     'div',
@@ -5074,14 +7655,216 @@ var Content = function Content() {
     _react2.default.createElement(
       'h2',
       null,
-      'User management'
+      'User management',
+      _react2.default.createElement(
+        'a',
+        { className: 'awsui-util-help-info-link', href: 'javascript:void(0);', onClick: function onClick() {
+            return props.replaceToolsContent(1);
+          } },
+        'Info'
+      )
     ),
     _react2.default.createElement(
       'p',
       null,
-      'Hello from p in div'
+      'This is the future home of user management page.'
     )
   );
+};
+
+var DetailsTable = function (_React$Component2) {
+  _inherits(DetailsTable, _React$Component2);
+
+  function DetailsTable(props) {
+    _classCallCheck(this, DetailsTable);
+
+    var _this2 = _possibleConstructorReturn(this, (DetailsTable.__proto__ || Object.getPrototypeOf(DetailsTable)).call(this, props));
+
+    _this2.state = {
+      selectedUsers: [],
+      users: [],
+      pageSize: 30,
+      filteringText: ''
+    };
+    return _this2;
+  }
+
+  _createClass(DetailsTable, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      new _dataProvider2.default().getData('users', function (users) {
+        return _this3.setState({ users: users });
+      });
+    }
+
+    // Keeps track of how many users are selected
+
+  }, {
+    key: 'headerCounter',
+    value: function headerCounter(selectedUsers, users) {
+      return selectedUsers.length ? '(' + selectedUsers.length + ' of ' + users.length + ')' : '(' + users.length + ')';
+    }
+
+    // Updates the page size in preferences
+
+  }, {
+    key: 'onPaginationChange',
+    value: function onPaginationChange(_ref) {
+      var pageSize = _ref.detail.pageSize;
+
+      this.setState({
+        pageSize: pageSize
+      });
+    }
+
+    // Updates the filtering text
+
+  }, {
+    key: 'onFilteringChange',
+    value: function onFilteringChange(_ref2) {
+      var filteringText = _ref2.detail.filteringText;
+
+      this.setState({
+        filteringText: filteringText
+      });
+    }
+
+    // Resets the filtering text
+
+  }, {
+    key: 'clearFilter',
+    value: function clearFilter() {
+      this.setState({
+        filteringText: ''
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      return _react2.default.createElement(
+        Table,
+        {
+          columnDefinitions: _userConfig.COLUMN_DEFINITIONS,
+          items: this.state.users,
+          header: _react2.default.createElement(Header, {
+            selectedUsers: this.state.selectedUsers,
+            counter: this.headerCounter(this.state.selectedUsers, this.state.users)
+          }),
+          noMatch: _react2.default.createElement(
+            'div',
+            { className: 'awsui-util-t-c' },
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-pt-xs awsui-util-mb-xs' },
+              _react2.default.createElement(
+                'b',
+                null,
+                'No matches'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'awsui-util-mb-s' },
+              'No results match your query'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'awsui-util-mb-l' },
+              _react2.default.createElement(Button, { onClick: this.clearFilter.bind(this), text: 'Clear filter' })
+            )
+          )
+        },
+        _react2.default.createElement(TableFiltering, {
+          filteringPlaceholder: 'Search users',
+          filteringText: this.state.filteringText,
+          onFilteringChange: this.onFilteringChange.bind(this)
+        }),
+        _react2.default.createElement(TablePagination, { onPaginationChange: this.onPaginationChange.bind(this), pageSize: this.state.pageSize }),
+        _react2.default.createElement(TableSorting, { sortableColumns: _userConfig.SORTABLE_COLUMNS }),
+        _react2.default.createElement(TableSelection, {
+          selectedItems: this.state.selectedUsers,
+          onSelectionChange: function onSelectionChange(evt) {
+            return _this4.setState({ selectedUsers: evt.detail.selectedItems });
+          }
+        }),
+        _react2.default.createElement(
+          TablePreferences,
+          { title: 'Preferences', confirmLabel: 'Confirm', cancelLabel: 'Cancel' },
+          _react2.default.createElement(TablePageSizeSelector, { title: 'Page size', options: _userConfig.PAGE_SELECTOR_OPTIONS }),
+          _react2.default.createElement(TableWrapLines, { label: 'Wrap lines', description: 'Check to see all the text and wrap the lines', value: false }),
+          _react2.default.createElement(
+            FormField,
+            {
+              stretch: true,
+              className: 'awsui-util-mb-l awsui-util-d-b awsui-table-custom-preference',
+              label: 'View as'
+            },
+            _react2.default.createElement(RadioGroup, { value: 'table', items: _userConfig.CUSTOM_PREFERENCE_OPTIONS })
+          ),
+          _react2.default.createElement(TableContentSelector, { title: 'Select visible columns', options: _userConfig.CONTENT_SELECTOR_OPTIONS })
+        )
+      );
+    }
+  }]);
+
+  return DetailsTable;
+}(_react2.default.Component);
+
+// Table header content, shows how many users are selected and contains the action stripe
+
+
+var Header = function Header(_ref3) {
+  var selectedUsers = _ref3.selectedUsers,
+      counter = _ref3.counter;
+
+  var isOnlyOneSelected = selectedUsers.length === 1;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-action-stripe' },
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-title' },
+      _react2.default.createElement(
+        'h2',
+        null,
+        'Users\xA0',
+        counter ? _react2.default.createElement(
+          'span',
+          { className: 'awsui-util-header-counter' },
+          counter
+        ) : '',
+        _react2.default.createElement(
+          'a',
+          {
+            className: 'awsui-util-help-info-link',
+            href: 'javascript:void(0);',
+            onClick: function onClick() {
+              return props.replaceToolsContent(1);
+            }
+          },
+          'Info'
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'awsui-util-action-stripe-group' },
+      _react2.default.createElement(Button, { text: 'View details', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Edit', disabled: !isOnlyOneSelected }),
+      _react2.default.createElement(Button, { text: 'Delete', disabled: selectedUsers.length === 0 }),
+      _react2.default.createElement(Button, { href: '#/create-user', variant: 'primary', text: 'Create user' })
+    )
+  );
+};
+
+// Flash message content
+var FlashMessage = function FlashMessage() {
+  return _react2.default.createElement(Flash, { type: 'success', content: 'User created successfully', dismissible: true });
 };
 
 // Help panel content
@@ -5091,10 +7874,21 @@ var Tools = _react2.default.createElement(
   _react2.default.createElement(
     'div',
     { className: 'awsui-util-help-panel-header' },
+    'User management'
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'awsui-util-help-panel-header' },
     _react2.default.createElement(
-      'h2',
+      'p',
       null,
-      'Scale Out Computing'
+      'This is the help section for user management page.'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Sample information for User management section side bar help tools'
     )
   ),
   _react2.default.createElement(
@@ -5105,7 +7899,7 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html' },
+        { href: 'https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html', target: '_blank' },
         'What is Scale Out Computing on AWS?'
       )
     ),
@@ -5114,7 +7908,7 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/' },
+        { href: 'https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/', target: '_blank' },
         'Getting started'
       )
     ),
@@ -5123,7 +7917,10 @@ var Tools = _react2.default.createElement(
       null,
       _react2.default.createElement(
         'a',
-        { href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc' },
+        {
+          href: 'https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc',
+          target: '_blank'
+        },
         'Working with instances'
       )
     )
@@ -5280,7 +8077,7 @@ require.register("resources/form-config.jsx", function(exports, require, module)
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var PRICE_CLASS_OPTIONS = exports.PRICE_CLASS_OPTIONS = [{ label: 'Use all edge locations (best performance)', value: '0' }, { label: 'Use only US, Canada, and Europe', value: '1' }, { label: 'Use only US, Canada, Europe, and Asia', value: '2' }];
+var INPUT_OPTIONS = exports.INPUT_OPTIONS = [{ label: 'Service-managed S3 bucket (best performance)', value: '0' }, { label: 'Customer-specified S3 bucket', value: '1' }];
 
 var SSL_CERTIFICATE_OPTIONS = exports.SSL_CERTIFICATE_OPTIONS = [{
   label: 'Default CloudFront SSL/TLS certificate',
@@ -5321,6 +8118,197 @@ var DELIVERY_METHOD = exports.DELIVERY_METHOD = [{
 }];
 });
 
+require.register("resources/table/file-config.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Icon = window['AWS-UI-Components-React'].Icon;
+var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
+  id: 'id',
+  header: function header() {
+    return 'File name';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        { href: '#/projects' },
+        item.id
+      )
+    );
+  },
+  minWidth: '90px',
+  allowLineWrap: true
+}, {
+  id: 'dateModified',
+  cell: function cell(item) {
+    return item.dateModified;
+  },
+  header: function header() {
+    return 'Date modified';
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}, {
+  id: 'deliveryMethod',
+  header: function header() {
+    return 'Type';
+  },
+  cell: function cell(item) {
+    return item.deliveryMethod;
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}, {
+  id: 'status',
+  header: function header() {
+    return 'Size';
+  },
+  cell: function cell(item) {
+    return item.status;
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}, {
+  id: 'state',
+  header: function header() {
+    return 'State';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      { className: 'awsui-util-status-' + (item.state === 'Deleted' ? 'negative' : 'positive') },
+      React.createElement(Icon, { name: item.state === 'Deleted' ? 'status-negative' : 'status-positive' }),
+      React.createElement(
+        'span',
+        null,
+        ' ' + item.state
+      )
+    );
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}];
+
+var SORTABLE_COLUMNS = exports.SORTABLE_COLUMNS = [{ id: 'id', field: 'id' }, { id: 'dateModified', field: 'dateModified' }, { id: 'deliveryMethod', field: 'deliveryMethod' }, { id: 'status', field: 'status' }, { id: 'state', field: 'state' }];
+
+var CONTENT_SELECTOR_OPTIONS = exports.CONTENT_SELECTOR_OPTIONS = [{
+  label: 'Main file properties',
+  options: [{ id: 'id', label: 'File name', editable: false, visible: true }, { id: 'dateModified', label: 'Date modified', editable: true, visible: true }, {
+    id: 'deliveryMethod',
+    label: 'Type',
+    editable: true,
+    visible: true
+  }, { id: 'status', label: 'Size', editable: true, visible: true }, { id: 'state', label: 'State', editable: true, visible: false }]
+}];
+
+var PAGE_SELECTOR_OPTIONS = exports.PAGE_SELECTOR_OPTIONS = [{ value: 10, label: '10 Files' }, { value: 30, label: '30 Files' }, { value: 50, label: '50 Files' }];
+
+var CUSTOM_PREFERENCE_OPTIONS = exports.CUSTOM_PREFERENCE_OPTIONS = [{ value: 'table', label: 'Table' }, { value: 'cards', label: 'Cards' }];
+});
+
+require.register("resources/table/instances-config.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Icon = window['AWS-UI-Components-React'].Icon;
+var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
+  id: 'id',
+  header: function header() {
+    return 'Instance name';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        { href: '#/projects' },
+        item.id
+      )
+    );
+  },
+  minWidth: '60px',
+  allowLineWrap: true
+}, {
+  id: 'engineType',
+  cell: function cell(item) {
+    return item.engineType;
+  },
+  header: function header() {
+    return 'Engine Type';
+  },
+  minWidth: '100px',
+  allowLineWrap: true
+}, {
+  id: 'instanceClass',
+  header: function header() {
+    return 'Instance class';
+  },
+  cell: function cell(item) {
+    return item.instanceClass;
+  },
+  minWidth: '100px',
+  allowLineWrap: true
+}, {
+  id: 'storage',
+  header: function header() {
+    return 'Storage';
+  },
+  cell: function cell(item) {
+    return item.storage;
+  },
+  minWidth: '50px',
+  allowLineWrap: true
+}, {
+  id: 'dateModified',
+  cell: function cell(item) {
+    return item.dateModified;
+  },
+  header: function header() {
+    return 'Date modified';
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}, {
+  id: 'state',
+  header: function header() {
+    return 'State';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      { className: 'awsui-util-status-' + (item.state === 'Stopped' ? 'negative' : 'positive') },
+      React.createElement(Icon, { name: item.state === 'Stopped' ? 'status-negative' : 'status-positive' }),
+      React.createElement(
+        'span',
+        null,
+        ' ' + item.state
+      )
+    );
+  },
+  minWidth: '50px',
+  allowLineWrap: true
+}];
+
+var SORTABLE_COLUMNS = exports.SORTABLE_COLUMNS = [{ id: 'id', field: 'id' }, { id: 'engineType', field: 'engineType' }, { id: 'instanceClass', field: 'instanceClass' }, { id: 'storage', field: 'storage' }, { id: 'dateModified', field: 'dateModified' }, { id: 'state', field: 'state' }];
+
+var CONTENT_SELECTOR_OPTIONS = exports.CONTENT_SELECTOR_OPTIONS = [{
+  label: 'Main instance properties',
+  options: [{ id: 'id', label: 'Instance name', editable: false, visible: true }, { id: 'engineType', label: 'Engine type', editable: false, visible: true }, { id: 'instanceClass', label: 'Instance class', editable: true, visible: true }, { id: 'storage', label: 'Storage', editable: true, visible: true }, { id: 'dateModified', label: 'Date modified', editable: true, visible: true }, { id: 'state', label: 'State', editable: true, visible: true }]
+}];
+
+var PAGE_SELECTOR_OPTIONS = exports.PAGE_SELECTOR_OPTIONS = [{ value: 10, label: '10 Instances' }, { value: 30, label: '30 Instances' }, { value: 50, label: '50 Instances' }];
+
+var CUSTOM_PREFERENCE_OPTIONS = exports.CUSTOM_PREFERENCE_OPTIONS = [{ value: 'table', label: 'Table' }, { value: 'cards', label: 'Cards' }];
+});
+
 require.register("resources/table/table-config.jsx", function(exports, require, module) {
 'use strict';
 
@@ -5331,7 +8319,7 @@ var Icon = window['AWS-UI-Components-React'].Icon;
 var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
   id: 'id',
   header: function header() {
-    return 'Project ID';
+    return 'Project name';
   },
   cell: function cell(item) {
     return React.createElement(
@@ -5339,62 +8327,42 @@ var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
       null,
       React.createElement(
         'a',
-        { href: 'javascript:void(0)' },
+        { href: '#/project-details' },
         item.id
       )
     );
   },
-  minWidth: '180px',
+  minWidth: '90px',
   allowLineWrap: true
 }, {
-  id: 'domainName',
+  id: 'instanceLimit',
   cell: function cell(item) {
-    return item.domainName;
+    return item.instanceLimit;
   },
   header: function header() {
-    return 'Domain name';
+    return 'Instances (usage/limit)';
   },
-  minWidth: '160px',
+  minWidth: '100px',
   allowLineWrap: true
 }, {
-  id: 'deliveryMethod',
+  id: 'storageLimit',
   header: function header() {
-    return 'Delivery method';
+    return 'Storage (usage/limit)';
   },
   cell: function cell(item) {
-    return item.deliveryMethod;
+    return item.storageLimit;
   },
   minWidth: '100px',
   allowLineWrap: true
 }, {
   id: 'priceClass',
   header: function header() {
-    return 'Price class';
+    return 'Cost /hr';
   },
   cell: function cell(item) {
     return item.priceClass;
   },
-  minWidth: '100px',
-  allowLineWrap: true
-}, {
-  id: 'sslCertificate',
-  header: function header() {
-    return 'SSL certificate';
-  },
-  cell: function cell(item) {
-    return item.sslCertificate;
-  },
-  minWidth: '100px',
-  allowLineWrap: true
-}, {
-  id: 'origin',
-  header: function header() {
-    return 'Origin';
-  },
-  cell: function cell(item) {
-    return item.origin;
-  },
-  minWidth: '100px',
+  minWidth: '80px',
   allowLineWrap: true
 }, {
   id: 'status',
@@ -5404,7 +8372,7 @@ var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
   cell: function cell(item) {
     return item.status;
   },
-  minWidth: '100px',
+  minWidth: '80px',
   allowLineWrap: true
 }, {
   id: 'state',
@@ -5414,8 +8382,8 @@ var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
   cell: function cell(item) {
     return React.createElement(
       'div',
-      { className: 'awsui-util-status-' + (item.state === 'Disabled' ? 'negative' : 'positive') },
-      React.createElement(Icon, { name: item.state === 'Disabled' ? 'status-negative' : 'status-positive' }),
+      { className: 'awsui-util-status-' + (item.state === 'Stopped' ? 'negative' : 'positive') },
+      React.createElement(Icon, { name: item.state === 'Stopped' ? 'status-negative' : 'status-positive' }),
       React.createElement(
         'span',
         null,
@@ -5423,43 +8391,136 @@ var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
       )
     );
   },
-  minWidth: '100px',
-  allowLineWrap: true
-}, {
-  id: 'logging',
-  header: function header() {
-    return 'Logging';
-  },
-  cell: function cell(item) {
-    return item.logging;
-  },
-  minWidth: '100px',
+  minWidth: '80px',
   allowLineWrap: true
 }];
 
-var SORTABLE_COLUMNS = exports.SORTABLE_COLUMNS = [{ id: 'id', field: 'id' }, { id: 'domainName', field: 'domainName' }, { id: 'deliveryMethod', field: 'deliveryMethod' }, { id: 'priceClass', field: 'priceClass' }, { id: 'sslCertificate', field: 'sslCertificate' }, { id: 'origin', field: 'origin' }, { id: 'status', field: 'status' }, { id: 'state', field: 'state' }, { id: 'logging', field: 'logging' }];
+var SORTABLE_COLUMNS = exports.SORTABLE_COLUMNS = [{ id: 'id', field: 'id' }, { id: 'instanceLimit', field: 'instanceLimit' }, { id: 'storageLimit', field: 'storageLimit' }, { id: 'priceClass', field: 'priceClass' }, { id: 'status', field: 'status' }, { id: 'state', field: 'state' }];
 
 var CONTENT_SELECTOR_OPTIONS = exports.CONTENT_SELECTOR_OPTIONS = [{
-  label: 'Main distribution properties',
-  options: [{ id: 'id', label: 'Distribution ID', editable: false, visible: true }, { id: 'domainName', label: 'Domain name', editable: true, visible: true }, {
-    id: 'deliveryMethod',
-    label: 'Delivery method',
+  label: 'Main project properties',
+  options: [{ id: 'id', label: 'Project name', editable: false, visible: true }, { id: 'instanceLimit', label: 'Instances', editable: true, visible: true }, {
+    id: 'storageLimit',
+    label: 'Storage',
     editable: true,
     visible: true
   }, {
     id: 'priceClass',
-    label: 'Price class',
-    editable: true,
-    visible: false
-  }, {
-    id: 'sslCertificate',
-    label: 'SSL certificate',
+    label: 'Cost /hr',
     editable: true,
     visible: true
-  }, { id: 'origin', label: 'Origin', editable: true, visible: false }, { id: 'status', label: 'Status', editable: true, visible: true }, { id: 'state', label: 'State', editable: true, visible: true }, { id: 'logging', label: 'Logging', editable: true, visible: false }]
+  }, { id: 'status', label: 'Status', editable: true, visible: true }, { id: 'state', label: 'State', editable: true, visible: true }]
 }];
 
-var PAGE_SELECTOR_OPTIONS = exports.PAGE_SELECTOR_OPTIONS = [{ value: 10, label: '10 Distributions' }, { value: 30, label: '30 Distributions' }, { value: 50, label: '50 Distributions' }];
+var PAGE_SELECTOR_OPTIONS = exports.PAGE_SELECTOR_OPTIONS = [{ value: 10, label: '10 Projects' }, { value: 30, label: '30 Projects' }, { value: 50, label: '50 Projects' }];
+
+var CUSTOM_PREFERENCE_OPTIONS = exports.CUSTOM_PREFERENCE_OPTIONS = [{ value: 'table', label: 'Table' }, { value: 'cards', label: 'Cards' }];
+});
+
+require.register("resources/table/user-config.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Icon = window['AWS-UI-Components-React'].Icon;
+var COLUMN_DEFINITIONS = exports.COLUMN_DEFINITIONS = [{
+  id: 'id',
+  header: function header() {
+    return 'User name';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        { href: '#/user-management' },
+        item.id
+      )
+    );
+  },
+  minWidth: '100px',
+  allowLineWrap: true
+}, {
+  id: 'userRole',
+  cell: function cell(item) {
+    return item.userRole;
+  },
+  header: function header() {
+    return 'User role';
+  },
+  minWidth: '100px',
+  allowLineWrap: true
+}, {
+  id: 'userPermission',
+  header: function header() {
+    return 'User permission';
+  },
+  cell: function cell(item) {
+    return item.userPermission;
+  },
+  minWidth: '120px',
+  allowLineWrap: true
+}, {
+  id: 'startDate',
+  header: function header() {
+    return 'Start date';
+  },
+  cell: function cell(item) {
+    return item.startDate;
+  },
+  minWidth: '90px',
+  allowLineWrap: true
+}, {
+  id: 'department',
+  header: function header() {
+    return 'Department';
+  },
+  cell: function cell(item) {
+    return item.department;
+  },
+  minWidth: '100px',
+  allowLineWrap: true
+}, {
+  id: 'workStatus',
+  header: function header() {
+    return 'Work status';
+  },
+  cell: function cell(item) {
+    return React.createElement(
+      'div',
+      { className: 'awsui-util-status-' + (item.workStatus === 'Stopped' ? 'negative' : 'positive') },
+      React.createElement(Icon, { name: item.workStatus === 'Stopped' ? 'status-negative' : 'status-positive' }),
+      React.createElement(
+        'span',
+        null,
+        ' ' + item.workStatus
+      )
+    );
+  },
+  minWidth: '80px',
+  allowLineWrap: true
+}];
+
+var SORTABLE_COLUMNS = exports.SORTABLE_COLUMNS = [{ id: 'id', field: 'id' }, { id: 'userRole', field: 'userRole' }, { id: 'userPermission', field: 'userPermission' }, { id: 'startDate', field: 'startDate' }, { id: 'department', field: 'department' }, { id: 'workStatus', field: 'workStatus' }];
+
+var CONTENT_SELECTOR_OPTIONS = exports.CONTENT_SELECTOR_OPTIONS = [{
+  label: 'Main user properties',
+  options: [{ id: 'id', label: 'User name', editable: false, visible: true }, { id: 'userRole', label: 'User role', editable: true, visible: true }, {
+    id: 'userPermission',
+    label: 'User permission',
+    editable: true,
+    visible: true
+  }, {
+    id: 'startDate',
+    label: 'Start date',
+    editable: true,
+    visible: true
+  }, { id: 'department', label: 'Department', editable: true, visible: true }, { id: 'workStatus', label: 'Work status', editable: true, visible: true }]
+}];
+
+var PAGE_SELECTOR_OPTIONS = exports.PAGE_SELECTOR_OPTIONS = [{ value: 10, label: '10 Users' }, { value: 20, label: '20 Users' }, { value: 40, label: '40 Users' }];
 
 var CUSTOM_PREFERENCE_OPTIONS = exports.CUSTOM_PREFERENCE_OPTIONS = [{ value: 'table', label: 'Table' }, { value: 'cards', label: 'Cards' }];
 });

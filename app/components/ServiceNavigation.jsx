@@ -1,9 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 const { SideNavigation } = window['AWS-UI-Components-React'];
-
-// Class ServiceNavigation is the Side Navigation component that is used in BasicLayout, CreateForm, ServiceHomepage, and Table flows.
-// Implement like this: <ServiceNavigation />
 class ServiceNavigation extends React.Component {
   // If the provided link is empty, do not redirect pages
   onFollowHandler(ev) {
@@ -29,12 +26,8 @@ const items = [
   { type: 'link', text: 'Dashboard', href: '#/dashboard' },
   {
     type: 'section',
-    text: 'Projects',
-    items: [
-      { type: 'link', text: 'Projects', href: '#/table' },
-      { type: 'link', text: 'Instances', href: '#/instances' },
-
-    ]
+    text: 'My workspace',
+    items: [{ type: 'link', text: 'Projects', href: '#/table' }, { type: 'link', text: 'Storage', href: '#/storage' }]
   },
   {
     type: 'section',

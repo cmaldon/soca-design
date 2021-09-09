@@ -1,6 +1,6 @@
 {
   "name": "soca-design",
-  "description": "Prototyping tool that gives designers access to Polaris React components.",
+  "description": "Design idea for Scale Out Computing on AWS using Polaris React components.",
   "private": true,
   "author": "Celeste Maldonado",
   "version": "0.0.1",
@@ -10,9 +10,15 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "@awsui/collection-hooks": "^1.0.19",
+    "@awsui/components-react": "^3.0.240",
+    "@awsui/design-tokens": "^3.0.13",
+    "@awsui/global-styles": "^1.0.9",
+    "@awsui/test-utils-core": "^1.0.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",

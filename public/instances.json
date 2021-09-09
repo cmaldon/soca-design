@@ -1,0 +1,98 @@
+[
+  {
+    "id": "Heat intensity",
+    "engineType": "Ubuntu Linux server 16.04 LTS",
+    "instanceClass": "t2.medium 4 GB RAM 2 vCPUs",
+    "dateModified": "12/01/2020 6:01 PM",
+    "storage": "300 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Smoke color",
+    "engineType": "Windows 10 server",
+    "instanceClass": "m5.large 8 GB RAM 4 vCPUs",
+    "dateModified": "3/11/2020 7:50 AM",
+    "storage": "350 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Flame duration",
+    "engineType": "Amazon Linux server",
+    "instanceClass": "m5.xlarge 8 GB RAM 4 vCPUs",
+    "dateModified": "3/20/2020 8:09 AM",
+    "storage": "250 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Dimensions",
+    "engineType": "Amazon Linux server",
+    "instanceClass": "g3.4xlarge 8 GB RAM 4 vCPUs",
+    "dateModified": "2/05/2021 4:06 PM",
+    "storage": "400 GB SSD",
+    "state": "Stopped"
+  },
+  {
+    "id": "Reports",
+    "engineType": "Ubuntu Linux server 16.04 LTS",
+    "instanceClass": "t2.large 4 GB RAM 2 vCPUs",
+    "dateModified": "1/08/2021 9:22 AM",
+    "storage": "300 GB SSD",
+    "state": "Stopped"
+  },
+  {
+    "id": "Data input",
+    "engineType": "RedHat Linux server",
+    "instanceClass": "m5.xlarge 8 GB RAM 4 vCPUs",
+    "dateModified": "6/11/2020 6:01 PM",
+    "storage": "250 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Guides",
+    "engineType": "CentOS 7 server",
+    "instanceClass": "m5.large 6 GB RAM 4 vCPUs",
+    "dateModified": "6/24/2020 7:40 PM",
+    "storage": "125 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Strength",
+    "engineType": "Ubuntu Linux server 16.04 LTS",
+    "instanceClass": "t2.xlarge 6 GB RAM 2 vCPUs",
+    "dateModified": "6/25/2020 7:02 AM",
+    "storage": "25 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Index",
+    "engineType": "CentOS 7 server",
+    "instanceClass": "g3.xlarge 10 GB RAM 6 vCPUs",
+    "dateModified": "12/01/2020 6:01 PM",
+    "storage": "150 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Test",
+    "engineType": "Amazon Linux server",
+    "instanceClass": "g3.xlarge 10 GB RAM 6 vCPUs",
+    "dateModified": "3/11/2020 7:50 AM",
+    "storage": "150 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Regions",
+    "engineType": "Windows 10 server",
+    "instanceClass": "g3.xlarge 10 GB RAM 6 vCPUs",
+    "dateModified": "3/20/2020 8:09 AM",
+    "storage": "50 GB SSD",
+    "state": "Running"
+  },
+  {
+    "id": "Intensity",
+    "engineType": "Ubuntu Linux server 16.04 LTS",
+    "instanceClass": "t2.xlarge 4 GB RAM 2 vCPUs",
+    "dateModified": "2/05/2021 4:06 PM",
+    "storage": "10 GB SSD",
+    "state": "Stopped"
+  }
+]

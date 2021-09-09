@@ -35,8 +35,6 @@ const {
   RadioGroup,
   Icon
 } = window['AWS-UI-Components-React'];
-
-// Class TableView is a skeleton of a Table using AWS-UI React components.
 export default class TableView extends React.Component {
   render() {
     return (
@@ -57,22 +55,20 @@ class DetailsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDistributions: [],
-      distributions: [],
+      selectedProjects: [],
+      projects: [],
       pageSize: 30,
       filteringText: ''
     };
   }
 
   componentDidMount() {
-    new DataProvider().getData('distributions', distributions => this.setState({ distributions: distributions }));
+    new DataProvider().getData('projects', projects => this.setState({ projects: projects }));
   }
 
-  // Keeps track of how many distributions are selected
-  headerCounter(selectedDistributions, distributions) {
-    return selectedDistributions.length
-      ? `(${selectedDistributions.length} of ${distributions.length})`
-      : `(${distributions.length})`;
+  // Keeps track of how many projects are selected
+  headerCounter(selectedProjects, projects) {
+    return selectedProjects.length ? `(${selectedProjects.length} of ${projects.length})` : `(${projects.length})`;
   }
 
   // Updates the page size in preferences
@@ -100,11 +96,11 @@ class DetailsTable extends React.Component {
     return (
       <Table
         columnDefinitions={COLUMN_DEFINITIONS}
-        items={this.state.distributions}
+        items={this.state.projects}
         header={
           <Header
-            selectedDistributions={this.state.selectedDistributions}
-            counter={this.headerCounter(this.state.selectedDistributions, this.state.distributions)}
+            selectedProjects={this.state.selectedProjects}
+            counter={this.headerCounter(this.state.selectedProjects, this.state.projects)}
           />
         }
         noMatch={
@@ -127,8 +123,8 @@ class DetailsTable extends React.Component {
         <TablePagination onPaginationChange={this.onPaginationChange.bind(this)} pageSize={this.state.pageSize} />
         <TableSorting sortableColumns={SORTABLE_COLUMNS} />
         <TableSelection
-          selectedItems={this.state.selectedDistributions}
-          onSelectionChange={evt => this.setState({ selectedDistributions: evt.detail.selectedItems })}
+          selectedItems={this.state.selectedProjects}
+          onSelectionChange={evt => this.setState({ selectedProjects: evt.detail.selectedItems })}
         />
         <TablePreferences title="Preferences" confirmLabel="Confirm" cancelLabel="Cancel">
           <TablePageSizeSelector title="Page size" options={PAGE_SELECTOR_OPTIONS} />
@@ -147,9 +143,9 @@ class DetailsTable extends React.Component {
   }
 }
 
-// Table header content, shows how many distributions are selected and contains the action stripe
-const Header = ({ selectedDistributions, counter }) => {
-  const isOnlyOneSelected = selectedDistributions.length === 1;
+// Table header content, shows how many projects are selected and contains the action stripe
+const Header = ({ selectedProjects, counter }) => {
+  const isOnlyOneSelected = selectedProjects.length === 1;
 
   return (
     <div className="awsui-util-action-stripe">
@@ -157,12 +153,19 @@ const Header = ({ selectedDistributions, counter }) => {
         <h2>
           Projects&nbsp;
           {counter ? <span className="awsui-util-header-counter">{counter}</span> : ''}
+          <a
+            className="awsui-util-help-info-link"
+            href="javascript:void(0);"
+            onClick={() => props.replaceToolsContent(1)}
+          >
+            Info
+          </a>
         </h2>
       </div>
       <div className="awsui-util-action-stripe-group">
         <Button text="View details" disabled={!isOnlyOneSelected} />
         <Button text="Edit" disabled={!isOnlyOneSelected} />
-        <Button text="Delete" disabled={selectedDistributions.length === 0} />
+        <Button text="Delete" disabled={selectedProjects.length === 0} />
         <Button href="#/create" variant="primary" text="Create project" />
       </div>
     </div>
@@ -186,19 +189,26 @@ const Breadcrumbs = () => (
 );
 
 // Flash message content
-const FlashMessage = () => <Flash type="success" content="Resource created successfully" dismissible={true} />;
+const FlashMessage = () => (
+  <Flash
+    type="success"
+    content="Project created successfully"
+    dismissible={true}
+    action={<Button>View instance</Button>}
+    dismissLabel="Dismiss message"
+  />
+);
 
 // Help (right) panel content
 const Tools = [
   <div className="awsui-util-help-panel">
+    <div className="awsui-util-help-panel-header">Scale Out Computing</div>
     <div className="awsui-util-help-panel-header">
-      <h2>Scale Out Computing</h2>
-      <br />
-      <p>With Scale Out Computing on AWS, you can create a virtual
-        machine instance, an isolated compute environment in the AWS
-        Cloud. You can access your instance by using the same tools and applications
-        you might use with a standalone computer. Connect to your machine instance by using
-        NICE DCV in Windows or Linux Desktop, SSH Access or Command Line Interface.
+      <p>
+        With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in
+        the AWS Cloud. You can access your instance by using the same tools and applications you might use with a
+        standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access
+        or Command Line Interface.
       </p>
     </div>
     <a href="javascript:void(0)">
@@ -206,17 +216,20 @@ const Tools = [
     </a>
     <ul className="awsui-list-unstyled">
       <li>
-        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/">
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
           What is Scale Out Computing?
         </a>
       </li>
       <li>
-        <a href="https://awslabs.github.io/scale-out-computing-on-aws/">
+        <a href="https://awslabs.github.io/scale-out-computing-on-aws/" target="_blank">
           Getting started
         </a>
       </li>
       <li>
-        <a href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc">
+        <a
+          href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc"
+          target="_blank"
+        >
           Working with instances
         </a>
       </li>

@@ -9,13 +9,7 @@ https://polaris.corp.amazon.com/getting_started/development/integration/
 ************************************************************************/
 import React from 'react';
 import ServiceNavigation from './ServiceNavigation.jsx';
-const {
-  // import the components that you use in the file here
-  AppLayout,
-  BreadcrumbGroup
-} = window['AWS-UI-Components-React'];
-
-// Class Basic is a skeleton of the basic App layout using AWS-UI React components.
+const { AppLayout, BreadcrumbGroup } = window['AWS-UI-Components-React'];
 export default class Basic extends React.Component {
   render() {
     return (
@@ -57,17 +51,20 @@ const Tools = (
     </div>
     <ul className="awsui-list-unstyled">
       <li>
-        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html">
+        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html" target="_blank">
           What is Scale Out Computing on AWS?
         </a>
       </li>
       <li>
-        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/">
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
           Getting started
         </a>
       </li>
       <li>
-        <a href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc">
+        <a
+          href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc"
+          target="_blank"
+        >
           Working with instances
         </a>
       </li>

@@ -10,9 +10,6 @@ https://polaris.corp.amazon.com/getting_started/development/integration/
 import React from 'react';
 import { Link } from 'react-router-dom';
 const { AppLayout, SideNavigation } = window['AWS-UI-Components-React'];
-
-// This is not meant to be a template, rather it is the
-// introduction page that you see upon loading the webserver.
 export default class BobRossIntro extends React.Component {
   render() {
     return (

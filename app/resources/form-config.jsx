@@ -1,7 +1,6 @@
-export const PRICE_CLASS_OPTIONS = [
-  { label: 'Use all edge locations (best performance)', value: '0' },
-  { label: 'Use only US, Canada, and Europe', value: '1' },
-  { label: 'Use only US, Canada, Europe, and Asia', value: '2' }
+export const INPUT_OPTIONS = [
+  { label: 'Service-managed S3 bucket (best performance)', value: '0' },
+  { label: 'Customer-specified S3 bucket', value: '1' }
 ];
 
 export const SSL_CERTIFICATE_OPTIONS = [

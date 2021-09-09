@@ -1,0 +1,139 @@
+[
+    {
+      "id": "Leia Organa",
+      "userPermission": "Admin",
+      "userRole": "Lead scientist",
+      "department": "Lab",
+      "workStatus": "Cleared",
+      "startDate": "01/15/2017"
+    },
+    {
+      "id": "Kylo Ren",
+      "userPermission": "Developer",
+      "userRole": "Developer",
+      "department": "Web dev",
+      "workStatus": "Stopped",
+      "startDate": "05/20/2020"
+    },
+    {
+      "id": "Ronnie Rainier",
+      "userPermission": "Data research",
+      "userRole": "Researcher",
+      "department": "Lab",
+      "workStatus": "Cleared",
+      "startDate": "03/04/2018"
+    },
+    {
+      "id": "Sally Smiles",
+      "userPermission": "Human resources",
+      "userRole": "Office admin",
+      "department": "Admin office",
+      "workStatus": "Stopped",
+      "startDate": "07/13/2021"
+    },
+    {
+      "id": "Jamie Jenkins",
+      "userPermission": "Data research",
+      "userRole": "Researcher",
+      "department": "Lab",
+      "workStatus": "Stopped",
+      "startDate": "09/10/2020"
+    },
+    {
+      "id": "Rita Rings",
+      "userPermission": "Admin",
+      "userRole": "Researcher",
+      "department": "Lab",
+      "workStatus": "Cleared",
+      "startDate": "03/23/2021"
+    },
+    {
+      "id": "Kelly Kyla",
+      "userPermission": "Data research",
+      "userRole": "Researcher",
+      "department": "Lab",
+      "workStatus": "Cleared",
+      "startDate": "10/12/2019"
+    },
+    {
+        "id": "Luke Skywalker",
+        "userPermission": "Admin",
+        "userRole": "Lead scientist",
+        "department": "Lab",
+        "workStatus": "Cleared",
+        "startDate": "01/15/2017"
+      },
+      {
+        "id": "Jabba Hutt",
+        "userPermission": "Developer",
+        "userRole": "Developer",
+        "department": "Web dev",
+        "workStatus": "Stopped",
+        "startDate": "05/20/2020"
+      },
+      {
+        "id": "Han Solo",
+        "userPermission": "Data research",
+        "userRole": "Researcher",
+        "department": "Lab",
+        "workStatus": "Cleared",
+        "startDate": "03/04/2018"
+      },
+      {
+        "id": "Boba Fett",
+        "userPermission": "Human resources",
+        "userRole": "Office admin",
+        "department": "Admin office",
+        "workStatus": "Stopped",
+        "startDate": "07/13/2021"
+      },
+      {
+        "id": "Nute Gunray",
+        "userPermission": "Data research",
+        "userRole": "Researcher",
+        "department": "Lab",
+        "workStatus": "Stopped",
+        "startDate": "09/10/2020"
+      },
+      {
+        "id": "Darth Maul",
+        "userPermission": "Admin",
+        "userRole": "Researcher",
+        "department": "Lab",
+        "workStatus": "Cleared",
+        "startDate": "03/23/2021"
+      },
+      {
+        "id": "Obi Wan Kenobi",
+        "userPermission": "Data research",
+        "userRole": "Researcher",
+        "department": "Lab",
+        "workStatus": "Cleared",
+        "startDate": "10/12/2019"
+      },
+      {
+        "id": "Darth Vader",
+        "userPermission": "Developer",
+        "userRole": "Developer",
+        "department": "Web dev",
+        "workStatus": "Stopped",
+        "startDate": "05/20/2020"
+      },
+      {
+        "id": "Jar Jar Binks",
+        "userPermission": "Data research",
+        "userRole": "Researcher",
+        "department": "Lab",
+        "workStatus": "Cleared",
+        "startDate": "03/04/2018"
+      },
+      {
+        "id": "General Grievous",
+        "userPermission": "Human resources",
+        "userRole": "Office admin",
+        "department": "Admin office",
+        "workStatus": "Stopped",
+        "startDate": "07/13/2021"
+      }
+  ]
+  

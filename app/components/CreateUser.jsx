@@ -11,16 +11,11 @@ import React from 'react';
 import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import {
-  ALLOWED_HTTP_METHOD_OPTIONS,
   COOKIE_OPTIONS,
   CURRENT_COMPRESSION_OPTIONS,
-  FORWARD_HEADER_OPTIONS,
-  PRICE_CLASS_OPTIONS,
+  INPUT_OPTIONS,
   QUERY_STRING_OPTIONS,
-  SSL_CERTIFICATE_OPTIONS,
-  SUPPORTED_HTTP_VERSIONS_OPTIONS,
-  VIEWER_PROTOCOL_POLICY_OPTIONS,
-  DELIVERY_METHOD
+  SUPPORTED_HTTP_VERSIONS_OPTIONS
 } from '../resources/form-config.jsx';
 const {
   AppLayout,
@@ -36,11 +31,9 @@ const {
   Input,
   Multiselect,
   RadioGroup,
-  Select,
-  Textarea,
-  Tiles
+  Textarea
 } = window['AWS-UI-Components-React'];
-export default class LaunchInstance extends React.Component {
+export default class CreateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = { contentOrigins: [], toolsIndex: 0, toolsOpen: false };
@@ -62,7 +55,7 @@ export default class LaunchInstance extends React.Component {
             contentOrigins={this.state.contentOrigins}
           />
         }
-        contentType="wizard"
+        contentType="form"
         tools={Tools[this.state.toolsIndex]}
         toolsOpen={this.state.toolsOpen}
       />
@@ -70,42 +63,56 @@ export default class LaunchInstance extends React.Component {
   }
 }
 
-// The content in the main content area of the App layout
 const Content = props => (
   <div>
     <Form
-      header={<h1>Launch instance</h1>}
+      header={
+        <h1>
+          Create user
+          <a
+            className="awsui-util-help-info-link"
+            href="javascript:void(0);"
+            onClick={() => props.replaceToolsContent(1)}
+          >
+            Info
+          </a>
+        </h1>
+      }
       actions={
         // located at the bottom of the form
         <div>
           <Button variant="link" text="Cancel" />
-          <Button href="#/instances" variant="primary" text="Launch instance" />
+          <Button href="#/user-management" variant="primary" text="Create user" />
         </div>
       }
     >
       <ContentDeliveryPanel replaceToolsContent={props.replaceToolsContent} />
 
-      <FormSection header={<h2>Instance details</h2>} footer={<DistributionsFooter />}>
+      <FormSection header={<h2>IAM Roles</h2>} footer={<DistributionsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <span>
-                  Price class
+                  User roles
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
-                    onClick={() => props.replaceToolsContent(2)}
+                    onClick={() => props.replaceToolsContent(4)}
                   >
                     Info
                   </a>
                 </span>
               }
-              stretch={true}
+              description="Select which roles you want this user to have."
             >
-              <RadioGroup items={PRICE_CLASS_OPTIONS} value="0" />
+              <Multiselect
+                options={props.contentOrigins}
+                placeholder="Select an S3 bucket or web server from which you want to get your content."
+                filteringType="auto"
+              />
             </FormField>
-            <FormField
+            {/* <FormField
               label={
                 <span>
                   Alternative domain names (CNAMEs)<i> - optional</i>
@@ -123,8 +130,8 @@ const Content = props => (
               stretch={true}
             >
               <Textarea placeholder={'www.example1.com\nwww.example2.com'} />
-            </FormField>
-            <FormField
+            </FormField> */}
+            {/* <FormField
               label={
                 <span>
                   SSL/TLS certificate
@@ -140,18 +147,18 @@ const Content = props => (
               stretch={true}
             >
               <RadioGroup items={SSL_CERTIFICATE_OPTIONS} value="default" />
-            </FormField>
-            <Button text="Request or import a certificate with AWS Certificate Manager (ACM)" />
+            </FormField> */}
+            <Button text="Additional IAM Role options" />
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Storage settings">
+      <FormSection header="User permissions">
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <div>
-                  Content origin
+                  Select which roles you want this user to have
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
@@ -161,75 +168,32 @@ const Content = props => (
                   </a>
                 </div>
               }
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              description="The Amazon S3 bucket or web server from which you want to get your content."
             >
-              <Select
-                options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
-                filteringType="auto"
-              />
+              <RadioGroup items={INPUT_OPTIONS} value="0" />
             </FormField>
-            <FormField
+
+            {/* <FormField
               label="Content origin (multiselect version)"
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              description="The Amazon S3 bucket or web server from which you want to get your content."
             >
               <Multiselect
                 options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
+                placeholder="Select an S3 bucket or web server from which you want to get your content."
                 filteringType="auto"
               />
-            </FormField>
+            </FormField> */}
             <FormField
-              label="Path to content"
+              label="Path to files"
               description="The directory in your Amazon S3 bucket or your custom origin."
             >
-              <Input placeholder="/images" />
+              <Input placeholder="/files" />
             </FormField>
-            <FormField
-              label="Origin ID"
-              description="This value lets you distinguish multiple origins in the same distribution from one another"
-            >
-              <Input />
-            </FormField>
-            <AttributeEditor
-              addButtonText="Add header"
-              removeButtonText="Remove header"
-              items={[
-                {
-                  name: '',
-                  value: ''
-                }
-              ]}
-              definition={[
-                {
-                  label: (
-                    <span>
-                      Custom header name
-                      <a
-                        className="awsui-util-help-info-link"
-                        href="javascript:void(0);"
-                        onClick={() => props.replaceToolsContent(6)}
-                      >
-                        Info
-                      </a>
-                    </span>
-                  ),
-                  control: item => <Input value={item.name} placeholder="Location" />
-                },
-                {
-                  label: (
-                    <span>
-                      Custom header value<i> - optional</i>
-                    </span>
-                  ),
-                  control: item => <Input value={item.value} placeholder="Germany" />
-                }
-              ]}
-            />
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Network settings" footer={<BehaviorsFooter />}>
+
+      {/* <FormSection header="Cache behavior settings" footer={<BehaviorsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField label="Viewer protocol policy" stretch={true}>
@@ -261,7 +225,7 @@ const Content = props => (
             </FormField>
           </div>
         </ColumnLayout>
-      </FormSection>
+      </FormSection> */}
     </Form>
   </div>
 );
@@ -275,8 +239,8 @@ class ContentDeliveryPanel extends React.Component {
 
   render() {
     return (
-      <FormSection header="Select engine type">
-        <FormField
+      <FormSection header="User settings">
+        {/* <FormField
           label={
             <div>
               Engine options
@@ -296,27 +260,66 @@ class ContentDeliveryPanel extends React.Component {
             value={this.state.deliveryMethod}
             onChange={e => this.setState({ deliveryMethod: e.detail.value })}
           />
+        </FormField> */}
+
+        <FormField label="User ID" description="This value lets you distinguish multiple users from one another">
+          <Input />
         </FormField>
+        <AttributeEditor
+          addButtonText="Add header"
+          removeButtonText="Remove header"
+          items={[
+            {
+              name: '',
+              value: ''
+            }
+          ]}
+          definition={[
+            {
+              label: (
+                <span>
+                  Name
+                  <a
+                    className="awsui-util-help-info-link"
+                    href="javascript:void(0);"
+                    onClick={() => props.replaceToolsContent(6)}
+                  >
+                    Info
+                  </a>
+                </span>
+              ),
+              control: item => <Input value={item.name} placeholder="example-user-name" />
+            },
+            {
+              label: (
+                <span>
+                  Role description<i> - optional</i>
+                </span>
+              ),
+              control: item => <Input value={item.value} placeholder="example-role-description" />
+            }
+          ]}
+        />
       </FormSection>
     );
   }
 }
 
-// Footer content (Additional configuration section) form section
+// Footer content form section
 const DistributionsFooter = () => (
   <ExpandableSection header="Additional configuration" variant="borderless">
     <ColumnLayout>
       <div data-awsui-column-layout-root={true}>
         <FormField
           label="Supported HTTP versions"
-          description="Choose the version of the HTTP protocol that you want CloudFront to accept for viewer requests."
+          description="Choose the version of the HTTP protocol that you want to accept for viewer requests."
           stretch={true}
         >
           <RadioGroup items={SUPPORTED_HTTP_VERSIONS_OPTIONS} value="http2" />
         </FormField>
         <FormField
           label="Root object"
-          description="Type the name of the object that you want CloudFront to return when a viewer request points to your root URL."
+          description="Type the name of the object that you want to return when a viewer request points to your root URL."
         >
           <Input />
         </FormField>
@@ -395,72 +398,64 @@ const Breadcrumbs = () => (
   <BreadcrumbGroup
     items={[
       {
-        text: 'Dashboard',
-        href: '#/dashboard'
+        text: 'Scale Out Computing',
+        href: '#/service-home'
       },
       {
         text: 'Projects',
         href: '#/table'
       },
       {
-        text: 'Instances',
-        href: '#/instances'
+        text: 'User management',
+        href: '#/user-management'
       },
       {
-        text: 'Launch instance',
-        href: '#/instance-wizard'
+        text: 'Create user',
+        href: '#/create-user'
       }
     ]}
-    activeHref="#/instances"
+    activeHref="#/user-management"
   />
 );
 
 // List of Help (right) panel content, changes depending on which 'info' link the user clicks on.
 const Tools = [
   <div className="awsui-util-help-panel">
+    <div className="awsui-util-help-panel-header">Create user</div>
     <div className="awsui-util-help-panel-header">
-      <h2>Scale Out Computing</h2>
+      <p>Keep your project users information and permissions in order.</p>
       <br />
-      <p>
-        With Scale Out Computing on AWS, you can create a virtual machine instance, an isolated compute environment in
-        the AWS Cloud. You can access your instance by using the same tools and applications you might use with a
-        standalone computer. Connect to your machine instance by using NICE DCV in Windows or Linux Desktop, SSH Access
-        or Command Line Interface.
-      </p>
+      <p>You can create project users in this section by assigning roles and permissions.</p>
     </div>
     <ul className="awsui-list-unstyled">
       <li>
-        <a href="https://awslabs.github.io/scale-out-computing-on-aws/">What is Scale Out Computing?</a>
+        <a href="https://awslabs.github.io/scale-out-computing-on-aws/" target="_blank">
+          What is Scale Out Computing?
+        </a>
       </li>
       <li>
-        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/">Getting started</a>
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
+          Getting started
+        </a>
       </li>
       <li>
-        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html">
+        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html" target="_blank">
           View implementation guide
         </a>
       </li>
     </ul>
   </div>,
+
   <div className="awsui-util-help-panel">
-    <div className="awsui-util-help-panel-header">Engine options</div>
-    <h4>Ubuntu Linux</h4>
-    <p>Create a Ubuntu Linux engine if you want to:</p>
-    <p>Use a Linux machine image.</p>
-    <p>Add, update or delete objects and submit data from web forms.</p>
-    <p>Use live streaming to stream an event in real time.</p>
+    <div className="awsui-util-help-panel-header">Creating users</div>
+    <h4>Admin</h4>
+    <p>Create an admin user permission if you want to:</p>
+    <p>Allow your users to make administrative changes to resources and content.</p>
+    <h4 className="awsui-util-mt-m">User</h4>
     <p>
-      You store your files in an origin - either an Amazon S3 bucket or a web server. After you create the distribution,
-      you can add more origins to the distributions.
+      Create an user permission that allows the member of your team to use resources and not make administrative changes
+      to resources or content.
     </p>
-    <h4 className="awsui-util-mt-m">Windows 10</h4>
-    <p>
-      Create an RTMP distribution to speed up distribution of your streaming media files using Adobe Flash Media
-      Server's RTMP protocol. An RTMP distribution allows an end user to begin playing a media file before the file has
-      finished downloading from a CloudFront edge location. Note the following:
-    </p>
-    <p>To create an RTMP distribution, you must store the media files in an Amazon S3 bucket.</p>
-    <p>To use CloudFront live streaming, create a web distribution.</p>
   </div>,
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
@@ -471,6 +466,7 @@ const Tools = [
       select a price class other than All, some of your users may experience higher latency.
     </p>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
       <h2>Alternate domain names (CNAMEs)</h2>
@@ -487,22 +483,16 @@ const Tools = [
       </p>
     </div>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
-      <h2>SSL certificate</h2>
+      <h2>User roles</h2>
     </div>
     <div>
       <div>
-        <h4>Default CloudFront SSL certificate</h4>
-        <p>
-          Choose this option if you want your users to use HTTPS or HTTP to access your content with the CloudFront
-          domain name (such as https://d111111abcdef8.cloudfront.net/logo.jpg).
-        </p>
-        <p>
-          Important: If you choose this option, CloudFront requires that browsers or devices support TLSv1 or later to
-          access your content.
-        </p>
-        <h4 className="awsui-util-mt-m">Custom SSL certificate</h4>
+        <h4>Identity and Access Management</h4>
+        <p>Choose this option if you want your users to access your content.</p>
+        <h4 className="awsui-util-mt-m">Developer</h4>
         <p>
           Choose this option if you want your users to access your content by using an alternate domain name, such as
           https://www.example.com/logo.jpg.
@@ -514,19 +504,15 @@ const Tools = [
       </div>
     </div>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
-      <h2>Content origin</h2>
+      <h2>User permissions</h2>
     </div>
     <div>
       <p>
-        Specify the domain name for your origin - the Amazon S3 bucket or web server from which you want CloudFront to
-        get your web content. The dropdown list enumerates the AWS resources associated with the current AWS account.
-      </p>
-      <p>
-        To use a resource from a different AWS account, type the domain name of the resource. For example, for an Amazon
-        S3 bucket, type the name in the format bucketname.s3.amazonaws.com. The files in your origin must be publicly
-        readable.
+        Specify the permissions for your users - from which you want to get your web content. The dropdown list
+        enumerates the AWS resources associated with the current AWS account.
       </p>
     </div>
   </div>,

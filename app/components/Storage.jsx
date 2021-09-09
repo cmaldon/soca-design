@@ -8,15 +8,15 @@ guidelines:
 https://polaris.corp.amazon.com/getting_started/development/integration/
 ************************************************************************/
 import React from 'react';
-import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
+import DataProvider from '../resources/data-provider';
 import {
   COLUMN_DEFINITIONS,
   CONTENT_SELECTOR_OPTIONS,
   PAGE_SELECTOR_OPTIONS,
   SORTABLE_COLUMNS,
   CUSTOM_PREFERENCE_OPTIONS
-} from '../resources/table/table-config.jsx';
+} from '../resources/table/file-config.jsx';
 const {
   AppLayout,
   BreadcrumbGroup,
@@ -34,42 +34,64 @@ const {
   FormField,
   RadioGroup
 } = window['AWS-UI-Components-React'];
-export default class Instances extends React.Component {
+export default class Storage extends React.Component {
   render() {
     return (
       <AppLayout
         navigation={<ServiceNavigation />} // Navigation panel content imported from './ServiceNavigation.jsx'
+        breadcrumbs={<Breadcrumbs />} // Breadcrumbs element defined below
         notifications={<FlashMessage />}
-        breadcrumbs={<Breadcrumbs />}
-        content={<DetailsTable />}
-        contentType="table"
+        content={<DetailsTable />} // Main content on the page, defined below
         toolsOpen={false}
-        tools={Tools}
+        contentType="table"
+        tools={Tools} // Tools panel content defined below
       />
     );
   }
 }
 
+// Breadcrumb content
+const Breadcrumbs = () => (
+  <BreadcrumbGroup
+    items={[
+      {
+        text: 'Scale Out Computing',
+        href: '#/service-home'
+      },
+      {
+        text: 'Dashboard',
+        href: '#/dashboard'
+      },
+      {
+        text: 'Projects',
+        href: '#/table'
+      },
+      {
+        text: 'Storage',
+        href: '#/storage'
+      }
+    ]}
+    activeHref="#/storage"
+  />
+);
 class DetailsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDistributions: [],
-      distributions: [],
+      selectedFiles: [],
+      files: [],
       pageSize: 30,
       filteringText: ''
     };
   }
 
   componentDidMount() {
-    new DataProvider().getData('distributions', distributions => this.setState({ distributions: distributions }));
+    new DataProvider().getData('files', files => this.setState({ files: files }));
   }
 
-  // Keeps track of how many distributions are selected
-  headerCounter(selectedDistributions, distributions) {
-    return selectedDistributions.length
-      ? `(${selectedDistributions.length} of ${distributions.length})`
-      : `(${distributions.length})`;
+  // Keeps track of how many files are selected
+  headerCounter(selectedFiles, files) {
+    return selectedFiles.length ? `(${selectedFiles.length} of ${files.length})` : `(${files.length})`;
   }
 
   // Updates the page size in preferences
@@ -97,11 +119,11 @@ class DetailsTable extends React.Component {
     return (
       <Table
         columnDefinitions={COLUMN_DEFINITIONS}
-        items={this.state.distributions}
+        items={this.state.files}
         header={
           <Header
-            selectedDistributions={this.state.selectedDistributions}
-            counter={this.headerCounter(this.state.selectedDistributions, this.state.distributions)}
+            selectedFiles={this.state.selectedFiles}
+            counter={this.headerCounter(this.state.selectedFiles, this.state.files)}
           />
         }
         noMatch={
@@ -117,15 +139,15 @@ class DetailsTable extends React.Component {
         }
       >
         <TableFiltering
-          filteringPlaceholder="Search instances"
+          filteringPlaceholder="Search files"
           filteringText={this.state.filteringText}
           onFilteringChange={this.onFilteringChange.bind(this)}
         />
         <TablePagination onPaginationChange={this.onPaginationChange.bind(this)} pageSize={this.state.pageSize} />
         <TableSorting sortableColumns={SORTABLE_COLUMNS} />
         <TableSelection
-          selectedItems={this.state.selectedDistributions}
-          onSelectionChange={evt => this.setState({ selectedDistributions: evt.detail.selectedItems })}
+          selectedItems={this.state.selectedFiles}
+          onSelectionChange={evt => this.setState({ selectedFiles: evt.detail.selectedItems })}
         />
         <TablePreferences title="Preferences" confirmLabel="Confirm" cancelLabel="Cancel">
           <TablePageSizeSelector title="Page size" options={PAGE_SELECTOR_OPTIONS} />
@@ -144,15 +166,15 @@ class DetailsTable extends React.Component {
   }
 }
 
-// Table header content, shows how many distributions are selected and contains the action stripe
-const Header = ({ selectedDistributions, counter }) => {
-  const isOnlyOneSelected = selectedDistributions.length === 1;
+// Table header content, shows how many files are selected and contains the action stripe
+const Header = ({ selectedFiles, counter }) => {
+  const isOnlyOneSelected = selectedFiles.length === 1;
 
   return (
     <div className="awsui-util-action-stripe">
       <div className="awsui-util-action-stripe-title">
         <h2>
-          Instances&nbsp;
+          Files&nbsp;
           {counter ? <span className="awsui-util-header-counter">{counter}</span> : ''}
           <a
             className="awsui-util-help-info-link"
@@ -166,68 +188,45 @@ const Header = ({ selectedDistributions, counter }) => {
       <div className="awsui-util-action-stripe-group">
         <Button text="View details" disabled={!isOnlyOneSelected} />
         <Button text="Edit" disabled={!isOnlyOneSelected} />
-        <Button text="Delete" disabled={selectedDistributions.length === 0} />
-        <Button href="#/instance-wizard" variant="primary" text="Launch instance" />
+        <Button text="Delete" disabled={selectedFiles.length === 0} />
+        <Button href="#/upload-file" variant="primary" text="Upload file" />
       </div>
     </div>
   );
 };
 
-// Breadcrumb content
-const Breadcrumbs = () => (
-  <BreadcrumbGroup
-    items={[
-      {
-        text: 'Scale Out Computing',
-        href: '#/service-home'
-      },
-      {
-        text: 'Dashboard',
-        href: '#/dashboard'
-      },
-      {
-        text: 'Projects',
-        href: '#/table'
-      },
-      {
-        text: 'Instances',
-        href: '#/instances'
-      }
-    ]}
-  />
-);
-
 // Flash message content
-const FlashMessage = () => <Flash type="success" content="Instance created successfully" dismissible={true} />;
+const FlashMessage = () => <Flash type="success" content="File created successfully" dismissible={true} />;
 
-// Help (right) panel content
-const Tools = [
+// Help panel content
+const Tools = (
   <div className="awsui-util-help-panel">
-    <div className="awsui-util-help-panel-header">Scale Out Computing</div>
+    <div className="awsui-util-help-panel-header">Storage and Backups</div>
     <div className="awsui-util-help-panel-header">
-      <p>Sample Instance data for the help panel.</p>
+      <p>This is the help section for storage page.</p>
+      <br />
+
+      <p>Sample information for Storage section side bar help tools</p>
     </div>
-    <div>
-      <ul className="awsui-list-unstyled">
-        <li>
-          <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
-            What is Scale Out Computing?
-          </a>
-        </li>
-        <li>
-          <a href="https://awslabs.github.io/scale-out-computing-on-aws/" target="_blank">
-            Getting started
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc"
-            target="_blank"
-          >
-            Working with instances
-          </a>
-        </li>
-      </ul>
-    </div>
+    <ul className="awsui-list-unstyled">
+      <li>
+        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html" target="_blank">
+          What is Scale Out Computing on AWS?
+        </a>
+      </li>
+      <li>
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
+          Getting started
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc"
+          target="_blank"
+        >
+          Working with instances
+        </a>
+      </li>
+    </ul>
   </div>
-];
+);

@@ -20,15 +20,13 @@ import Budget from './Budget.jsx';
 import Dashboard from './Dashboard.jsx';
 import LaunchInstance from './LaunchInstance.jsx';
 import InstanceWizard from './InstanceWizard.jsx';
-
-// Class App is the "output" generated on every build,
-// it is what you will see on the webpage.
+import Storage from './Storage.jsx';
+import CreateUser from './CreateUser.jsx';
+import UploadFile from './UploadFile.jsx';
+import ProjectDetails from './ProjectDetails.jsx';
 export default class App extends React.Component {
   render() {
     return (
-      // When you create a new file or template, add it below
-      // as a new 'Route' so you can link to it with a url.
-
       <div>
         <Route exact path="/" component={BobRossIntro} />
         <Route path="/basic" component={Basic} />
@@ -41,7 +39,10 @@ export default class App extends React.Component {
         <Route path="/budget" component={Budget} />
         <Route path="/launch-instance" component={LaunchInstance} />
         <Route path="/instance-wizard" component={InstanceWizard} />
-
+        <Route path="/storage" component={Storage} />
+        <Route path="/create-user" component={CreateUser} />
+        <Route path="/upload-file" component={UploadFile} />
+        <Route path="/project-details" component={ProjectDetails} />
       </div>
     );
   }

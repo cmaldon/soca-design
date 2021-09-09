@@ -11,16 +11,11 @@ import React from 'react';
 import DataProvider from '../resources/data-provider';
 import ServiceNavigation from './ServiceNavigation.jsx';
 import {
-  ALLOWED_HTTP_METHOD_OPTIONS,
   COOKIE_OPTIONS,
   CURRENT_COMPRESSION_OPTIONS,
-  FORWARD_HEADER_OPTIONS,
-  PRICE_CLASS_OPTIONS,
+  INPUT_OPTIONS,
   QUERY_STRING_OPTIONS,
-  SSL_CERTIFICATE_OPTIONS,
-  SUPPORTED_HTTP_VERSIONS_OPTIONS,
-  VIEWER_PROTOCOL_POLICY_OPTIONS,
-  DELIVERY_METHOD
+  SUPPORTED_HTTP_VERSIONS_OPTIONS
 } from '../resources/form-config.jsx';
 const {
   AppLayout,
@@ -36,12 +31,8 @@ const {
   Input,
   Multiselect,
   RadioGroup,
-  Select,
-  Textarea,
-  Tiles
+  Textarea
 } = window['AWS-UI-Components-React'];
-
-// Class CreateForm is a skeleton of a Single page create form using AWS-UI React components.
 export default class CreateForm extends React.Component {
   constructor(props) {
     super(props);
@@ -76,7 +67,18 @@ export default class CreateForm extends React.Component {
 const Content = props => (
   <div>
     <Form
-      header={<h1>Create project</h1>}
+      header={
+        <h1>
+          Create project
+          <a
+            className="awsui-util-help-info-link"
+            href="javascript:void(0);"
+            onClick={() => props.replaceToolsContent(1)}
+          >
+            Info
+          </a>
+        </h1>
+      }
       actions={
         // located at the bottom of the form
         <div>
@@ -87,27 +89,31 @@ const Content = props => (
     >
       <ContentDeliveryPanel replaceToolsContent={props.replaceToolsContent} />
 
-      <FormSection header={<h2>Distribution settings</h2>} footer={<DistributionsFooter />}>
+      <FormSection header={<h2>Input data</h2>} footer={<DistributionsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <span>
-                  Price class
+                  Content origin
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
-                    onClick={() => props.replaceToolsContent(2)}
+                    onClick={() => props.replaceToolsContent(4)}
                   >
                     Info
                   </a>
                 </span>
               }
-              stretch={true}
+              description="The Amazon S3 bucket or web server from which you want to get your content."
             >
-              <RadioGroup items={PRICE_CLASS_OPTIONS} value="0" />
+              <Multiselect
+                options={props.contentOrigins}
+                placeholder="Select an S3 bucket or web server from which you want to get your content."
+                filteringType="auto"
+              />
             </FormField>
-            <FormField
+            {/* <FormField
               label={
                 <span>
                   Alternative domain names (CNAMEs)<i> - optional</i>
@@ -125,8 +131,8 @@ const Content = props => (
               stretch={true}
             >
               <Textarea placeholder={'www.example1.com\nwww.example2.com'} />
-            </FormField>
-            <FormField
+            </FormField> */}
+            {/* <FormField
               label={
                 <span>
                   SSL/TLS certificate
@@ -142,18 +148,18 @@ const Content = props => (
               stretch={true}
             >
               <RadioGroup items={SSL_CERTIFICATE_OPTIONS} value="default" />
-            </FormField>
-            <Button text="Request or import a certificate with AWS Certificate Manager (ACM)" />
+            </FormField> */}
+            <Button text="Additional input option" />
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Origin settings">
+      <FormSection header="Output data">
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField
               label={
                 <div>
-                  Content origin
+                  Choose output storage location
                   <a
                     className="awsui-util-help-info-link"
                     href="javascript:void(0);"
@@ -163,75 +169,32 @@ const Content = props => (
                   </a>
                 </div>
               }
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              description="The Amazon S3 bucket or web server from which you want to get your content."
             >
-              <Select
-                options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
-                filteringType="auto"
-              />
+              <RadioGroup items={INPUT_OPTIONS} value="0" />
             </FormField>
-            <FormField
+
+            {/* <FormField
               label="Content origin (multiselect version)"
-              description="The Amazon S3 bucket or web server from which you want CloudFront to get your web content."
+              description="The Amazon S3 bucket or web server from which you want to get your content."
             >
               <Multiselect
                 options={props.contentOrigins}
-                placeholder="Select an S3 bucket or web server from which you want CloudFront to get your web content."
+                placeholder="Select an S3 bucket or web server from which you want to get your content."
                 filteringType="auto"
               />
-            </FormField>
+            </FormField> */}
             <FormField
-              label="Path to content"
+              label="Path to files"
               description="The directory in your Amazon S3 bucket or your custom origin."
             >
-              <Input placeholder="/images" />
+              <Input placeholder="/files" />
             </FormField>
-            <FormField
-              label="Origin ID"
-              description="This value lets you distinguish multiple origins in the same distribution from one another"
-            >
-              <Input />
-            </FormField>
-            <AttributeEditor
-              addButtonText="Add header"
-              removeButtonText="Remove header"
-              items={[
-                {
-                  name: '',
-                  value: ''
-                }
-              ]}
-              definition={[
-                {
-                  label: (
-                    <span>
-                      Custom header name
-                      <a
-                        className="awsui-util-help-info-link"
-                        href="javascript:void(0);"
-                        onClick={() => props.replaceToolsContent(6)}
-                      >
-                        Info
-                      </a>
-                    </span>
-                  ),
-                  control: item => <Input value={item.name} placeholder="Location" />
-                },
-                {
-                  label: (
-                    <span>
-                      Custom header value<i> - optional</i>
-                    </span>
-                  ),
-                  control: item => <Input value={item.value} placeholder="Germany" />
-                }
-              ]}
-            />
           </div>
         </ColumnLayout>
       </FormSection>
-      <FormSection header="Cache behavior settings" footer={<BehaviorsFooter />}>
+
+      {/* <FormSection header="Cache behavior settings" footer={<BehaviorsFooter />}>
         <ColumnLayout>
           <div data-awsui-column-layout-root={true}>
             <FormField label="Viewer protocol policy" stretch={true}>
@@ -263,7 +226,7 @@ const Content = props => (
             </FormField>
           </div>
         </ColumnLayout>
-      </FormSection>
+      </FormSection> */}
     </Form>
   </div>
 );
@@ -277,11 +240,11 @@ class ContentDeliveryPanel extends React.Component {
 
   render() {
     return (
-      <FormSection header="Distribution content delivery">
-        <FormField
+      <FormSection header="Project settings">
+        {/* <FormField
           label={
             <div>
-              Delivery method
+              Engine options
               <a
                 className="awsui-util-help-info-link"
                 href="javascript:void(0);"
@@ -298,7 +261,46 @@ class ContentDeliveryPanel extends React.Component {
             value={this.state.deliveryMethod}
             onChange={e => this.setState({ deliveryMethod: e.detail.value })}
           />
+        </FormField> */}
+
+        <FormField label="Project ID" description="This value lets you distinguish multiple projects from one another">
+          <Input />
         </FormField>
+        <AttributeEditor
+          addButtonText="Add header"
+          removeButtonText="Remove header"
+          items={[
+            {
+              name: '',
+              value: ''
+            }
+          ]}
+          definition={[
+            {
+              label: (
+                <span>
+                  Name
+                  <a
+                    className="awsui-util-help-info-link"
+                    href="javascript:void(0);"
+                    onClick={() => props.replaceToolsContent(6)}
+                  >
+                    Info
+                  </a>
+                </span>
+              ),
+              control: item => <Input value={item.name} placeholder="example-project-name" />
+            },
+            {
+              label: (
+                <span>
+                  Project description<i> - optional</i>
+                </span>
+              ),
+              control: item => <Input value={item.value} placeholder="example-project-description" />
+            }
+          ]}
+        />
       </FormSection>
     );
   }
@@ -311,14 +313,14 @@ const DistributionsFooter = () => (
       <div data-awsui-column-layout-root={true}>
         <FormField
           label="Supported HTTP versions"
-          description="Choose the version of the HTTP protocol that you want CloudFront to accept for viewer requests."
+          description="Choose the version of the HTTP protocol that you want to accept for viewer requests."
           stretch={true}
         >
           <RadioGroup items={SUPPORTED_HTTP_VERSIONS_OPTIONS} value="http2" />
         </FormField>
         <FormField
           label="Root object"
-          description="Type the name of the object that you want CloudFront to return when a viewer request points to your root URL."
+          description="Type the name of the object that you want to return when a viewer request points to your root URL."
         >
           <Input />
         </FormField>
@@ -336,7 +338,7 @@ const DistributionsFooter = () => (
   </ExpandableSection>
 );
 
-// Footer content (Additional configuration section) for 'Cache behavior settings' form section
+// Footer content (Additional configuration section) form section
 const BehaviorsFooter = () => (
   <ExpandableSection header="Additional configuration" variant="borderless">
     <ColumnLayout>
@@ -401,6 +403,10 @@ const Breadcrumbs = () => (
         href: '#/service-home'
       },
       {
+        text: 'Dashboard',
+        href: '#/dashboard'
+      },
+      {
         text: 'Projects',
         href: '#/table'
       },
@@ -409,39 +415,40 @@ const Breadcrumbs = () => (
         href: '#/create'
       }
     ]}
+    activeHref="#/table"
   />
 );
 
 // List of Help (right) panel content, changes depending on which 'info' link the user clicks on.
 const Tools = [
   <div className="awsui-util-help-panel">
+    <div className="awsui-util-help-panel-header">Create project</div>
     <div className="awsui-util-help-panel-header">
-      <h2>Scale Out Computing</h2>
-      <br />
       <p>Keep your project research in order by naming each project and adding limits.</p>
+      <br />
+      <p>You can create projects in this section by naming it, adding usage and budget details.</p>
     </div>
     <ul className="awsui-list-unstyled">
       <li>
-        <a href="https://awslabs.github.io/scale-out-computing-on-aws/">
+        <a href="https://awslabs.github.io/scale-out-computing-on-aws/" target="_blank">
           What is Scale Out Computing?
         </a>
       </li>
       <li>
-        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/">
+        <a href="https://aws.amazon.com/solutions/implementations/scale-out-computing-on-aws/" target="_blank">
           Getting started
         </a>
       </li>
       <li>
-        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html">
+        <a href="https://docs.aws.amazon.com/solutions/latest/scale-out-computing-on-aws/welcome.html" target="_blank">
           View implementation guide
         </a>
       </li>
     </ul>
   </div>,
+
   <div className="awsui-util-help-panel">
-    <div className="awsui-util-help-panel-header">
-  Testing
-    </div>
+    <div className="awsui-util-help-panel-header">Create a project</div>
     <h4>Web</h4>
     <p>Create a web distribution if you want to:</p>
     <p>
@@ -472,6 +479,7 @@ const Tools = [
       select a price class other than All, some of your users may experience higher latency.
     </p>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
       <h2>Alternate domain names (CNAMEs)</h2>
@@ -488,6 +496,7 @@ const Tools = [
       </p>
     </div>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
       <h2>SSL certificate</h2>
@@ -515,6 +524,7 @@ const Tools = [
       </div>
     </div>
   </div>,
+
   <div className="awsui-util-help-panel">
     <div className="awsui-util-help-panel-header">
       <h2>Content origin</h2>
